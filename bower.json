@@ -1,28 +1,43 @@
 {
-    "name": "twemoji",
-    "description": "A Unicode standard based way to implement emoji across all platforms.",
-    "version": "1.0.0",
-    "main": "./twemoji.amd.js",
-    "ignore": [
-        ".git",
-        ".gitignore",
-        ".npmignore",
-        "./16x16",
-        "./36x36",
-        "./72x72",
-        "./assets",
-        "./node_modules",
-        "./index.html",
-        "./package.json",
-        "./preview-generator.js",
-        "./preview-template.html",
-        "./preview.html",
-        "./test.html",
-        "./test.js",
-        "./twemoji-generator.js",
-        "./twemoji-dist.js",
-        "./twemoji.js",
-        "./twemoji.min.js",
-        "./twemoji.npm.js"
-    ]
+  "name": "twemoji",
+  "description": "A Unicode standard based way to implement emoji across all platforms.",
+  "version": "v1.0.0",
+  "main": "./twemoji.amd.js",
+  "ignore": [
+    ".git",
+    ".gitignore",
+    ".npmignore",
+    "./16x16",
+    "./36x36",
+    "./72x72",
+    "./assets",
+    "./node_modules",
+    "./index.html",
+    "./package.json",
+    "./preview-generator.js",
+    "./preview-template.html",
+    "./test.html",
+    "./test.js",
+    "./twemoji-generator.js",
+    "./twemoji-dist.js",
+    "./twemoji.js",
+    "./twemoji.min.js",
+    "./twemoji.npm.js",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/twitter/twemoji",
+  "authors": [
+    "Twitter, Inc."
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": [
+    "MIT",
+    "CC-BY-4.0"
+  ]
 }
