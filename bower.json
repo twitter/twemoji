@@ -1,0 +1,28 @@
+{
+    "name": "twemoji",
+    "description": "A Unicode standard based way to implement emoji across all platforms.",
+    "version": "1.0.0",
+    "main": "./twemoji.amd.js",
+    "ignore": [
+        ".git",
+        ".gitignore",
+        ".npmignore",
+        "16x16",
+        "36x36",
+        "72x72",
+        "assets",
+        "node_modules",
+        "index.html",
+        "package.json",
+        "preview-generator.js",
+        "preview-template.html",
+        "preview.html",
+        "test.html",
+        "test.js",
+        "twemoji-generator.js",
+        "twemoji-dist.js",
+        "twemoji.js",
+        "twemoji.min.js",
+        "twemoji.npm.js"
+    ]
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Twitter Emoji (Twemoji)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: sans-serif;
+      font-size: 16px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      color: #600;
+    }
+    h1 .emoji {
+      width: 36px;
+      height: 36px;
+      margin-bottom: -8px;
+    }
+    a, a:visited {
+      color: #777;
+    }
+    a .emoji {
+      border: 0;
+      width: 16px;
+      height: 16px;
+      margin-bottom: -2px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>twem&#x2764;ji</h1>
+    <p>sharing Twitter emoji <a href="preview.html">everywhere</a></p>
+    <a href="https://github.com/twitter/twemoji">grab me on Github &#x2197;</a>
+    
+    <blockquote class="twitter-tweet" lang="en" align="center"><p>😍 Twitter users love tweeting emoji from their phones – now you can view these emoji on web! <a href="https://twitter.com/hashtag/emojiparty?src=hash">#emojiparty</a> 🎉 😜 👯 🍻 🎈 🎤 🎮 🚀 🌉 ✨</p>&mdash; Twitter Support (@Support) <a href="https://twitter.com/Support/status/451399393850052610">April 2, 2014</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+    <p>Code licensed under MIT. Graphics licensed under CC-BY</p>
+    <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
+    <script>
+      // I \u2764 emoji!
+      twemoji.parse(document.body, {size: 72});
+    </script>
+  </body>
+</html>
+
