@@ -1,0 +1,15 @@
+.git
+.gitignore
+16x16
+36x36
+72x72
+assets
+bower.json
+index.html
+node_modules
+preview-*
+test.*
+twemoji-*
+twemoji.amd.js
+twemoji.min.js
+twemoji.js
