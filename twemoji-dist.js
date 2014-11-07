@@ -8,7 +8,14 @@ var fs = require('fs');
 
 fs.writeFileSync(
   'twemoji.npm.js',
-  fs.readFileSync('twemoji.js') + '\nmodule.exports = twemoji;'
+  [
+    'var location = global.location || {};',
+    fs.readFileSync('twemoji.js'),
+    'if (!location.protocol) {',
+    '  twemoji.base = twemoji.base.replace(/^http:/, "");',
+    '}',
+    'module.exports = twemoji;'
+  ].join('\n')
 );
 
 fs.writeFileSync(

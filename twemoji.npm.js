@@ -1,3 +1,4 @@
+var location = global.location || {};
 /*jslint indent: 2, browser: true, bitwise: true, plusplus: true */
 var twemoji = (function (
   /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
@@ -510,4 +511,7 @@ var twemoji = (function (
   }
 
 }());
+if (!location.protocol) {
+  twemoji.base = twemoji.base.replace(/^http:/, "");
+}
 module.exports = twemoji;
