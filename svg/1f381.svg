@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(34,6)"
+           id="g22"><path
+             d="m 0,0 c 0,-2.2 -1.8,-4 -4,-4 l -22,0 c -2.2,0 -4,1.8 -4,4 l 0,17 c 0,2.2 1.8,4 4,4 l 22,0 c 2.2,0 4,-1.8 4,-4 L 0,0 z"
+             id="path24"
+             style="fill:#fdd888;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(37,26)"
+           id="g26"><path
+             d="m 0,0 c 0,-2.2 -1.8,-4 -4,-4 l -28,0 c -2.2,0 -4,1.8 -4,4 0,2.2 1.8,4 4,4 L -4,4 C -1.8,4 0,2.2 0,0"
+             id="path28"
+             style="fill:#fdd888;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><path
+           d="m 34,20 -30,0 0,2 30,0 0,-2 z"
+           id="path30"
+           style="fill:#fcab40;fill-opacity:1;fill-rule:nonzero;stroke:none" /><g
+           transform="translate(20,33.9995)"
+           id="g32"><path
+             d="m 0,0 -2,0 c -1.656,0 -3,-1.343 -3,-3 l 0,0 0,-29 8,0 0,29 C 3,-1.343 1.657,0 0,0"
+             id="path34"
+             style="fill:#da2f47;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(17,30)"
+           id="g36"><path
+             d="M 0,0 C 1.1,0 1.263,0.516 0.361,1.147 L -6.361,5.853 C -7.263,6.484 -8.446,6.219 -8.992,5.264 L -11.008,1.736 C -11.554,0.781 -11.1,0 -10,0 L 0,0 z"
+             id="path38"
+             style="fill:#da2f47;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(21,30)"
+           id="g40"><path
+             d="M 0,0 C -1.1,0 -1.263,0.516 -0.361,1.147 L 6.361,5.853 C 7.263,6.484 8.446,6.219 8.992,5.264 L 11.008,1.736 C 11.554,0.781 11.1,0 10,0 L 0,0 z"
+             id="path42"
+             style="fill:#da2f47;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>

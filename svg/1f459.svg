@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(30,12)"
+           id="g22"><path
+             d="m 0,0 c 0,0 -4,-1 -11,-1 -7,0 -11,1 -11,1 0,0 6,-5 11,-5 5,0 11,5 11,5"
+             id="path24"
+             style="fill:#553788;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(19,19.1436)"
+           id="g26"><path
+             d="m 0,0 c -5.514,0 -10,4.515 -10,10.063 0,2.858 1.214,5.591 3.331,7.499 l 1.338,-1.485 C -7.027,14.547 -8,12.355 -8,10.063 -8,5.617 -4.411,2 0,2 c 4.411,0 8,3.617 8,8.063 0,2.292 -0.973,4.483 -2.669,6.013 l 1.34,1.485 C 8.786,15.653 10,12.92 10,10.063 10,4.515 5.514,0 0,0"
+             id="path28"
+             style="fill:#553788;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(17.625,20.1436)"
+           id="g30"><path
+             d="M 0,0 C 0,0 -5.417,3.856 -7.732,11.33 -7.917,11.148 -12.15,5.665 -9.941,1.133 -7.732,-3.398 0,0 0,0"
+             id="path32"
+             style="fill:#744eaa;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(20.4395,20.1436)"
+           id="g34"><path
+             d="M 0,0 C 0,0 5.478,4.731 7.732,11.33 7.894,11.023 12.15,5.665 9.941,1.133 7.732,-3.398 0,0 0,0"
+             id="path36"
+             style="fill:#744eaa;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(30,12)"
+           id="g38"><path
+             d="m 0,0 c 0,0 -4,-3 -11,-3 -7,0 -11,3 -11,3 0,0 7.208,-5.625 9,-11 l 4,0 c 1.958,6.625 9,11 9,11"
+             id="path40"
+             style="fill:#744eaa;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>

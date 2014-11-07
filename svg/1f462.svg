@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(35.5391,3.5117)"
+           id="g22"><path
+             d="m 0,0 c 0,0 1.18,-0.215 1.18,-1.256 0,-1.043 -1.042,-1.256 -2.084,-1.256 l -17.72,0 c -2.084,0 -5.915,4 -7.915,4 l -0.592,-4 -6.408,0 0,2.936 c 0,2.084 -0.881,2.285 -0.881,3.211 0,2.084 0.672,4.394 0.672,4.394 l 6.746,-0.31 9.463,-7.231 L 0,0 z"
+             id="path24"
+             style="fill:#662113;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(2.668,9.7187)"
+           id="g26"><path
+             d="m 0,0 c 3.036,-0.731 6.332,-1.719 13.969,-5.379 0,0 2,-1.34 4.363,-1.34 l 14.539,0 c 0,0 1.18,0.257 1.18,2.424 0,1.084 -7.907,3.381 -10.27,4.465 -2.361,1.084 -6.445,6.316 -6.445,6.316 0,0 -0.17,-13.634 -7.258,-6.049 C 2.99,8.025 5.7,6.877 3.337,6.877 2.852,6.877 -0.401,5.57 -1.207,1.838 -1.322,1.305 -0.864,0.209 0,0"
+             id="path28"
+             style="fill:#c1694f;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(3,15)"
+           id="g30"><path
+             d="m 0,0 c 0,0 1,2 1,4 0,2 -1,17 -1,17 0,0 4.917,1 10,1 5.084,0 7,-1 7,-1 0,0 -6,-15 2,-23 2.55,-2.55 -2,-7 -2,-7 0,0 -1,-2 -4,0 C 10,-7 0,0 0,0"
+             id="path32"
+             style="fill:#c1694f;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><path
+           d="m 11,17 -2,0 0,20 2,0 0,-20 z"
+           id="path34"
+           style="fill:#d99e82;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></svg>

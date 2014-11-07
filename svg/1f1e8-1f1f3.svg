@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(37,10)"
+           id="g22"><path
+             d="m 0,0 c 0,-2.209 -1.791,-4 -4,-4 l -28,0 c -2.209,0 -4,1.791 -4,4 l 0,18 c 0,2.209 1.791,4 4,4 l 28,0 c 2.209,0 4,-1.791 4,-4 L 0,0 z"
+             id="path24"
+             style="fill:#dd2e44;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(8,26.0488)"
+           id="g26"><path
+             d="M 0,0 0.929,-2.67 3.755,-2.729 1.502,-4.437 2.321,-7.143 0,-5.528 -2.321,-7.143 -1.502,-4.437 -3.755,-2.729 -0.929,-2.67 0,0 z"
+             id="path28"
+             style="fill:#ffd983;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(14,29.4722)"
+           id="g30"><path
+             d="M 0,0 0.34,-0.688 1.099,-0.798 0.55,-1.334 0.679,-2.09 0,-1.733 -0.679,-2.09 l 0.13,0.756 -0.55,0.536 0.76,0.11 L 0,0 z"
+             id="path32"
+             style="fill:#ffd983;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(16,25.4722)"
+           id="g34"><path
+             d="M 0,0 0.34,-0.688 1.099,-0.798 0.55,-1.334 0.679,-2.09 0,-1.733 -0.679,-2.09 l 0.13,0.756 -0.55,0.536 0.76,0.11 L 0,0 z"
+             id="path36"
+             style="fill:#ffd983;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(16,21.4722)"
+           id="g38"><path
+             d="M 0,0 0.34,-0.688 1.099,-0.798 0.55,-1.334 0.679,-2.09 0,-1.733 -0.679,-2.09 l 0.13,0.756 -0.55,0.536 0.76,0.11 L 0,0 z"
+             id="path40"
+             style="fill:#ffd983;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(14,17.4727)"
+           id="g42"><path
+             d="M 0,0 0.34,-0.688 1.099,-0.799 0.55,-1.334 0.679,-2.091 0,-1.734 l -0.679,-0.357 0.13,0.757 -0.55,0.535 0.76,0.111 L 0,0 z"
+             id="path44"
+             style="fill:#ffd983;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>

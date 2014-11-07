@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(1,33)"
+           id="g22"><path
+             d="m 0,0 c 0,4 4,4 4,4 l 28,0 c 0,0 4,0 4,-4 l 0,-28 c 0,0 0,-4 -4,-4 l -28,0 c 0,0 -4,0 -4,4 L 0,0 z"
+             id="path24"
+             style="fill:#55acee;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(34,28)"
+           id="g26"><path
+             d="m 0,0 -11,0 0,4.5 0,1.5 c 0,0 0,1 -1,1 -1,0 -1,-1 -1,-1 l 0,-1.5 0,-4.5 c -8,0 -8,-7 -8,-7 l 0,-2 c 0,-1 1,-1 1,-1 l 3,0 c 0,0 1,0 1,1 l 0,0.25 0,0.062 0,1.688 c 0,2 2,2 2,2 l 14,0 c 1,0 1,1 1,1 l 0,3 c 0,0 0,1 -1,1"
+             id="path28"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(19.5,34)"
+           id="g30"><path
+             d="M 0,0 -3,0 C -3.829,0 -4.5,-0.671 -4.5,-1.5 -4.5,-2.329 -3.829,-3 -3,-3 l 3,0 c 0.828,0 1.5,0.671 1.5,1.5 C 1.5,-0.671 0.828,0 0,0"
+             id="path32"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(24.5,31)"
+           id="g34"><path
+             d="M 0,0 3,0 C 3.828,0 4.5,0.671 4.5,1.5 4.5,2.329 3.828,3 3,3 L 0,3 C -0.828,3 -1.5,2.329 -1.5,1.5 -1.5,0.671 -0.828,0 0,0"
+             id="path36"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(21,17)"
+           id="g38"><path
+             d="m 0,0 c -1,0 -1,-1 -1,-1 l 0,-5 -9,0 0,5 c 0,0 0,1 -1,1 -1,0 -1,-1 -1,-1 l 0,-11 c 0,0 0,-2 2,-2 l 9,0 c 2,0 2,2 2,2 l 0,11 c 0,0 0,1 -1,1"
+             id="path40"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>

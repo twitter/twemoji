@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(26,5)"
+           id="g22"><path
+             d="m 0,0 c 0,-2.209 -1.791,-4 -4,-4 l -6,0 c -2.209,0 -4,1.791 -4,4 l 0,28 c 0,2.209 1.791,4 4,4 l 6,0 c 2.209,0 4,-1.791 4,-4 L 0,0 z"
+             id="path24"
+             style="fill:#414042;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(33,19)"
+           id="g26"><path
+             d="m 0,0 c 0,1.104 -0.896,2 -2,2 l -1,0 c -1.104,0 -2,-0.896 -2,-2 0,-1.104 0.896,-2 2,-2 l 1,0 c 1.104,0 2,0.896 2,2"
+             id="path28"
+             style="fill:#939598;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(7.0005,19)"
+           id="g30"><path
+             d="M 0,0 C 0,6.627 5.373,12 12,12 18.627,12 24,6.627 24,0 24,-6.627 18.627,-12 12,-12 5.373,-12 0,-6.627 0,0"
+             id="path32"
+             style="fill:#d1d3d4;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(11.0005,19)"
+           id="g34"><path
+             d="M 0,0 C 0,4.418 3.582,8 8,8 12.418,8 16,4.418 16,0 16,-4.418 12.418,-8 8,-8 3.582,-8 0,-4.418 0,0"
+             id="path36"
+             style="fill:#f1f2f2;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(24,15)"
+           id="g38"><path
+             d="m 0,0 c -0.175,0 -0.353,0.046 -0.514,0.143 l -5,2.999 C -5.815,3.323 -6,3.648 -6,4 l 0,7 c 0,0.552 0.448,1 1,1 0.552,0 1,-0.448 1,-1 L -4,4.566 0.516,1.857 C 0.989,1.573 1.143,0.959 0.858,0.485 0.671,0.173 0.34,0 0,0"
+             id="path40"
+             style="fill:#58595b;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>

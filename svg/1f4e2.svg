@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(13.9082,6.25)"
+           id="g22"><path
+             d="m 0,0 c -0.276,-2.209 -2.291,-3 -4.5,-3 -2.209,0 -3.776,1.791 -3.5,4 l 1,9 c 0.276,2.209 2.291,4 4.5,4 2.209,0 6.468,0 3.5,-4 C -1.968,6 0,0 0,0"
+             id="path24"
+             style="fill:#be1931;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(36.8252,22.25)"
+           id="g26"><path
+             d="m 0,0 c 0,-6.902 -1.544,-12.5 -3.45,-12.5 -1.905,0 -20.45,5.598 -20.45,12.5 0,6.903 18.545,12.5 20.45,12.5 C -1.544,12.5 0,6.903 0,0"
+             id="path28"
+             style="fill:#ccd6dd;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(36.8252,22.25)"
+           id="g30"><path
+             d="m 0,0 c 0,-6.902 -1.544,-12.5 -3.45,-12.5 -1.905,0 -3.45,5.598 -3.45,12.5 0,6.903 1.545,12.5 3.45,12.5 C -1.544,12.5 0,6.903 0,0"
+             id="path32"
+             style="fill:#66757f;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(18.9248,15.25)"
+           id="g34"><path
+             d="m 0,0 -14,1 c -5,0 -5,12 0,12 L 0,14 C -3,11 -3,3 0,0"
+             id="path36"
+             style="fill:#dd2e44;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(33.8252,22.25)"
+           id="g38"><path
+             d="M 0,0 C 0,-2.401 -0.672,-4.348 -1.5,-4.348 -2.328,-4.348 -3,-2.401 -3,0 -3,2.401 -2.328,4.348 -1.5,4.348 -0.672,4.348 0,2.401 0,0"
+             id="path40"
+             style="fill:#99aab5;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>

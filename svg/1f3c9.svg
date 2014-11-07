@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="47.5"
+   height="47.5"
+   id="svg2"
+   xml:space="preserve"><defs
+     id="defs6"><clipPath
+       id="clipPath18"><path
+         d="M 0,38 38,38 38,0 0,0 0,38 z"
+         id="path20" /></clipPath><clipPath
+       id="clipPath30"><path
+         d="M 9.254,28.746 C 2.09,21.582 -0.927,9.561 3.929,3.929 l 0,0 C 9.561,-0.927 21.582,2.09 28.746,9.254 l 0,0 c 7.164,7.164 11.229,17.088 5.324,24.816 l 0,0 c -1.886,1.627 -4.489,2.371 -7.387,2.37 l 0,0 c -5.752,0 -12.665,-2.93 -17.429,-7.694"
+         id="path32" /></clipPath></defs><g
+     transform="matrix(1.25,0,0,-1.25,0,47.5)"
+     id="g12"><g
+       id="g14"><g
+         clip-path="url(#clipPath18)"
+         id="g16"><g
+           transform="translate(28.7461,9.2539)"
+           id="g22"><path
+             d="m 0,0 c -7.164,-7.164 -19.186,-10.181 -24.816,-5.324 -4.857,5.631 -1.84,17.652 5.324,24.816 7.164,7.164 19.185,10.181 24.816,5.324 C 11.229,17.088 7.164,7.164 0,0"
+             id="path24"
+             style="fill:#3b88c3;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g><g
+       id="g26"><g
+         clip-path="url(#clipPath30)"
+         id="g28"><g
+           transform="translate(36.834,29.6665)"
+           id="g34"><path
+             d="m 0,0 c -0.334,-4.417 -9.334,-19.167 -24.417,-24.75 -1.167,-0.5 -1.084,-2 0.833,-2.167 1.917,-0.166 13.5,0.167 17.5,2.417 4,2.25 10.75,18.917 9,20.25 -1.75,1.333 4.416,7.75 3,6.417 C 4.5,0.833 0,0 0,0"
+             id="path36"
+             style="fill:#ccd6dd;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g><g
+           transform="translate(9.0835,9.166)"
+           id="g38"><path
+             d="M 0,0 C 7.833,1.917 26.667,10.417 25.25,24.584 24.834,25.75 17.099,30.7 3.917,19.834 -3.667,13.584 -4.862,5.643 -4.333,0.917 -4.131,-0.896 -1.918,-0.47 0,0"
+             id="path40"
+             style="fill:#e1e8ed;fill-opacity:1;fill-rule:nonzero;stroke:none" /></g></g></g></g></svg>
