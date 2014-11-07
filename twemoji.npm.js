@@ -358,7 +358,7 @@ var twemoji = (function (
           if (src) {
             img = new Image();
             img.onerror = twemoji.onerror;
-            img.className = 'emoji';
+            img.className = options.className;
             img.setAttribute('draggable', 'false');
             img.alt = alt;
             img.src = src;
@@ -413,7 +413,7 @@ var twemoji = (function (
           // recycle the match string replacing the emoji
           // with its image counter part
           match = '<img '.concat(
-            'class="emoji" ',
+            'class="', options.className, '" ',
             'draggable="false" ',
             // needs to preserve user original intent
             // when variants should be copied and pasted too
@@ -474,7 +474,8 @@ var twemoji = (function (
       callback: how.callback || defaultImageSrcGenerator,
       base:     typeof how.base === 'string' ? how.base : twemoji.base,
       ext:      how.ext || twemoji.ext,
-      size:     toSizeSquaredAsset(how.size || twemoji.size)
+      size:     toSizeSquaredAsset(how.size || twemoji.size),
+      className:how.className || 'emoji'
     });
   }
 

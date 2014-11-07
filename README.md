@@ -133,9 +133,9 @@ var img = div.querySelector('img');
 // note the div is preserved
 img.parentNode === div; // true
 
-img.src;        // https://abs.twimg.com/emoji/v1/36x36/2764.png
+img.src;        // https://twemoji.maxcdn.com/36x36/2764.png
 img.alt;        // \u2764\uFE0F
-img.class;      // emoji
+img.className;  // emoji
 img.draggable;  // false
 
 ```
@@ -147,10 +147,11 @@ Here the list of properties accepted by the optional object that could be passed
 
 ```js
   {
-    callback: Function,
-    base: string,
-    ext: string,
-    size: string|number
+    callback: Function,   // default the common replacer
+    base: string,         // default MaxCDN
+    ext: string,          // default ".png"
+    size: string|number,  // default "36x36"
+    className: string     // default "emoji"
   }
 ```
 

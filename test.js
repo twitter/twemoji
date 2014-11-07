@@ -279,4 +279,34 @@ wru.test([{
     wru.assert('third child is the expected one', div.childNodes[2].nodeValue === text);
     wru.assert('html unaltered', div.innerHTML.replace(/<img[^>]+?>/i, '') === html);
   }
+},{
+  name: 'string parsing + className',
+  test: function () {
+    var className = 'img-' + Math.random();
+    var img = 'I <img class="' + className + '" draggable="false" alt="\u2764" src="36x36/2764.png"> emoji!';
+    wru.assert(
+      'className is overwritten',
+      img ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          className: className,
+          base: ''
+        }
+      )
+    );
+  }
+},{
+  name: 'DOM parsing + className',
+  test: function () {
+    var className = 'img-' + Math.random();
+    var img,
+        div = document.createElement('div');
+    div.appendChild(document.createTextNode('I \u2764 emoji!'));
+    twemoji.parse(div, {className: className});
+    wru.assert(
+      'className is overwritten',
+      div.getElementsByTagName('img')[0].className === className
+    );
+  }
 }]);
