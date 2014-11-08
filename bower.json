@@ -11,6 +11,7 @@
     "./36x36",
     "./72x72",
     "./assets",
+    "./build",
     "./component.json",
     "./node_modules",
     "./index.html",
