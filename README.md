@@ -9,7 +9,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN suppor
 Just use the following in the `<head>` tag of your HTML document(s):
 
 ```html
-<script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
+<script src="https://twemoji.maxcdn.com/twemoji.min.js"></script>
 ```
 
 ## API
