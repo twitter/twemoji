@@ -474,7 +474,7 @@ define(function () {
         callback: how.callback || defaultImageSrcGenerator,
         base:     typeof how.base === 'string' ? how.base : twemoji.base,
         ext:      how.ext || twemoji.ext,
-        size:     toSizeSquaredAsset(how.size || twemoji.size),
+        size:     how.folder || toSizeSquaredAsset(how.size || twemoji.size),
         className:how.className || 'emoji'
       });
     }

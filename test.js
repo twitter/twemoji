@@ -309,4 +309,34 @@ wru.test([{
       div.getElementsByTagName('img')[0].className === className
     );
   }
+},{
+  name: 'folder option',
+  test: function () {
+    var img = 'I <img class="emoji" draggable="false" alt="\u2764" src="svg/2764.svg"> emoji!';
+    wru.assert(
+      'folder is accepted',
+      img ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          folder: 'svg',
+          ext: '.svg',
+          base: ''
+        }
+      )
+    );
+    wru.assert(
+      'folder overwrites size',
+      img ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          size: 72,
+          folder: 'svg',
+          ext: '.svg',
+          base: ''
+        }
+      )
+    );
+  }
 }]);

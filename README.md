@@ -150,8 +150,10 @@ Here the list of properties accepted by the optional object that could be passed
     callback: Function,   // default the common replacer
     base: string,         // default MaxCDN
     ext: string,          // default ".png"
+    className: string,    // default "emoji"
     size: string|number,  // default "36x36"
-    className: string     // default "emoji"
+    folder: string        // in case it's specified
+                          // it replaces .size info, if any
   }
 ```
 
@@ -182,10 +184,26 @@ The default image extension to be used, by default it's the same as `twemoji.ext
 If you modify the former, it will reflect as default for all parsed strings or nodes.
 
 
+##### className
+The default `class` per each generated image is `emoji`. It is possible to specify a different one through this property.
+
+
 ##### size
 The default assets size to be used, by default it's the same as `twemoji.size` which is `"36x36"`.
 
 If you modify the former, it will reflect as default for all parsed strings or nodes.
+
+
+##### folder
+In case there is no need to specify a size, it is possible to chose a folder, as it is in the case of SVG emoji.
+```js
+twemoji.parse(genericNode, {
+  folder: 'svg',
+  ext: '.svg'
+});
+```
+This will generate urls such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size based one.
+
 
 ## Tips
 
