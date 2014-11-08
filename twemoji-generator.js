@@ -19,6 +19,18 @@ var assets = {
 // there is no asset equivalent for these
 var ignoreMissing = ['2002', '2003', '2005'];
 
+
+function unique(src) {
+  var dst = [], seen = {};
+  for (var i = 0; i < src.length; i++) {
+    if (!seen.hasOwnProperty(src[i])) {
+      dst.push(src[i]);
+      seen[src[i]]++;
+    }
+  }
+  return dst;
+}
+
 // basic utility to organize async code
 // see: http://webreflection.blogspot.co.uk/2012/03/tweet-sized-queue-system.html
 // or:  http://webreflection.blogspot.co.uk/2012/06/working-with-queues.html
@@ -189,6 +201,7 @@ Queue([
     });
 
     if (q.nonStandard.length) {
+      q.nonStandard = unique(q.nonStandard);
       console.warn('[WARNING] assets contain ' + q.nonStandard.length + ' non standard emoji:');
       // console.log(q.nonStandard.join(', '));
     }
