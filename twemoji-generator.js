@@ -181,7 +181,8 @@ Queue([
       assets[path].forEach(function (emoji) {
         if (
           q.emojiSource.indexOf(emoji) < 0 &&
-          q.variantsSensitive.indexOf(emoji) < 0
+          q.variantsSensitive.indexOf(emoji) < 0 &&
+          q.nonStandard.indexOf(emoji) < 0
         ) {
           q.nonStandard.push(emoji);
         }

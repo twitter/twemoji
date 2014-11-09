@@ -1,7 +1,7 @@
 {
   "name": "twemoji",
   "description": "A Unicode standard based way to implement emoji across all platforms.",
-  "version": "v1.0.0",
+  "version": "v1.1.1",
   "main": "./twemoji.amd.js",
   "ignore": [
     ".git",
