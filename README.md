@@ -254,7 +254,6 @@ Once executed through `node twemoji-generator.js`, and after installing via `npm
 
 This means that if you'd like to change or improve `twemoji`, you should probably do it inside the `createTwemoji` function at the bottom of `twemoji-generator.js` instead of directly in the library, unless it's not just for testing purpose.
 
-
 ## Future Plans: Unicode 8.0 and Diversity
 
 The twemoji project currently adheres to the [7.0 Unicode version](http://www.unicode.org/charts/PDF/Unicode-7.0/U70-1F300.pdf) and supports 872 different emoji. In the future, we hope to work with the community to support Unicode 8.0 additions like [Diversity](http://www.unicode.org/reports/tr51/#Diversity).
@@ -264,6 +263,10 @@ The twemoji project currently adheres to the [7.0 Unicode version](http://www.un
 As an open source project, attribution is critical from a legal, practical and motivational perspective in our opinion. The graphics are licensed under the CC-BY 4.0 which has a pretty good guide on [best practices for attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). 
 
 However, we consider the guide a bit onerous and as a project, a mention in a project README or an 'About' section or footer on a website. In mobile applications, a common place would be in the Settings/About section (for example, see the mobile Twitter application Settings->About->Legal section). We would consider a mention in the HTML/JS source sufficient also.
+
+## Community Projects
+
+* [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/status/531979044036698112): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/))
 
 ## Committers and Contributors
 * Andrea Giammarchi (Twitter)
