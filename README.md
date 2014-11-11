@@ -18,20 +18,20 @@ Following all methods exposed through the `twemoji` namespace.
 
 ### twemoji.parse( ... )
 
-This is the main parsing utility and it has 3 overloads per each parsing type.
+This is the main parsing utility and has 3 overloads per each parsing type.
 
-There are mainly two kind of parsing, [string parsing](https://github.com/twitter/twemoji#string-parsing), and [DOM parsing](https://github.com/twitter/twemoji#dom-parsing).
+There are mainly two kind of parsing: [string parsing](https://github.com/twitter/twemoji#string-parsing) and [DOM parsing](https://github.com/twitter/twemoji#dom-parsing).
 
-Each of them accept a callback to generate each image source, or an options object with parsing info.
+Each of them accept a callback to generate each image source or an options object with parsing info.
 
-Here a walk through all parsing possibilities.
+Here is a walk through all parsing possibilities:
 
 ##### string parsing
 Given a generic string, it will replace all emoji with an `<img>` tag.
 
-While this can be used to inject via `innerHTML` emoji image tags, please note that this method does not sanitize the string or prevent malicious code to be executed. As example, if the text contains a `<script>` tag, this **will not** be converted into `&lt;script&gt;` since it's out of this method scope to prevent these kind of attacks.
+While this can be used to inject via `innerHTML` emoji image tags, please note that this method does not sanitize the string or prevent malicious code from being executed. As an example, if the text contains a `<script>` tag, this **will not** be converted into `&lt;script&gt;` since it's out of this method scope to prevent these kind of attacks.
 
-However, for already sanitized strings, this method can be considered safe enough (please see DOM parsing if security is one of your major concerns).
+However, for already sanitized strings, this method can be considered safe enough. Please see DOM parsing if security is one of your major concerns.
 
 ```js
 twemoji.parse('I \u2764\uFE0F emoji!');
@@ -46,7 +46,7 @@ I <img
 */
 ```
 
-##### string parsing + callback
+_string parsing + callback_
 If a callback is passed, the `src` attribute will be the one returned by the same callback.
 ```js
 twemoji.parse(
@@ -66,10 +66,10 @@ I <img
 */
 ```
 
-By default, the `options.size` parameter will be the string `"36x36"` and the `variant` will be an optional `\uFE0F` char that is usually ignored by default. If your assets include or distinguish between `\u2764\uFE0F` and `\u2764` you might want to use such variable.
+By default, the `options.size` parameter will be the string `"36x36"` and the `variant` will be an optional `\uFE0F` char that is usually ignored by default. If your assets include or distinguish between `\u2764\uFE0F` and `\u2764`, you might want to use such a variable.
 
-##### string parsing + callback returning `falsy`
-If the callback returns _falsy values_ such `null`, `undefined`, `0`, `false` or an empty string, nothing will change for that specific emoji.
+_string parsing + callback returning_ `falsy`
+If the callback returns "falsy values" such `null`, `undefined`, `0`, `false`, or an empty string, nothing will change for that specific emoji.
 ```js
 var i = 0;
 twemoji.parse(
@@ -92,7 +92,7 @@ emoji, m❤️n am<img
 */
 ```
 
-##### string parsing + object
+_string parsing + object_
 In case an object is passed as second parameter, the passed `options` object will reflect its properties.
 ```js
 twemoji.parse(
@@ -117,7 +117,7 @@ I <img
 
 ##### DOM parsing
 
-Differently from `string` parsing, if the first argument is a `HTMLElement` generated image tags will be replacing emoji that are **inside `#text` node only** without compromising surrounding nodes, listeners, and avoiding completely the usage of `innerHTML`.
+Differently from `string` parsing, if the first argument is a `HTMLElement` generated image tags will replace emoji that are **inside `#text` node only** without compromising surrounding nodes or listeners, and avoiding completely the usage of `innerHTML`.
 
 If security is a major concern, this parsing can be considered the safest option but with a slightly penalized performance gap due DOM operations that are inevitably *costy* compared to basic strings.
 
@@ -175,11 +175,11 @@ function imageSourceGenrator(icon, options) {
 
 
 ##### base
-The default url to be used, by default it's the same as `twemoji.base` so if you modify the former, it will reflect as default for all parsed strings or nodes.
+The default url is the same as `twemoji.base`, so if you modify the former, it will reflect as default for all parsed strings or nodes.
 
 
 ##### ext
-The default image extension to be used, by default it's the same as `twemoji.ext` which is `".png"`.
+The default image extension is the same as `twemoji.ext` which is `".png"`.
 
 If you modify the former, it will reflect as default for all parsed strings or nodes.
 
@@ -189,13 +189,13 @@ The default `class` per each generated image is `emoji`. It is possible to speci
 
 
 ##### size
-The default assets size to be used, by default it's the same as `twemoji.size` which is `"36x36"`.
+The default assets size is the same as `twemoji.size` which is `"36x36"`.
 
 If you modify the former, it will reflect as default for all parsed strings or nodes.
 
 
 ##### folder
-In case there is no need to specify a size, it is possible to chose a folder, as it is in the case of SVG emoji.
+In case there is no need to specify a size. It is possible to chose a folder, as is the case of SVG emoji.
 ```js
 twemoji.parse(genericNode, {
   folder: 'svg',
@@ -224,7 +224,7 @@ This will make sure emoji derive their width and height from the `font-size` of 
 
 #### UTF-8 Character Set
 
-To properly support emoji, the document character set must be set to UTF-8, this can done by including the following meta tag in the document `<head>`
+To properly support emoji, the document character must be set to UTF-8. This can done by including the following meta tag in the document `<head>`
 
 ```html
 <meta charset="utf-8">
