@@ -231,7 +231,7 @@ wru.test([{
 },{
   name: 'nested nodes',
   test: function () {
-    var str = '<img class="emoji" draggable="false" alt="\u2764" src="https://abs.twimg.com/emoji/v1/36x36/2764.png">',
+    var str = '<img class="emoji" draggable="false" alt="\u2764" src="https://twemoji.maxcdn.com/36x36/2764.png">',
         div = document.createElement('div'),
         p,
         img;

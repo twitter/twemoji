@@ -42,7 +42,7 @@ I <img
   class="emoji"
   draggable="false"
   alt="❤️"
-  src="https://abs.twimg.com/emoji/v1/36x36/2764.png"> emoji!
+  src="https://twemoji.maxcdn.com/36x36/2764.png"> emoji!
 */
 ```
 
