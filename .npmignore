@@ -10,8 +10,10 @@ component.json
 index.html
 node_modules
 preview-*
+svg.sh
 test.*
 twemoji-*
 twemoji.amd.js
 twemoji.min.js
+twemoji.npm.js
 twemoji.js
