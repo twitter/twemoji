@@ -578,7 +578,9 @@ function createTwemoji(re) {
           variant === '\uFE0F' ?
             // the icon should not contain it
             icon.slice(0, -1) :
-            icon
+            // fix non standard OSX behavior
+            (icon.length === 3 && icon.charAt(1) === '\uFE0F' ?
+              icon.charAt(0) + icon.charAt(2) : icon)
         );
       }
 
@@ -793,6 +795,7 @@ function createTwemoji(re) {
       .replace(/^    /gm, '')
       // add the RegExp in the right place
       .replace('re = /twemoji/', 're = /' + re + '/g')
+      .replace(/(\\u003[3-9])(\\u20e3)/g, '$1\\ufe0f?$2')
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +

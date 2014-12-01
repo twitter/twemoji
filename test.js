@@ -339,4 +339,26 @@ wru.test([{
       )
     );
   }
+},{
+  name: 'non standard OSX variant',
+  test: function () {
+    var div = document.createElement('div');
+    div.innerHTML = '5\ufe0f\u20e3';
+    twemoji.parse(div);
+    wru.assert('recognized as graphical',
+      div.innerHTML === '<img class="emoji" draggable="false" alt="5️⃣" src="http://twemoji.maxcdn.com/36x36/35-20e3.png">');
+    wru.assert('the length is preserved',
+      div.getElementsByTagName('img')[0].alt.length === 3);
+  }
+},{
+  name: 'same but standard OSX without variant',
+  test: function () {
+    var div = document.createElement('div');
+    div.innerHTML = '5\u20e3';
+    twemoji.parse(div);
+    wru.assert('recognized as graphical',
+      div.innerHTML === '<img class="emoji" draggable="false" alt="5⃣" src="http://twemoji.maxcdn.com/36x36/35-20e3.png">');
+    wru.assert('the length is preserved',
+      div.getElementsByTagName('img')[0].alt.length === 2);
+  }
 }]);
