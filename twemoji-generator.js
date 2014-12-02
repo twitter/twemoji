@@ -795,7 +795,7 @@ function createTwemoji(re) {
       .replace(/^    /gm, '')
       // add the RegExp in the right place
       .replace('re = /twemoji/', 're = /' + re + '/g')
-      .replace(/(\\u003[3-9])(\\u20e3)/g, '$1\\ufe0f?$2')
+      .replace(/(\\u00[2-3][0-9])(\\u20e3)/g, '$1\\ufe0f?$2')
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +
