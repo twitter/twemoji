@@ -361,4 +361,34 @@ wru.test([{
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);
   }
+},{
+  name: 'multiple parsing using a callback',
+  test: function () {
+    wru.assert(
+      'FE0E is still ignored',
+      twemoji.parse('\u25c0 \u25c0\ufe0e \u25c0\ufe0f', {
+        callback: function(icon){ return 'icon'; }
+      }) ===
+      '<img class="emoji" draggable="false" alt="\u25c0" src="icon"> \u25c0\ufe0e <img class="emoji" draggable="false" alt="\u25c0\ufe0f" src="icon">'
+    );
+  }
+},{
+  name: 'non standard variant within others',
+  test: function () {
+    var a = [
+      'normal',
+      'forced-as-text',
+      'forced-as-apple-graphic',
+      'forced-as-graphic'
+    ];
+    wru.assert('normal forced-as-text forced-as-apple-graphic forced-as-graphic' ===
+      twemoji.replace('\u25c0 \u25c0\ufe0e 5\ufe0f\u20e3 \u25c0\ufe0f', function(match, icon, variant){
+        if (variant === '\uFE0E') return a[1];
+        if (variant === '\uFE0F') return a[3];
+        if (!variant) return a[
+          icon.length === 3 && icon.charAt(1) === '\uFE0F' ? 2 : 0
+        ];
+      })
+    );
+  }
 }]);
