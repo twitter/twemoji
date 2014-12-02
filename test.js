@@ -391,4 +391,26 @@ wru.test([{
       })
     );
   }
+},{
+  name: 'invalid variants and chars',
+  test: function () {
+    var div = document.createElement('div');
+    var img;
+    div.innerHTML = twemoji.parse('"\u2b1c\uFE0F"');
+    img = div.getElementsByTagName('img')[0];
+    wru.assert('correct img.alt 1', img.alt === "\u2b1c\uFE0F");
+    wru.assert('correct img.src 1', img.src.slice(-8) === '2b1c.png');
+    // other variants should be ignored
+    div.innerHTML = twemoji.parse('"\u2b1c\uFE00"');
+    img = div.getElementsByTagName('img')[0];
+    wru.assert('correct img.alt 2', img.alt === "\u2b1c");
+    wru.assert('correct img.src 2', img.src.slice(-8) === '2b1c.png');
+    div.removeChild(img);
+    // the variant without meanings are still there
+    div.innerHTML === '"\uFE00"';
+    // when there is a trailing \uFE0E there should be no image
+    div.innerHTML = twemoji.parse('"\u2b1c\uFE0E"');
+    wru.assert('correct length', div.getElementsByTagName('img').length === 0);
+    wru.assert('expected html', div.innerHTML === '"\u2b1c\uFE0E"');
+  }
 }]);
