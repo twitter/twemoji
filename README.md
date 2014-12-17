@@ -271,6 +271,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 ## Committers and Contributors
 * Andrea Giammarchi (Twitter)
 * Chris Aniszczyk (Twitter)
+* Tom Wuttke (Twitter)
 * Joen Asmussen (WordPress)
 * Marcus Kazmierczak (WordPress)
 
