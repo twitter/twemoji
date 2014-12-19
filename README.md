@@ -238,8 +238,9 @@ To exclude certain characters from being replaced by twemoji.js, call twemoji.pa
 twemoji.parse(document.body, {
     callback: function(icon, options, variant) {
         switch ( icon ) {
-            case 'a9':      // copyright
-            case 'ae':      // trademark
+            case 'a9':      // copyright  ©
+            case 'ae':      // trademark  ®
+            case '2122':    // team       ™
                 return false;
         }
         return ''.concat(options.base, options.size, '/', icon, options.ext);
