@@ -162,7 +162,7 @@ The function to invoke in order to generate images `src`.
 
 By default it is a function like the following one:
 ```js
-function imageSourceGenrator(icon, options) {
+function imageSourceGenerator(icon, options) {
   return ''.concat(
     options.base, // by default Twitter Inc. CDN
     options.size, // by default "36x36" string
