@@ -312,6 +312,9 @@ function createTwemoji(re) {
           // available via Twitter CDN: 16, 36, 72
           size: '36x36',
 
+          // default class name, by default 'emoji'
+          className: 'emoji',
+
           // basic utilities / helpers to convert code points
           // to JavaScript surrogates and vice versa
           convert: {
@@ -754,7 +757,7 @@ function createTwemoji(re) {
           base:     typeof how.base === 'string' ? how.base : twemoji.base,
           ext:      how.ext || twemoji.ext,
           size:     how.folder || toSizeSquaredAsset(how.size || twemoji.size),
-          className:how.className || 'emoji'
+          className:how.className || twemoji.className
         });
       }
 
