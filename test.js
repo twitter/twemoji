@@ -346,7 +346,11 @@ wru.test([{
     div.innerHTML = '5\ufe0f\u20e3';
     twemoji.parse(div);
     wru.assert('recognized as graphical',
-      div.innerHTML === '<img class="emoji" draggable="false" alt="5️⃣" src="http://twemoji.maxcdn.com/36x36/35-20e3.png">');
+      div.firstChild.className === 'emoji' &&
+      div.firstChild.getAttribute('draggable') === 'false' &&
+      div.firstChild.getAttribute('alt') === "5️⃣" &&
+      div.firstChild.src === 'http://twemoji.maxcdn.com/36x36/35-20e3.png'
+    );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 3);
   }
@@ -357,7 +361,11 @@ wru.test([{
     div.innerHTML = '5\u20e3';
     twemoji.parse(div);
     wru.assert('recognized as graphical',
-      div.innerHTML === '<img class="emoji" draggable="false" alt="5⃣" src="http://twemoji.maxcdn.com/36x36/35-20e3.png">');
+      div.firstChild.className === 'emoji' &&
+      div.firstChild.getAttribute('draggable') === 'false' &&
+      div.firstChild.getAttribute('alt') === "5⃣" &&
+      div.firstChild.src === 'http://twemoji.maxcdn.com/36x36/35-20e3.png'
+    );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);
   }
