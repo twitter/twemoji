@@ -642,6 +642,15 @@ function createTwemoji(re) {
                 img.onerror = twemoji.onerror;
                 img.className = options.className;
                 img.setAttribute('draggable', 'false');
+                var attrib = options.attributes;
+                if (typeof(attrib) === 'function') {
+                  attrib = attrib(alt);
+                }
+                if (attrib) {
+                  for (var attrname in attrib) { 
+                    img.setAttribute(attrname) = attrib[attrname];
+                  }
+                }
                 img.alt = alt;
                 img.src = src;
               }
@@ -694,6 +703,17 @@ function createTwemoji(re) {
             if (src) {
               // recycle the match string replacing the emoji
               // with its image counter part
+              var attrib = options.attributes;
+              if (typeof(attrib) === 'function') {
+                attrib = attrib(match);
+              }
+              var attr_text = '';
+              if (attrib) {
+                for (var attrname in attrib) { 
+                  attr_text = attr_text + ' ' + attrname + '="' + attrib[attrname].replace(/"/g, '&quot;') + '"';
+                }
+              }
+              
               match = '<img '.concat(
                 'class="', options.className, '" ',
                 'draggable="false" ',
@@ -702,6 +722,7 @@ function createTwemoji(re) {
                 'alt="',
                 match,
                 '" ',
+                attr_text,
                 'src="',
                 src,
                 '"',
@@ -754,6 +775,7 @@ function createTwemoji(re) {
         // otherwise use the DOM tree and parse text nodes only
         return (typeof what === 'string' ? parseString : parseNode)(what, {
           callback: how.callback || defaultImageSrcGenerator,
+          attributes: how.attributes,
           base:     typeof how.base === 'string' ? how.base : twemoji.base,
           ext:      how.ext || twemoji.ext,
           size:     how.folder || toSizeSquaredAsset(how.size || twemoji.size),
