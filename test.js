@@ -374,7 +374,6 @@ wru.test([{
     // without variant
         div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764 emoji!'));
-    console.log(div);
     twemoji.parse(
       div, { 
         attributes: function(icon) { 
