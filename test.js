@@ -310,6 +310,103 @@ wru.test([{
     );
   }
 },{
+  name: 'string parsing + attributes callback',
+  test: function () {
+    wru.assert(
+      'custom attributes are inserted',
+      'I <img class="emoji" draggable="false" alt="\u2764" title="Emoji: \u2764" data-test="We all &lt;3 emoji" src="' + base + '36x36/2764.png"> emoji!' ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          attributes: function(icon) {
+            return {
+              title: 'Emoji: ' + icon,
+              'data-test': 'We all <3 emoji'
+            };
+          }
+        }
+      )
+    );
+  }
+},{
+  name: 'string parsing + attributes callback content properly encoded',
+  test: function () {
+    wru.assert(
+      'custom attributes are inserted',
+      'I <img class="emoji" draggable="false" alt="\u2764" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;" src="' + base + '36x36/2764.png"> emoji!' ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          attributes: function(icon) {
+            return {
+              title: '&amp;lt;script&amp;gt;alert("yo")&amp;lt;/script&amp;gt;'
+            };
+          }
+        }
+      )
+    );
+  }
+},{
+  name: 'string parsing + attributes callback "on" attributes are omitted',
+  test: function () {
+    wru.assert(
+      'custom attributes are inserted',
+      'I <img class="emoji" draggable="false" alt="❤" title="test" src="' + base + '36x36/2764.png"> emoji!' ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          attributes: function(icon) {
+            return {
+              title: 'test',
+              onsomething: 'whoops!',
+              onclick: 'nope',
+              onmousedown: 'nada'
+            };
+          }
+        }
+      )
+    );
+  }
+},{    
+  name: 'DOM parsing + attributes callback',
+  test: function () {
+    var img,
+    // without variant
+        div = document.createElement('div');
+    div.appendChild(document.createTextNode('I \u2764 emoji!'));
+    console.log(div);
+    twemoji.parse(
+      div, { 
+        attributes: function(icon) { 
+          return { 
+            title: 'Emoji: ' + icon,
+            'data-test': 'We all <3 emoji',
+            onclick: 'nope',
+            onmousedown: 'nada'
+          }; 
+        }
+      }
+     
+    );    
+    wru.assert('default parsing works creating 3 nodes', div.childNodes.length === 3);
+    wru.assert('first child is the expected one', div.removeChild(div.firstChild).nodeValue === 'I ');
+    img = div.removeChild(div.firstChild);
+    wru.assert('second child is the image', img.nodeName === 'IMG');
+    wru.assert('img attributes are OK',
+      img.className === 'emoji' &&
+      img.getAttribute('draggable') === 'false' &&
+      img.src === base + '36x36/2764.png' &&
+      img.alt === '\u2764' &&
+      img.onerror === twemoji.onerror &&
+      img.getAttribute('title') === 'Emoji: \u2764' &&
+      img.getAttribute('data-test') === 'We all <3 emoji'
+    );
+    wru.assert('img on attributes are omitted',
+      img.onclick === null &&
+      img.onmousedown === null
+    );  
+  }
+},{
   name: 'folder option',
   test: function () {
     var img = 'I <img class="emoji" draggable="false" alt="\u2764" src="svg/2764.svg"> emoji!';

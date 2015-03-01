@@ -251,6 +251,24 @@ var twemoji = (function (
   }
 
   /**
+   * Utility function to escape html attribute text
+   * @param   string  text use in HTML attribute
+   * @return  string  text encoded to use in HTML attribute
+   */
+  function escape(s) {
+    var escaped = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    };
+    return s.replace(/[&<>'"]/g, function (m) {
+      return escaped[m];
+    });
+  }
+
+  /**
    * Default callback used to generate emoji src
    *  based on Twitter CDN
    * @param   string    the emoji codepoint string
@@ -365,13 +383,14 @@ var twemoji = (function (
             img.onerror = twemoji.onerror;
             img.className = options.className;
             img.setAttribute('draggable', 'false');
-            var attrib = options.attributes;
-            if (typeof(attrib) === 'function') {
-              attrib = attrib(alt);
-            }
-            if (attrib) {
-              for (var attrname in attrib) { 
-                img.setAttribute(attrname) = attrib[attrname];
+            if (options.attributes && typeof(options.attributes) === 'function') {
+              var attrib = options.attributes(alt);
+              if (attrib) {
+                for (var attrname in attrib) { 
+                  if (attrname.lastIndexOf('on', 0) === -1) {
+                    img.setAttribute(attrname, attrib[attrname]);
+                  }
+                }
               }
             }
             img.alt = alt;
@@ -426,14 +445,15 @@ var twemoji = (function (
         if (src) {
           // recycle the match string replacing the emoji
           // with its image counter part
-          var attrib = options.attributes;
-          if (typeof(attrib) === 'function') {
-            attrib = attrib(match);
-          }
           var attr_text = '';
-          if (attrib) {
-            for (var attrname in attrib) { 
-              attr_text = attr_text + ' ' + attrname + '="' + attrib[attrname].replace(/"/g, '&quot;') + '"';
+          if (options.attributes && typeof(options.attributes) === 'function') {
+            var attrib = options.attributes(match);
+            if (attrib) {
+              for (var attrname in attrib) { 
+                if (attrname.lastIndexOf('on', 0) === -1) {
+                  attr_text = attr_text + ' ' + attrname + '="' + escape(attrib[attrname]) + '"';
+                }
+              }
             }
           }
           
@@ -444,9 +464,9 @@ var twemoji = (function (
             // when variants should be copied and pasted too
             'alt="',
             match,
-            '" ',
+            '"',
             attr_text,
-            'src="',
+            ' src="',
             src,
             '"',
             '>'
