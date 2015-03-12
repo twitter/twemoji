@@ -326,6 +326,7 @@ var twemoji = (function (
     var
       allText = grabAllTextNodes(node, []),
       length = allText.length,
+      modified = false,
       fragment,
       subnode,
       text,
@@ -366,13 +367,15 @@ var twemoji = (function (
             img.setAttribute('draggable', 'false');
             img.alt = alt;
             img.src = src;
+            modified = true;
+            fragment.appendChild(img);
           }
         }
-        fragment.appendChild(img || createText(alt));
+        if (!img) fragment.appendChild(createText(alt));
         img = null;
       }
       // is there actually anything to replace in here ?
-      if (0 < i) {
+      if (modified) {
         // any text left to be added ?
         if (i < text.length) {
           fragment.appendChild(
