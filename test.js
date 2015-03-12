@@ -146,10 +146,8 @@ wru.test([{
     div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764\uFE0E emoji!'));
     twemoji.parse(div);
-    wru.assert('default parsing created 3 nodes anyway', div.childNodes.length === 3);
-    wru.assert('first child is the expected one', div.removeChild(div.firstChild).nodeValue === 'I ');
-    wru.assert('emoji child is unchanged', div.removeChild(div.firstChild).nodeValue === '\u2764\uFE0E');
-    wru.assert('last child is the expected one', div.removeChild(div.firstChild).nodeValue === ' emoji!');
+    wru.assert('default parsing created 1 node', div.childNodes.length === 1);
+    wru.assert('first child is the expected one', div.removeChild(div.firstChild).nodeValue === 'I \u2764\uFE0E emoji!');
   }
 },{
   name: 'DOM parsing + size',
@@ -420,5 +418,14 @@ wru.test([{
     div.innerHTML = twemoji.parse('"\u2b1c\uFE0E"');
     wru.assert('correct length', div.getElementsByTagName('img').length === 0);
     wru.assert('expected html', div.innerHTML === '"\u2b1c\uFE0E"');
+  }
+},{
+  name: 'callback can return false and prevent changes',
+  test: function () {
+    var div = document.createElement('div');
+    var text = document.createTextNode('I \u2764 emoji!');
+    div.appendChild(text);
+    twemoji.parse(div, function() { return false; });
+    wru.assert('text node is preserved', div.firstChild === text);
   }
 }]);
