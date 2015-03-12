@@ -326,7 +326,7 @@ var twemoji = (function (
     var
       allText = grabAllTextNodes(node, []),
       length = allText.length,
-      modified = false,
+      modified,
       fragment,
       subnode,
       text,
@@ -339,6 +339,7 @@ var twemoji = (function (
       variant,
       src;
     while (length--) {
+      modified = false;
       fragment = document.createDocumentFragment();
       subnode = allText[length];
       text = subnode.nodeValue;
