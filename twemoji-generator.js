@@ -505,7 +505,7 @@ function createTwemoji(re) {
         re = /twemoji/,
 
         // nodes with type 1 which should **not** be parsed
-        shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|STYLE|TEXTAREA/,
+        shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|SELECT|STYLE|TEXTAREA/,
 
         // just a private shortcut
         fromCharCode = String.fromCharCode;
