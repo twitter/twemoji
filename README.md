@@ -270,7 +270,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/status/531979044036698112): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/))
 
 ## Committers and Contributors
-* Andrea Giammarchi (Twitter)
+* Andrea Giammarchi (ex-Twitter)
 * Chris Aniszczyk (Twitter)
 * Tom Wuttke (Twitter)
 * Joen Asmussen (WordPress)
