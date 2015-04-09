@@ -7,16 +7,33 @@
 // dependencies
 var fs = require('fs');
 
-fs.readdir('./36x36', function (err, files) {
+fs.readdir('./assets', function (err, files) {
+  var page = fs.readFileSync('./preview-template.html').toString().replace(
+    '{{emoji-list}}',
+    '<li>' + files.map(function (file) {
+      return file.replace('.ai', '').split('-').map(function (hex) {
+        return '&#x' + hex.toUpperCase() + ';';
+      }).join('');
+    }).join('</li>\n      <li>')+ '</li>'
+  );
   fs.writeFileSync(
     './preview.html',
-    fs.readFileSync('./preview-template.html').toString().replace(
-      '{{emoji-list}}',
-      '<li>' + files.map(function (file) {
-        return file.replace('.png', '').split('-').map(function (hex) {
-          return '&#x' + hex.toUpperCase() + ';';
-        }).join('');
-      }).join('</li>\n      <li>')+ '</li>'
+    page.replace(
+      '{{emoji-options}}',
+      JSON.stringify({
+        size: 72
+      })
+    )
+  );
+  fs.writeFileSync(
+    './preview-svg.html',
+    page.replace(
+      '{{emoji-options}}',
+      JSON.stringify({
+        folder: 'svg',
+        ext: '.svg',
+        base: ''
+      })
     )
   );
 });
