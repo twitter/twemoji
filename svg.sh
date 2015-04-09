@@ -16,8 +16,9 @@ viewport() {
     content=$(
       cat "$f" |
       sed 's/<!-- Created with Inkscape (http:\/\/inkscape.org\/) -->//' |
-      sed 's/width="47.5"/viewBox="0 0 47.5 47.5"/' |
-      sed 's/height="47.5"/style="enable-background:new 0 0 47.5 47.5;"/' |
+      sed 's/viewBox="0 0 47.5 47.5"//' |
+      sed 's/height="47.5"/viewBox="0 0 47.5 47.5"/' |
+      sed 's/width="47.5"/style="enable-background:new 0 0 47.5 47.5;"/' |
       sed -e ':a' -e 'N' -e '$!ba' -e 's/\n//g' |
       sed -e 's/  */ /g' |
       sed -e 's/ \/>/\/>/g'
