@@ -148,6 +148,7 @@ Here the list of properties accepted by the optional object that could be passed
 ```js
   {
     callback: Function,   // default the common replacer
+    attributes: Function, // default returns {}
     base: string,         // default MaxCDN
     ext: string,          // default ".png"
     className: string,    // default "emoji"
@@ -173,6 +174,19 @@ function imageSourceGenerator(icon, options) {
 }
 ```
 
+##### attributes
+The function to invoke in order to generate additional, custom attributes for the image tag.
+
+By default it is a function like the following one:
+```js
+function attributesCallback(icon, variant) {
+  return {
+    title: 'Emoji: ' + icon + variant
+  };
+}
+```
+
+Event handlers cannot be specified via this method, and twemoji-provided attributes (src, alt, className, draggable) cannot be re-defined.
 
 ##### base
 The default url is the same as `twemoji.base`, so if you modify the former, it will reflect as default for all parsed strings or nodes.

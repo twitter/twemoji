@@ -500,9 +500,21 @@ function createTwemoji(re) {
           test: test
         },
 
+        // used to escape HTML special chars in attributes
+        escaper = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        },
+
         // RegExp based on emoji's official Unicode standards
         // http://www.unicode.org/Public/UNIDATA/EmojiSources.txt
         re = /twemoji/,
+
+        // used to find HTML special chars in attributes
+        rescaper = /[&<>'"]/g,
 
         // nodes with type 1 which should **not** be parsed
         shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|SELECT|STYLE|TEXTAREA/,
@@ -525,6 +537,15 @@ function createTwemoji(re) {
        */
       function createText(text) {
         return document.createTextNode(text);
+      }
+
+      /**
+       * Utility function to escape html attribute text
+       * @param   string  text use in HTML attribute
+       * @return  string  text encoded to use in HTML attribute
+       */
+      function escapeHTML(s) {
+        return s.replace(rescaper, replacer);
       }
 
       /**
@@ -604,6 +625,8 @@ function createTwemoji(re) {
         var
           allText = grabAllTextNodes(node, []),
           length = allText.length,
+          attrib,
+          attrname,
           modified,
           fragment,
           subnode,
@@ -642,8 +665,19 @@ function createTwemoji(re) {
               if (src) {
                 img = new Image();
                 img.onerror = twemoji.onerror;
-                img.className = options.className;
                 img.setAttribute('draggable', 'false');
+                attrib = options.attributes(icon, variant);
+                for (attrname in attrib) {
+                  if (
+                    attrib.hasOwnProperty(attrname) &&
+                    // don't allow any handlers to be set + don't allow overrides
+                    attrname.indexOf('on') !== 0 &&
+                    !img.hasAttribute(attrname)
+                  ) {
+                    img.setAttribute(attrname, attrib[attrname]);
+                  }
+                }
+                img.className = options.className;
                 img.alt = alt;
                 img.src = src;
                 modified = true;
@@ -684,7 +718,11 @@ function createTwemoji(re) {
        */
       function parseString(str, options) {
         return replace(str, function (match, icon, variant) {
-          var src;
+          var
+            ret = match,
+            attrib,
+            attrname,
+            src;
           // verify the variant is not the FE0E one
           // this variant means "emoji as text" and should not
           // require any action/replacement
@@ -698,23 +736,51 @@ function createTwemoji(re) {
             if (src) {
               // recycle the match string replacing the emoji
               // with its image counter part
-              match = '<img '.concat(
+              ret = '<img '.concat(
                 'class="', options.className, '" ',
                 'draggable="false" ',
                 // needs to preserve user original intent
                 // when variants should be copied and pasted too
                 'alt="',
                 match,
-                '" ',
-                'src="',
-                src,
                 '"',
-                '>'
+                ' src="',
+                src,
+                '"'
               );
+              attrib = options.attributes(icon, variant);
+              for (attrname in attrib) { 
+                if (
+                  attrib.hasOwnProperty(attrname) &&
+                  // don't allow any handlers to be set + don't allow overrides
+                  attrname.indexOf('on') !== 0 &&
+                  ret.indexOf(' ' + attrname + '=') === -1
+                ) {
+                  ret = ret.concat(' ', attrname, '="', escapeHTML(attrib[attrname]), '"');
+                }
+              }
+              ret = ret.concat('>');
             }
           }
-          return match;
+          return ret;
         });
+      }
+
+      /**
+       * Function used to actually replace HTML special chars
+       * @param   string  HTML special char
+       * @return  string  encoded HTML special char
+       */
+      function replacer(m) {
+        return escaper[m];
+      }
+
+      /**
+       * Default options.attribute callback
+       * @return  null
+       */
+      function returnNull() {
+        return null;
       }
 
       /**
@@ -757,11 +823,12 @@ function createTwemoji(re) {
         // if first argument is string, inject html <img> tags
         // otherwise use the DOM tree and parse text nodes only
         return (typeof what === 'string' ? parseString : parseNode)(what, {
-          callback: how.callback || defaultImageSrcGenerator,
-          base:     typeof how.base === 'string' ? how.base : twemoji.base,
-          ext:      how.ext || twemoji.ext,
-          size:     how.folder || toSizeSquaredAsset(how.size || twemoji.size),
-          className:how.className || twemoji.className
+          callback:   how.callback || defaultImageSrcGenerator,
+          attributes: typeof how.attributes === 'function' ? how.attributes : returnNull,
+          base:       typeof how.base === 'string' ? how.base : twemoji.base,
+          ext:        how.ext || twemoji.ext,
+          size:       how.folder || toSizeSquaredAsset(how.size || twemoji.size),
+          className:  how.className || twemoji.className
         });
       }
 
