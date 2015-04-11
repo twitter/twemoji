@@ -505,7 +505,7 @@ function createTwemoji(re) {
         re = /twemoji/,
 
         // nodes with type 1 which should **not** be parsed
-        shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|STYLE|TEXTAREA/,
+        shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|SELECT|STYLE|TEXTAREA/,
 
         // just a private shortcut
         fromCharCode = String.fromCharCode;
@@ -622,6 +622,7 @@ function createTwemoji(re) {
         var
           allText = grabAllTextNodes(node, []),
           length = allText.length,
+          modified,
           fragment,
           subnode,
           text,
@@ -634,6 +635,7 @@ function createTwemoji(re) {
           variant,
           src;
         while (length--) {
+          modified = false;
           fragment = document.createDocumentFragment();
           subnode = allText[length];
           text = subnode.nodeValue;
@@ -675,13 +677,15 @@ function createTwemoji(re) {
                 img.className = options.className;
                 img.alt = alt;
                 img.src = src;
+                modified = true;
+                fragment.appendChild(img);
               }
             }
-            fragment.appendChild(img || createText(alt));
+            if (!img) fragment.appendChild(createText(alt));
             img = null;
           }
           // is there actually anything to replace in here ?
-          if (0 < i) {
+          if (modified) {
             // any text left to be added ?
             if (i < text.length) {
               fragment.appendChild(

@@ -32,7 +32,7 @@
       {{emoji-list}}
     </ul>
     <script>
-    twemoji.parse(document.getElementsByTagName('ul')[0], {size: 72});
+    twemoji.parse(document.getElementsByTagName('ul')[0], {{emoji-options}});
     (function (img, metaKey, i) {
       function copyToClipboard(e) {
         prompt('Copy to clipboard via ' + metaKey + '+C and Enter', this.alt);

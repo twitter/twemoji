@@ -146,10 +146,7 @@ wru.test([{
     div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764\uFE0E emoji!'));
     twemoji.parse(div);
-    wru.assert('default parsing created 3 nodes anyway', div.childNodes.length === 3);
-    wru.assert('first child is the expected one', div.removeChild(div.firstChild).nodeValue === 'I ');
-    wru.assert('emoji child is unchanged', div.removeChild(div.firstChild).nodeValue === '\u2764\uFE0E');
-    wru.assert('last child is the expected one', div.removeChild(div.firstChild).nodeValue === ' emoji!');
+    wru.assert('default parsing did NOT create 3 nodes anyway', div.childNodes.length === 1);
   }
 },{
   name: 'DOM parsing + size',
