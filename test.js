@@ -314,7 +314,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" title="Emoji: \u2764" data-test="We all &lt;3 emoji" src="' + base + '36x36/2764.png"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png" title="Emoji: \u2764" data-test="We all &lt;3 emoji"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -333,7 +333,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;" src="' + base + '36x36/2764.png"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -351,7 +351,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="❤" title="test" src="' + base + '36x36/2764.png"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="❤" src="' + base + '36x36/2764.png" title="test"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
