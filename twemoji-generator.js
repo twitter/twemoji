@@ -601,6 +601,9 @@ function createTwemoji(re) {
        * @return  Element same generic node with emoji in place, if any.
        */
       function parseNode(node, options) {
+        if ( typeof node === "undefined" || node === null ) {
+          return node;
+        }
         var
           allText = grabAllTextNodes(node, []),
           length = allText.length,
