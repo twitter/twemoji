@@ -853,7 +853,7 @@ function createTwemoji(re) {
         while (i < unicodeSurrogates.length) {
           c = unicodeSurrogates.charCodeAt(i++);
           if (p) {
-            r.push((0x10000 + ((p - 0xD800) << 10) + (c - 0xDC00)).toString(16));
+            r.push(((p << 10) + c - 56613888).toString(16));
             p = 0;
           } else if (0xD800 <= c && c <= 0xDBFF) {
             p = c;
