@@ -217,6 +217,14 @@ Queue([
     console.log('generating a RegExp for available assets');
     var sensitive = [];
     var regular = [];
+    var regenerate = require('regenerate');
+    var regenerated = function (arr) {
+      return regenerate.apply(null, arr.map(function (emoji) {
+        return JSON.parse('"' + emoji + '"').split('').reduce(function (p, c) {
+          return p + c.codePointAt(0);
+        }, 0);
+      })).toRegExp().toString().slice(1, -1);
+    };
     q.emojiSource.forEach(function (codePoint) {
       var u;
       if (q.ignore.indexOf(codePoint) < 0) {
@@ -231,8 +239,8 @@ Queue([
 
     // create a RegExp with properly ordered matches
     q.re = '((?:' +
-      regular.join('|') + ')|(?:(?:' +
-      sensitive.join('|') +
+      regenerated(regular) + ')|(?:(?:' +
+      regenerated(sensitive) +
     ')([\\uFE0E\\uFE0F]?)))';
 
     q.next();
