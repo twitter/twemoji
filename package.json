@@ -15,7 +15,8 @@
   ],
   "devDependencies": {
     "uglify-js": ">= 0.0.0",
-    "phantomjs": ">= 0.0.0"
+    "phantomjs": ">= 0.0.0",
+    "regenerate": ">= 0.0.0"
   },
   "author": {
     "name": "Twitter, Inc.",
