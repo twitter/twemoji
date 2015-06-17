@@ -516,8 +516,8 @@ function createTwemoji(re) {
         // used to find HTML special chars in attributes
         rescaper = /[&<>'"]/g,
 
-        // nodes with type 1 which should **not** be parsed
-        shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|SELECT|STYLE|TEXTAREA/,
+        // nodes with type 1 which should **not** be parsed (including lower case svg)
+        shouldntBeParsed = /IFRAME|NOFRAMES|NOSCRIPT|SCRIPT|SELECT|STYLE|TEXTAREA|[a-z]/,
 
         // just a private shortcut
         fromCharCode = String.fromCharCode;
