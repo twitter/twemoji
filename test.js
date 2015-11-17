@@ -535,4 +535,22 @@ wru.test([{
       wru.assert('nothing to do here');
     }
   }
+}, {
+  name: 'using a different onerror',
+  test: function () {
+    var Image = window.Image;
+    window.Image = function () {
+      var self = new Image;
+      setTimeout(function () {
+        window.Image = Image;
+        self.onerror();
+      }, 10);
+      return self;
+    };
+    var div = document.createElement('div');
+    div.innerHTML = '5\ufe0f\u20e3';
+    twemoji.parse(div, {onerror: wru.async(function () {
+      wru.assert('OK');
+    })});
+  }
 }]);

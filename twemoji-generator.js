@@ -664,7 +664,7 @@ function createTwemoji(re) {
               );
               if (src) {
                 img = new Image();
-                img.onerror = twemoji.onerror;
+                img.onerror = options.onerror;
                 img.setAttribute('draggable', 'false');
                 attrib = options.attributes(icon, variant);
                 for (attrname in attrib) {
@@ -828,7 +828,8 @@ function createTwemoji(re) {
           base:       typeof how.base === 'string' ? how.base : twemoji.base,
           ext:        how.ext || twemoji.ext,
           size:       how.folder || toSizeSquaredAsset(how.size || twemoji.size),
-          className:  how.className || twemoji.className
+          className:  how.className || twemoji.className,
+          onerror:    how.onerror || twemoji.onerror
         });
       }
 
