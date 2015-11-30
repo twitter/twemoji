@@ -4,7 +4,7 @@ A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/
 
 ## CDN Support
 
-The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN support. 
+The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN support.
 
 Just use the following in the `<head>` tag of your HTML document(s):
 
@@ -281,13 +281,14 @@ The twemoji project currently adheres to the [7.0 Unicode version](http://www.un
 
 ## Attribution Requirements
 
-As an open source project, attribution is critical from a legal, practical and motivational perspective in our opinion. The graphics are licensed under the CC-BY 4.0 which has a pretty good guide on [best practices for attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). 
+As an open source project, attribution is critical from a legal, practical and motivational perspective in our opinion. The graphics are licensed under the CC-BY 4.0 which has a pretty good guide on [best practices for attribution](https://wiki.creativecommons.org/Best_practices_for_attribution).
 
 However, we consider the guide a bit onerous and as a project, will accept a mention in a project README or an 'About' section or footer on a website. In mobile applications, a common place would be in the Settings/About section (for example, see the mobile Twitter application Settings->About->Legal section). We would consider a mention in the HTML/JS source sufficient also.
 
 ## Community Projects
 
 * [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/status/531979044036698112): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/))
+* [Twemoji Ruby](https://github.com/jollygoodcode/twemoji) by [@JollyGoodCode](https://twitter.com/jollygoodcode): Use Twemoji in Ruby.
 
 ## Committers and Contributors
 * Andrea Giammarchi (ex-Twitter)
