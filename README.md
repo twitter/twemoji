@@ -125,7 +125,7 @@ I <img
 
 Differently from `string` parsing, if the first argument is a `HTMLElement` generated image tags will replace emoji that are **inside `#text` node only** without compromising surrounding nodes or listeners, and avoiding completely the usage of `innerHTML`.
 
-If security is a major concern, this parsing can be considered the safest option but with a slightly penalized performance gap due DOM operations that are inevitably *costy* compared to basic strings.
+If security is a major concern, this parsing can be considered the safest option but with a slightly penalized performance gap due to DOM operations that are inevitably *costy* compared to basic strings.
 
 ```js
 var div = document.createElement('div');
