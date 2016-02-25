@@ -229,11 +229,11 @@ Queue([
       }
     });
 
-    // create a RegExp with properly ordered matches
-    q.re = '((?:' +
-      regular.join('|') + ')|(?:(?:' +
+    // create a RegExp
+    // the sensitive ones may be followed by U+FE0F but not U+FE0E
+    q.re = regular.join('|') + '|(?:' +
       sensitive.join('|') +
-    ')([\\uFE0E\\uFE0F]?)))';
+    ')(?:\\ufe0f|(?!\\ufe0e))';
 
     q.next();
 
@@ -413,15 +413,10 @@ function createTwemoji(re) {
            *                              those follwed by the invariant \uFE0E ("as text").
            *                              Once invoked, parameters will be:
            *
-           *                                codePoint:string  the lower case HEX code point
+           *                                iconId:string     the lower case HEX code point
            *                                                  i.e. "1f4a9"
            *
            *                                options:Object    all info for this parsing operation
-           *
-           *                                variant:char      the optional \uFE0F ("as image")
-           *                                                  variant, in case this info
-           *                                                  is anyhow meaningful.
-           *                                                  By default this is ignored.
            *
            *                              If such callback will return a falsy value instead
            *                              of a valid `src` to use for the image, nothing will
@@ -441,16 +436,16 @@ function createTwemoji(re) {
            *  // I <img class="emoji" draggable="false" alt="❤️" src="/assets/2764.gif"> emoji!
            *
            *
-           *  twemoji.parse("I \u2764\uFE0F emoji!", function(icon, options, variant) {
-           *    return '/assets/' + icon + '.gif';
+           *  twemoji.parse("I \u2764\uFE0F emoji!", function(iconId, options) {
+           *    return '/assets/' + iconId + '.gif';
            *  });
            *  // I <img class="emoji" draggable="false" alt="❤️" src="/assets/2764.gif"> emoji!
            *
            *
            * twemoji.parse("I \u2764\uFE0F emoji!", {
            *   size: 72,
-           *   callback: function(icon, options, variant) {
-           *     return '/assets/' + options.size + '/' + icon + options.ext;
+           *   callback: function(iconId, options) {
+           *     return '/assets/' + options.size + '/' + iconId + options.ext;
            *   }
            * });
            *  // I <img class="emoji" draggable="false" alt="❤️" src="/assets/72x72/2764.png"> emoji!
@@ -471,17 +466,10 @@ function createTwemoji(re) {
            *                    String.prototype.replace(str, callback)
            *                    arguments such:
            *  callback(
-           *    match,  // the emoji match
-           *    icon,   // the emoji text (same as text)
-           *    variant // either '\uFE0E' or '\uFE0F', if present
+           *    rawText,  // the emoji match
            *  );
            *
            *                    and others commonly received via replace.
-           *
-           *  NOTE: When the variant \uFE0E is found, remember this is an explicit intent
-           *  from the user: the emoji should **not** be replaced with an image.
-           *  In \uFE0F case one, it's the opposite, it should be graphic.
-           *  This utility convetion is that only \uFE0E are not translated into images.
            */
           replace: replace,
 
@@ -553,7 +541,6 @@ function createTwemoji(re) {
        *  based on Twitter CDN
        * @param   string    the emoji codepoint string
        * @param   string    the default size to use, i.e. "36x36"
-       * @param   string    optional "\uFE0F" variant char, ignored by default
        * @return  string    the image source to use
        */
       function defaultImageSrcGenerator(icon, options) {
@@ -592,19 +579,15 @@ function createTwemoji(re) {
 
       /**
        * Used to both remove the possible variant
-       *  and to convert utf16 into code points
-       * @param   string    the emoji surrogate pair
-       * @param   string    the optional variant char, if any
+       *  and to convert utf16 into code points.
+       *  If there is a zero-width-joiner, leave the variant in.
+       * @param   string    the raw text of the emoji match
        */
-      function grabTheRightIcon(icon, variant) {
-        // if variant is present as \uFE0F
+      function grabTheRightIcon(rawText) {
         return toCodePoint(
-          variant === '\uFE0F' ?
-            // the icon should not contain it
-            icon.slice(0, -1) :
-            // fix non standard OSX behavior
-            (icon.length === 3 && icon.charAt(1) === '\uFE0F' ?
-              icon.charAt(0) + icon.charAt(2) : icon)
+          rawText.indexOf('\u200D') < 0 ?
+            rawText.replace(/\uFE0F/g, '') :
+            rawText
         );
       }
 
@@ -635,9 +618,8 @@ function createTwemoji(re) {
           i,
           index,
           img,
-          alt,
-          icon,
-          variant,
+          rawText,
+          iconId,
           src;
         while (length--) {
           modified = false;
@@ -652,39 +634,35 @@ function createTwemoji(re) {
                 createText(text.slice(i, index))
               );
             }
-            alt = match[0];
-            icon = match[1];
-            variant = match[2];
-            i = index + alt.length;
-            if (variant !== '\uFE0E') {
-              src = options.callback(
-                grabTheRightIcon(icon, variant),
-                options,
-                variant
-              );
-              if (src) {
-                img = new Image();
-                img.onerror = options.onerror;
-                img.setAttribute('draggable', 'false');
-                attrib = options.attributes(icon, variant);
-                for (attrname in attrib) {
-                  if (
-                    attrib.hasOwnProperty(attrname) &&
-                    // don't allow any handlers to be set + don't allow overrides
-                    attrname.indexOf('on') !== 0 &&
-                    !img.hasAttribute(attrname)
-                  ) {
-                    img.setAttribute(attrname, attrib[attrname]);
-                  }
+            rawText = match[0];
+            iconId = grabTheRightIcon(rawText);
+            i = index + rawText.length;
+            src = options.callback(
+              iconId,
+              options
+            );
+            if (src) {
+              img = new Image();
+              img.onerror = options.onerror;
+              img.setAttribute('draggable', 'false');
+              attrib = options.attributes(rawText, iconId);
+              for (attrname in attrib) {
+                if (
+                  attrib.hasOwnProperty(attrname) &&
+                  // don't allow any handlers to be set + don't allow overrides
+                  attrname.indexOf('on') !== 0 &&
+                  !img.hasAttribute(attrname)
+                ) {
+                  img.setAttribute(attrname, attrib[attrname]);
                 }
-                img.className = options.className;
-                img.alt = alt;
-                img.src = src;
-                modified = true;
-                fragment.appendChild(img);
               }
+              img.className = options.className;
+              img.alt = rawText;
+              img.src = src;
+              modified = true;
+              fragment.appendChild(img);
             }
-            if (!img) fragment.appendChild(createText(alt));
+            if (!img) fragment.appendChild(createText(rawText));
             img = null;
           }
           // is there actually anything to replace in here ?
@@ -717,50 +695,45 @@ function createTwemoji(re) {
        * @return  the string with <img tags> replacing all found and parsed emoji
        */
       function parseString(str, options) {
-        return replace(str, function (match, icon, variant) {
+        return replace(str, function (rawText) {
           var
-            ret = match,
+            ret = rawText,
             attrib,
             attrname,
+            iconId,
             src;
-          // verify the variant is not the FE0E one
-          // this variant means "emoji as text" and should not
-          // require any action/replacement
-          // http://unicode.org/Public/UNIDATA/StandardizedVariants.html
-          if (variant !== '\uFE0E') {
-            src = options.callback(
-              grabTheRightIcon(icon, variant),
-              options,
-              variant
+          iconId = grabTheRightIcon(rawText);
+          src = options.callback(
+            iconId,
+            options
+          );
+          if (src) {
+            // recycle the match string replacing the emoji
+            // with its image counter part
+            ret = '<img '.concat(
+              'class="', options.className, '" ',
+              'draggable="false" ',
+              // needs to preserve user original intent
+              // when variants should be copied and pasted too
+              'alt="',
+              rawText,
+              '"',
+              ' src="',
+              src,
+              '"'
             );
-            if (src) {
-              // recycle the match string replacing the emoji
-              // with its image counter part
-              ret = '<img '.concat(
-                'class="', options.className, '" ',
-                'draggable="false" ',
-                // needs to preserve user original intent
-                // when variants should be copied and pasted too
-                'alt="',
-                match,
-                '"',
-                ' src="',
-                src,
-                '"'
-              );
-              attrib = options.attributes(icon, variant);
-              for (attrname in attrib) { 
-                if (
-                  attrib.hasOwnProperty(attrname) &&
-                  // don't allow any handlers to be set + don't allow overrides
-                  attrname.indexOf('on') !== 0 &&
-                  ret.indexOf(' ' + attrname + '=') === -1
-                ) {
-                  ret = ret.concat(' ', attrname, '="', escapeHTML(attrib[attrname]), '"');
-                }
+            attrib = options.attributes(rawText, iconId);
+            for (attrname in attrib) {
+              if (
+                attrib.hasOwnProperty(attrname) &&
+                // don't allow any handlers to be set + don't allow overrides
+                attrname.indexOf('on') !== 0 &&
+                ret.indexOf(' ' + attrname + '=') === -1
+              ) {
+                ret = ret.concat(' ', attrname, '="', escapeHTML(attrib[attrname]), '"');
               }
-              ret = ret.concat('>');
             }
+            ret = ret.concat('>');
           }
           return ret;
         });

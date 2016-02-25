@@ -57,8 +57,8 @@ If a callback is passed, the `src` attribute will be the one returned by the sam
 ```js
 twemoji.parse(
   'I \u2764\uFE0F emoji!',
-  function(icon, options, variant) {
-    return '/assets/' + options.size + '/' + icon + '.gif';
+  function(iconId, options) {
+    return '/assets/' + options.size + '/' + iconId + '.gif';
   }
 );
 
@@ -72,7 +72,7 @@ I <img
 */
 ```
 
-By default, the `options.size` parameter will be the string `"36x36"` and the `variant` will be an optional `\uFE0F` char that is usually ignored by default. If your assets include or distinguish between `\u2764\uFE0F` and `\u2764`, you might want to use such a variable.
+By default, the `options.size` parameter will be the string `"36x36"`.
 
 _string parsing + callback returning_ `falsy`
 If the callback returns "falsy values" such `null`, `undefined`, `0`, `false`, or an empty string, nothing will change for that specific emoji.
@@ -80,11 +80,11 @@ If the callback returns "falsy values" such `null`, `undefined`, `0`, `false`, o
 var i = 0;
 twemoji.parse(
   'emoji, m\u2764\uFE0Fn am\u2764\uFE0Fur',
-  function(icon, options, variant) {
+  function(iconId, options) {
     if (i++ === 0) {
       return; // no changes made first call
     }
-    return '/assets/' + icon + options.ext;
+    return '/assets/' + iconId + options.ext;
   }
 );
 
@@ -104,8 +104,8 @@ In case an object is passed as second parameter, the passed `options` object wil
 twemoji.parse(
   'I \u2764\uFE0F emoji!',
   {
-    callback: function(icon, options) {
-      return '/assets/' + options.size + '/' + icon + '.gif';
+    callback: function(iconId, options) {
+      return '/assets/' + options.size + '/' + iconId + '.gif';
     },
     size: 128
   }
@@ -169,12 +169,12 @@ The function to invoke in order to generate images `src`.
 
 By default it is a function like the following one:
 ```js
-function imageSourceGenerator(icon, options) {
+function imageSourceGenerator(iconId, options) {
   return ''.concat(
     options.base, // by default Twitter Inc. CDN
     options.size, // by default "36x36" string
     '/',
-    icon,         // the found emoji as code point
+    iconId,       // the found emoji as a string of hex code points
     options.ext   // by default ".png"
   );
 }
@@ -185,9 +185,9 @@ The function to invoke in order to generate additional, custom attributes for th
 
 By default it is a function like the following one:
 ```js
-function attributesCallback(icon, variant) {
+function attributesCallback(rawText, iconId) {
   return {
-    title: 'Emoji: ' + icon + variant
+    title: 'Emoji: ' + rawText
   };
 }
 ```
@@ -252,18 +252,18 @@ To properly support emoji, the document character must be set to UTF-8. This can
 
 #### Exclude Characters
 
-To exclude certain characters from being replaced by twemoji.js, call twemoji.parse() with a callback, returning false for the specific unicode icon. For example:
+To exclude certain characters from being replaced by twemoji.js, call twemoji.parse() with a callback, returning false for the specific unicode iconId. For example:
 
 ```js
 twemoji.parse(document.body, {
-    callback: function(icon, options, variant) {
-        switch ( icon ) {
+    callback: function(iconId, options) {
+        switch ( iconId ) {
             case 'a9':      // © copyright
             case 'ae':      // ® registered trademark
             case '2122':    // ™ trademark
                 return false;
         }
-        return ''.concat(options.base, options.size, '/', icon, options.ext);
+        return ''.concat(options.base, options.size, '/', iconId, options.ext);
     }
 });
 ```
