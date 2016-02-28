@@ -27,6 +27,6 @@
   },
   "main": "./twemoji.npm.js",
   "scripts": {
-    "test": "phantomjs testrunner.js && phantomjs 2/test/testrunner.js"
+    "test": "phantomjs testrunner.js"
   }
 }
