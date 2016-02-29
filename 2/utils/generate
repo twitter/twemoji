@@ -363,15 +363,14 @@ function createTwemoji(re) {
         /////////////////////////
 
           // default assets url, by default will be Twitter Inc. CDN
-          base: (location.protocol === 'https:' ? 'https:' : 'http:') +
-                '//twemoji.maxcdn.com/',
+          base: 'https://twemoji.maxcdn.com/2/',
 
           // default assets file extensions, by default '.png'
           ext: '.png',
 
-          // default assets/folder size, by default "36x36"
-          // available via Twitter CDN: 16, 36, 72
-          size: '36x36',
+          // default assets/folder size, by default "72x72"
+          // available via Twitter CDN: 72
+          size: '72x72',
 
           // default class name, by default 'emoji'
           className: 'emoji',
