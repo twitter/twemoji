@@ -10,7 +10,7 @@ var http = require('http');
 var path = require('path');
 
 function file(which) {
-  return path.join(__dirname, '../../', which);
+  return path.join(__dirname, '../..', which);
 }
 
 // Twitter assets by property name

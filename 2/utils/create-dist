@@ -8,7 +8,7 @@ var fs = require('fs');
 var path = require('path');
 
 function file(which) {
-  return path.join(__dirname, '../', which);
+  return path.join(__dirname, '..', which);
 }
 
 fs.writeFileSync(
