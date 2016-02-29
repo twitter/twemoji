@@ -335,7 +335,7 @@ Queue([
 
 function createTwemoji(re) {
   fs.writeFileSync(
-    'twemoji.js',
+    file('2/twemoji.js'),
     '/*jslint indent: 2, browser: true, bitwise: true, plusplus: true */\n' +
     'var twemoji = (' +
     function (
