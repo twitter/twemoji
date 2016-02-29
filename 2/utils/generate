@@ -15,9 +15,8 @@ function file(which) {
 
 // Twitter assets by property name
 var assets = {
-  '16x16': [],
-  '36x36': [],
-  '72x72': []
+  '2/72x72': [],
+  '2/svg': []
 };
 
 // white spaces we don't want to catch via the RegExp
@@ -78,7 +77,7 @@ Queue([
         res.on('data', chunks.push.bind(chunks));
         // once done ...
         res.on('end', function () {
-          console.log('analizing EmojiSources VS our assets ... ');
+          console.log('analyzing EmojiSources VS our assets ... ');
           // store all missing assets in one object
           var missing = {};
           // will be used to store an array with all missing
@@ -216,17 +215,54 @@ Queue([
 
   },
 
+  // detect complete sets of five skin tones and a base
+  function detectDiversityEmoji(q) {
+    var isPresent = {};
+    q.emojiSource.forEach(function (codePoints) {
+      isPresent[codePoints] = true;
+    });
+    q.diversityBase = q.emojiSource.filter(function (codePoints) {
+      // Start with the set of Emoji with the light skin tone
+      return /-1F3FB$/.test(codePoints);
+    }).map(function (codePoints) {
+      // Take the skin tone off
+      return codePoints.replace(/-1F3FB$/, '');
+    }).filter(function (baseCodePoints) {
+      // Verify that all other skin tones + no skin tone are present
+      return ['-1F3FC', '-1F3FD', '-1F3FE', '-1F3FF', ''].every(function (suffix) {
+        return isPresent[baseCodePoints + suffix];
+      });
+    });
+    console.log('[INFO] parsed ' + q.diversityBase.length + ' diversity emoji.');
+    q.next();
+  },
+
   // with all info, generate a RegExp that will catch
   // only standard emoji that are present in our assets
   function generateRegExp(q) {
     console.log('generating a RegExp for available assets');
+    var zwj = [];
+    var diversity = [];
     var sensitive = [];
+    var diversitySensitive = [];
     var regular = [];
-    q.emojiSource.forEach(function (codePoint) {
+    q.emojiSource.forEach(function (codePoints) {
       var u;
-      if (q.ignore.indexOf(codePoint) < 0) {
-        u = codePoint.split('-').map(toJSON).join('');
-        if (q.variantsSensitive.indexOf(codePoint) < 0) {
+      if (q.ignore.indexOf(codePoints) < 0) {
+        u = codePoints.split('-').map(toJSON).join('');
+        if (codePoints.indexOf('200D') >= 0) {
+          zwj.push(u);
+        } else if (q.diversityBase.indexOf(codePoints.replace(/-1F3F[B-F]$/, '')) >= 0) {
+          // This is a diversity Emoji with or without a skin tone modifier
+          // Add it to the regex if this is the base without the modifier
+          if (q.diversityBase.indexOf(codePoints) >= 0) {
+            if (q.variantsSensitive.indexOf(codePoints) < 0) {
+              diversity.push(u);
+            } else {
+              diversitySensitive.push(u);
+            }
+          }
+        } else if (q.variantsSensitive.indexOf(codePoints) < 0) {
           regular.push(u);
         } else {
           sensitive.push(u);
@@ -234,10 +270,31 @@ Queue([
       }
     });
 
-    // the sensitive ones may be followed by U+FE0F but not U+FE0E
-    q.re = regular.join('|') + '|(?:' +
-      sensitive.join('|') +
-    ')(?:\\ufe0f|(?!\\ufe0e))';
+    q.re = '';
+
+    // The Zero-width joiner Emojis, if present, need to come first
+    if (zwj.length) {
+      q.re += zwj.join('|') + '|';
+    }
+
+    // Next, add the diversity enabled Emoji that may include a skin tone suffix
+    if (diversity.length + diversitySensitive.length) {
+      q.re += '(?:';
+      if (diversitySensitive.length) {
+        // Some diversity are sensitive to variants
+        q.re += '(?:' + diversitySensitive.join('|') + ')(?:\\ufe0f|(?!\\ufe0e))';
+        if (diversity.length) {
+          q.re += '|';
+        }
+      }
+      q.re += diversity.join('|') + ')(?:[\\ud83c\\udffb|\\ud83c\\udffc|\\ud83c\\udffd|\\ud83c\\udffe|\\ud83c\\udfff]|)|';
+    }
+
+    // Next, the normal Emoji
+    q.re += regular.join('|') + '|';
+
+    // Finally, add the rest of the sensitive ones that may be followed by U+FE0F but not U+FE0E
+    q.re += '(?:' + sensitive.join('|') + ')(?:\\ufe0f|(?!\\ufe0e))';
 
     q.next();
 
