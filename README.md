@@ -297,11 +297,22 @@ twemoji.parse(document.body, {
 ```
 
 ### Build
-In order to build the Unicode based standard emoji RegExp, probably the most important core feature of this library, the `twemoji-generator.js` file needs to perform few online and offline operations.
+If you'd like to test and/or contribute please follow these instructions.
 
-Once executed through `node twemoji-generator.js`, and after installing via `npm install` dependencies, this file will create a fresh new copy of all libraries.
+```bash
+# clone this repo
+git clone https://github.com/twitter/twemoji.git
+cd twemoji
 
-This means that if you'd like to change or improve `twemoji`, you should probably do it inside the `createTwemoji` function at the bottom of `twemoji-generator.js` instead of directly in the library, unless it's not just for testing purpose.
+# install dependencies
+npm install
+
+# generate 2/twemoji*.js files
+./2/utils/generate
+```
+
+If you'd like to test and/or propose some change to the V2 library please change `./2/utils/generate` file at its end so that everything will be generated properly once launched.
+
 
 ## Attribution Requirements
 
@@ -317,7 +328,6 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 
 ## Committers and Contributors
 * Andrea Giammarchi (ex-Twitter)
-* Chris Aniszczyk (Twitter)
 * Tom Wuttke (Twitter)
 * Joen Asmussen (WordPress)
 * Marcus Kazmierczak (WordPress)
