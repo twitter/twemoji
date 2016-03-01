@@ -478,6 +478,36 @@ wru.test([{
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);
   }
+},{
+  name: 'non standard OSX asterisk keycap variant',
+  test: function () {
+    var div = document.createElement('div');
+    div.innerHTML = '*\ufe0f\u20e3';
+    twemoji.parse(div);
+    wru.assert('recognized as graphical',
+      div.firstChild.className === 'emoji' &&
+      div.firstChild.getAttribute('draggable') === 'false' &&
+      div.firstChild.getAttribute('alt') === '*\ufe0f\u20e3' &&
+      div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/2a-20e3.png'
+    );
+    wru.assert('the length is preserved',
+      div.getElementsByTagName('img')[0].alt.length === 3);
+  }
+},{
+  name: 'same but standard asterisk keycap without variant',
+  test: function () {
+    var div = document.createElement('div');
+    div.innerHTML = '*\u20e3';
+    twemoji.parse(div);
+    wru.assert('recognized as graphical',
+      div.firstChild.className === 'emoji' &&
+      div.firstChild.getAttribute('draggable') === 'false' &&
+      div.firstChild.getAttribute('alt') === '*\u20e3' &&
+      div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/2a-20e3.png'
+    );
+    wru.assert('the length is preserved',
+      div.getElementsByTagName('img')[0].alt.length === 2);
+  }
 }, {
   name: 'multiple parsing using a callback',
   test: function () {
