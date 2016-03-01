@@ -479,7 +479,7 @@ wru.test([{
       div.getElementsByTagName('img')[0].alt.length === 2);
   }
 },{
-  name: 'non standard OSX asterisk keycap variant',
+  name: 'non standard iOS asterisk keycap variant',
   test: function () {
     var div = document.createElement('div');
     div.innerHTML = '*\ufe0f\u20e3';
@@ -507,6 +507,32 @@ wru.test([{
     );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);
+  }
+}, {
+  name: 'non standard iOS smiley variant',
+  test: function () {
+    var div = document.createElement('div');
+    div.innerHTML = '\u2639\ufe0f';
+    twemoji.parse(div);
+    wru.assert('recognized as graphical',
+      div.firstChild.className === 'emoji' &&
+      div.firstChild.getAttribute('draggable') === 'false' &&
+      div.firstChild.getAttribute('alt') === '\u2639\ufe0f' &&
+      div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/2639.png'
+    );
+  }
+},{
+  name: 'same but standard smiley',
+  test: function () {
+    var div = document.createElement('div');
+    div.innerHTML = '\u2639';
+    twemoji.parse(div);
+    wru.assert('recognized as graphical',
+      div.firstChild.className === 'emoji' &&
+      div.firstChild.getAttribute('draggable') === 'false' &&
+      div.firstChild.getAttribute('alt') === '\u2639' &&
+      div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/2639.png'
+    );
   }
 }, {
   name: 'multiple parsing using a callback',
@@ -627,6 +653,7 @@ wru.test([{
       '\ud83d\ude14',
       '\ud83d\ude15',
       '\ud83d\ude41',
+      '\u2639\ufe0f',
       '\ud83d\ude23',
       '\ud83d\ude16',
       '\ud83d\ude2b',
