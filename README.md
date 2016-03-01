@@ -2,7 +2,35 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-## CDN Support
+## Unicode 8.0 and Diversity
+The **twemoji V2** adheres to the [8.0 Unicode version](http://unicode.org/versions/Unicode8.0.0/) and **supports** 1661 different emoji, including **[diversity](http://www.unicode.org/reports/tr51/#Diversity)**.
+The previous twemoji V1 adheres to the [7.0 Unicode version](http://www.unicode.org/charts/PDF/Unicode-7.0/U70-1F300.pdf) and supports 872 different emoji.
+
+## Version 2 CDN Support
+
+The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN support for both version 1 and version 2.
+
+For the latter one, use the following in the `<head>` tag of your HTML document(s):
+```html
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js"></script>
+```
+
+## Breaking changes in V2
+
+_TL;DR_: there's no `variant` anymore, all callbacks receives the transformed `iconId` and in some case the rawText too.
+
+There are few potentially breaking changes in `twemoji` version 2:
+
+  * the `parse` invoked function signature is now `(iconId, options)` instead of `(icon, options, variant)`
+  * the `attributes` function will receives `(rawText, iconId)` instead of `(icon, variant)`
+  * the **default** remote protocol is now **https** regardless the current site is _http_ or even _file_
+  * the **default** PNG icon size is **72** pixels and **there are no other PNG assets** for 16 or 32.
+  * in order to access latest Unicode 8 ready assets you need to specify *folder* `2/72x72` or `2/svg`.
+
+Everything else is pretty much the same so if you were using defaults, all you need to do is to add the version `2/` before the `twmoji.js` file you were using.
+
+
+## Version 1 CDN Support
 
 The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN support.
 
@@ -22,7 +50,7 @@ Alternatively you can use [cdnjs](https://cdnjs.com/) if you prefer:
 
 Following all methods exposed through the `twemoji` namespace.
 
-### twemoji.parse( ... )
+### twemoji.parse( ... ) V1
 
 This is the main parsing utility and has 3 overloads per each parsing type.
 
@@ -32,7 +60,7 @@ Each of them accept a callback to generate each image source or an options objec
 
 Here is a walk through all parsing possibilities:
 
-##### string parsing
+##### string parsing (V1)
 Given a generic string, it will replace all emoji with an `<img>` tag.
 
 While this can be used to inject via `innerHTML` emoji image tags, please note that this method does not sanitize the string or prevent malicious code from being executed. As an example, if the text contains a `<script>` tag, this **will not** be converted into `&lt;script&gt;` since it's out of this method scope to prevent these kind of attacks.
@@ -180,7 +208,7 @@ function imageSourceGenerator(icon, options) {
 }
 ```
 
-##### attributes
+##### attributes (V1)
 The function to invoke in order to generate additional, custom attributes for the image tag.
 
 By default it is a function like the following one:
@@ -250,7 +278,7 @@ To properly support emoji, the document character must be set to UTF-8. This can
 <meta charset="utf-8">
 ```
 
-#### Exclude Characters
+#### Exclude Characters (V1)
 
 To exclude certain characters from being replaced by twemoji.js, call twemoji.parse() with a callback, returning false for the specific unicode icon. For example:
 
@@ -274,10 +302,6 @@ In order to build the Unicode based standard emoji RegExp, probably the most imp
 Once executed through `node twemoji-generator.js`, and after installing via `npm install` dependencies, this file will create a fresh new copy of all libraries.
 
 This means that if you'd like to change or improve `twemoji`, you should probably do it inside the `createTwemoji` function at the bottom of `twemoji-generator.js` instead of directly in the library, unless it's not just for testing purpose.
-
-## Future Plans: Unicode 8.0 and Diversity
-
-The twemoji project currently adheres to the [7.0 Unicode version](http://www.unicode.org/charts/PDF/Unicode-7.0/U70-1F300.pdf) and supports 872 different emoji. In the future, we hope to work with the community to support Unicode 8.0 additions like [Diversity](http://www.unicode.org/reports/tr51/#Diversity).
 
 ## Attribution Requirements
 

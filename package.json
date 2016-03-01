@@ -1,8 +1,8 @@
 {
-  "version": "1.4.2",
+  "version": "2.0.0",
   "name": "twemoji",
   "license": ["MIT", "CC-BY-4.0"],
-  "description": "A Unicode standard based way to implement emoji across all platforms.",
+  "description": "A Unicode 8 standard based way to implement emoji across all platforms.",
   "homepage": "https://github.com/twitter/twemoji",
   "keywords": [
     "emoji",
@@ -25,7 +25,7 @@
     "type": "git",
     "url": "git://github.com/twitter/twemoji.git"
   },
-  "main": "./twemoji.npm.js",
+  "main": "./2/twemoji.npm.js",
   "scripts": {
     "test": "phantomjs testrunner.js"
   }
