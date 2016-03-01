@@ -449,7 +449,7 @@ wru.test([{
     );
   }
 },{
-  name: 'non standard OSX variant',
+  name: 'keycap variant',
   test: function () {
     var div = document.createElement('div');
     div.innerHTML = '5\ufe0f\u20e3';
@@ -464,7 +464,7 @@ wru.test([{
       div.getElementsByTagName('img')[0].alt.length === 3);
   }
 },{
-  name: 'same but standard OSX without variant',
+  name: 'keycap without variant',
   test: function () {
     var div = document.createElement('div');
     div.innerHTML = '5\u20e3';

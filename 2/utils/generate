@@ -244,14 +244,23 @@ Queue([
     var zwj = [];
     var diversity = [];
     var sensitive = [];
+    var sensitiveKeycaps = [];
     var diversitySensitive = [];
     var regular = [];
     q.emojiSource.forEach(function (codePoints) {
       var u;
+      var codePointsWithoutKeycap;
+      codePoints = codePoints.replace(/\b[A-F0-9]+\b/g, function (hex) {
+        // Pad all hex numbers to have at least 4 digits to match variantsSensitive
+        return hex.length < 4 ? ('000' + hex).slice(-4) : hex;
+      });
       if (q.ignore.indexOf(codePoints) < 0) {
-        u = codePoints.split('-').map(toJSON).join('');
+        u = toJSON(codePoints);
+        codePointsWithoutKeycap = codePoints.replace(/-20E3$/, '');
         if (codePoints.indexOf('200D') >= 0) {
           zwj.push(u);
+        } else if (codePoints != codePointsWithoutKeycap && q.variantsSensitive.indexOf(codePointsWithoutKeycap) >= 0) {
+          sensitiveKeycaps.push(toJSON(codePointsWithoutKeycap));
         } else if (q.diversityBase.indexOf(codePoints.replace(/-1F3F[B-F]$/, '')) >= 0) {
           // This is a diversity Emoji with or without a skin tone modifier
           // Add it to the regex if this is the base without the modifier
@@ -277,6 +286,11 @@ Queue([
       q.re += zwj.join('|') + '|';
     }
 
+    // Group the variant sensitive keycaps
+    if (sensitiveKeycaps.length) {
+      q.re += '(?:' + sensitiveKeycaps.join('|') + ')\\ufe0f?\\u20e3|';
+    }
+
     // Next, add the diversity enabled Emoji that may include a skin tone suffix
     if (diversity.length + diversitySensitive.length) {
       q.re += '(?:';
@@ -299,8 +313,10 @@ Queue([
     q.next();
 
     // basic utilities to convert codepoints to JSON strings
-    function toJSON(point) {
-      return UTF162JSON(fromCodePoint(point));
+    function toJSON(codePoints) {
+      return codePoints.split('-').map(function (point) {
+        return UTF162JSON(fromCodePoint(point));
+      }).join('');
     }
     function fromCodePoint(codepoint) {
       var code = typeof codepoint === 'string' ?
@@ -901,7 +917,6 @@ function createTwemoji(re) {
       .replace(/^    /gm, '')
       // add the RegExp in the right place
       .replace('re = /twemoji/', 're = /' + re + '/g')
-      .replace(/(\\u00[2-3][0-9])(\\u20e3)/g, '$1\\ufe0f?$2')
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +
