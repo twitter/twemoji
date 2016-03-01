@@ -11,13 +11,13 @@ wru.test([{
     wru.assert(
       'default parsing works',
       twemoji.parse('I \u2764 emoji!') ===
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png"> emoji!'
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png"> emoji!'
     );
     // with "as image" variant
     wru.assert(
       'default \uFE0F variant parsing works',
       twemoji.parse('I \u2764\uFE0F emoji!') ===
-      'I <img class="emoji" draggable="false" alt="\u2764\uFE0F" src="' + base + '36x36/2764.png"> emoji!'
+      'I <img class="emoji" draggable="false" alt="\u2764\uFE0F" src="' + base + '72x72/2764.png"> emoji!'
     );
     // with "as text" variant
     wru.assert(
@@ -45,12 +45,12 @@ wru.test([{
   test: function () {
     var result = false;
     twemoji.parse('I \u2764 emoji!', function (icon, options) {
-      result = icon === '2764' && options.size === '36x36';
+      result = icon === '2764' && options.size === '72x72';
     });
     wru.assert('works OK without variant', result);
     result = false;
     twemoji.parse('I \u2764\uFE0F emoji!', function (icon, options) {
-      result = icon === '2764' && options.size === '36x36';
+      result = icon === '2764' && options.size === '72x72';
     });
     wru.assert('works OK with variant', result);
     result = true;
@@ -119,7 +119,7 @@ wru.test([{
     wru.assert('img attributes are OK',
       img.className === 'emoji' &&
       img.getAttribute('draggable') === 'false' &&
-      img.src === base + '36x36/2764.png' &&
+      img.src === base + '72x72/2764.png' &&
       img.alt === '\u2764' &&
       img.onerror === twemoji.onerror
     );
@@ -135,7 +135,7 @@ wru.test([{
     wru.assert('img attributes are OK',
       img.className === 'emoji' &&
       img.getAttribute('draggable') === 'false' &&
-      img.src === base + '36x36/2764.png' &&
+      img.src === base + '72x72/2764.png' &&
       img.alt === '\u2764\uFE0F' &&
       img.onerror === twemoji.onerror
     );
@@ -173,14 +173,14 @@ wru.test([{
         div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764 emoji!'));
     twemoji.parse(div, function (icon, options) {
-      result = icon === '2764' && options.size === '36x36';
+      result = icon === '2764' && options.size === '72x72';
     });
     wru.assert('works OK without variant', result);
     result = false;
     div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764\uFE0F emoji!'));
     twemoji.parse(div, function (icon, options) {
-      result = icon === '2764' && options.size === '36x36';
+      result = icon === '2764' && options.size === '72x72';
     });
     wru.assert('works OK with variant', result);
     result = true;
@@ -226,7 +226,7 @@ wru.test([{
 },{
   name: 'nested nodes',
   test: function () {
-    var str = '<img class="emoji" draggable="false" alt="\u2764" src="https://twemoji.maxcdn.com/36x36/2764.png">',
+    var str = '<img class="emoji" draggable="false" alt="\u2764" src="https://twemoji.maxcdn.com/72x72/2764.png">',
         div = document.createElement('div'),
         p,
         img;
@@ -278,7 +278,7 @@ wru.test([{
   name: 'string parsing + className',
   test: function () {
     var className = 'img-' + Math.random();
-    var img = 'I <img class="' + className + '" draggable="false" alt="\u2764" src="36x36/2764.png"> emoji!';
+    var img = 'I <img class="' + className + '" draggable="false" alt="\u2764" src="72x72/2764.png"> emoji!';
     wru.assert(
       'className is overwritten',
       img ===
@@ -309,7 +309,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png" title="Emoji: \u2764" data-test="We all &lt;3 emoji"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="Emoji: \u2764" data-test="We all &lt;3 emoji"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -328,7 +328,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png" title="Emoji: 2764" data-test="We all &lt;3 emoji"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="Emoji: 2764" data-test="We all &lt;3 emoji"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -346,7 +346,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -364,7 +364,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="❤" src="' + base + '36x36/2764.png" title="test"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="❤" src="' + base + '72x72/2764.png" title="test"> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -407,7 +407,7 @@ wru.test([{
     wru.assert('img attributes are OK',
       img.className === 'emoji' &&
       img.getAttribute('draggable') === 'false' &&
-      img.src === base + '36x36/2764.png' &&
+      img.src === base + '72x72/2764.png' &&
       img.alt === '\u2764' &&
       img.onerror === twemoji.onerror &&
       img.getAttribute('title') === 'Emoji: \u2764' &&
@@ -458,7 +458,7 @@ wru.test([{
       div.firstChild.className === 'emoji' &&
       div.firstChild.getAttribute('draggable') === 'false' &&
       div.firstChild.getAttribute('alt') === "5️⃣" &&
-      div.firstChild.src === 'http://twemoji.maxcdn.com/36x36/35-20e3.png'
+      div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/35-20e3.png'
     );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 3);
@@ -473,7 +473,7 @@ wru.test([{
       div.firstChild.className === 'emoji' &&
       div.firstChild.getAttribute('draggable') === 'false' &&
       div.firstChild.getAttribute('alt') === "5⃣" &&
-      div.firstChild.src === 'http://twemoji.maxcdn.com/36x36/35-20e3.png'
+      div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/35-20e3.png'
     );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);

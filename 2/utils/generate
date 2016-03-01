@@ -287,7 +287,7 @@ Queue([
           q.re += '|';
         }
       }
-      q.re += diversity.join('|') + ')(?:[\\ud83c\\udffb|\\ud83c\\udffc|\\ud83c\\udffd|\\ud83c\\udffe|\\ud83c\\udfff]|)|';
+      q.re += diversity.join('|') + ')(?:\\ud83c\\udffb|\\ud83c\\udffc|\\ud83c\\udffd|\\ud83c\\udffe|\\ud83c\\udfff|)|';
     }
 
     // Next, the normal Emoji
