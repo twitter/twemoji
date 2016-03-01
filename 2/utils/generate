@@ -166,6 +166,9 @@ Queue([
               }, /^([0-9A-F]{4,}) FE0E;.+$/)    // sensitive char
             ;
 
+            // iOS keyboard allows U+002A U+FE0F U+20E3 even though not a standardized variant (yet?)
+            q.variantsSensitive.push('002A');
+
             console.log('[INFO] parsed ' + q.variantsSensitive.length + ' variant sensitive emoji.');
             q.next();
 
