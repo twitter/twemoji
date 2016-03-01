@@ -509,7 +509,7 @@ wru.test([{
       div.getElementsByTagName('img')[0].alt.length === 2);
   }
 }, {
-  name: 'non standard iOS smiley variant',
+  name: 'non standard iOS frowning variant',
   test: function () {
     var div = document.createElement('div');
     div.innerHTML = '\u2639\ufe0f';
@@ -522,7 +522,7 @@ wru.test([{
     );
   }
 },{
-  name: 'same but standard smiley',
+  name: 'same but standard frowning',
   test: function () {
     var div = document.createElement('div');
     div.innerHTML = '\u2639';
