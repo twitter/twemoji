@@ -35,7 +35,7 @@ fs.readdir(file('assets'), function (err, files) {
     page.replace(
       '{{emoji-options}}',
       JSON.stringify({
-        folder: 'svg',
+        folder: '../svg',
         ext: '.svg',
         base: ''
       })
