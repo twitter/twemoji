@@ -315,7 +315,8 @@ var twemoji = (function (
    */
   function grabTheRightIcon(rawText) {
     // if variant is present as \uFE0F
-    return toCodePoint(rawText.indexOf('\u200D') < 0 ?
+    // (avoid using a string literal for '\u200D' or minifiers may inject the raw value)
+    return toCodePoint(rawText.indexOf(String.fromCharCode(0x200D)) < 0 ?
       rawText.replace(UFE0Fg, '') :
       rawText
     );
