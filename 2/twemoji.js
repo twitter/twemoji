@@ -231,6 +231,9 @@ var twemoji = (function (
     // not JIT based, and old browsers / engines
     UFE0Fg = /\uFE0F/g,
 
+    // avoid using a string literal like '\u200D' here because minifiers expand it inline
+    U200D = String.fromCharCode(0x200D),
+
     // used to find HTML special chars in attributes
     rescaper = /[&<>'"]/g,
 
@@ -315,8 +318,7 @@ var twemoji = (function (
    */
   function grabTheRightIcon(rawText) {
     // if variant is present as \uFE0F
-    // (avoid using a string literal for '\u200D' or minifiers may inject the raw value)
-    return toCodePoint(rawText.indexOf(String.fromCharCode(0x200D)) < 0 ?
+    return toCodePoint(rawText.indexOf(U200D) < 0 ?
       rawText.replace(UFE0Fg, '') :
       rawText
     );
