@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Twitter Emoji (Twemoji) Preview</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+    ul.emoji-list * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    ul.emoji-list li {
+      font-size: 36px;
+      float: left;
+      display: inline-block;
+      padding: 2px;
+      margin: 4px;
+    }
+    img.emoji {
+      cursor: pointer;
+      height: 1em;
+      width: 1em;
+      margin: 0 .05em 0 .1em;
+      vertical-align: -0.1em;
+    }
+    </style>
+    <script src="https://twemoji.maxcdn.com/1/twemoji.min.js"></script>
+  </head>
+  <body>
+    <ul class="emoji-list">
+      {{emoji-list}}
+    </ul>
+    <script>
+    var ul = document.getElementsByTagName('ul')[0];
+    var total = ul.getElementsByTagName('li').length;
+    var elapsed = +new Date;
+    twemoji.parse(ul, {{emoji-options}});
+    elapsed = (+new Date) - elapsed;
+    document.body.insertBefore(
+      document.createTextNode(total + ' emoji parsed in ' + elapsed + 'ms'),
+      document.body.firstChild
+    );
+    (function (img, metaKey, i) {
+      function copyToClipboard(e) {
+        prompt('Copy to clipboard via ' + metaKey + '+C and Enter', this.alt);
+      }
+      for (i = 0; i < img.length; img[i++].onclick = copyToClipboard) {}
+    }(
+      document.getElementsByTagName('img'),
+      /\b(?:Mac |i)OS\b/i.test(navigator.userAgent) ? 'Command' : 'Ctrl'
+    ));
+    </script>
+  </body>
+</html>
