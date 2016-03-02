@@ -45,7 +45,7 @@ require('child_process').spawn(
   fs.writeFileSync(
     file('twemoji.min.js'),
     '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */\n' +
-    fs.readFileSync(file('twemoji.tmp.js'))
+    fs.readFileSync(file('twemoji.tmp.js')).toString().replace(/("|')\u200D\1/g, '$1\\u200D$1')
   );
   fs.unlink(file('twemoji.tmp.js'));
   // gzip -c twemoji.min.js | wc -c

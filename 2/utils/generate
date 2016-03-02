@@ -643,6 +643,10 @@ function createTwemoji(re) {
         // http://www.unicode.org/Public/UNIDATA/EmojiSources.txt
         re = /twemoji/,
 
+        // avoid runtime RegExp creation for not so smart,
+        // not JIT based, and old browsers / engines
+        UFE0Fg = /\uFE0F/g,
+
         // used to find HTML special chars in attributes
         rescaper = /[&<>'"]/g,
 
@@ -727,9 +731,9 @@ function createTwemoji(re) {
        */
       function grabTheRightIcon(rawText) {
         // if variant is present as \uFE0F
-        return toCodePoint(/\u200D/.test(rawText) ?
-          rawText :
-          rawText.replace(/\uFE0F/g, '')
+        return toCodePoint(rawText.indexOf('\u200D') < 0 ?
+          rawText.replace(UFE0Fg, '') :
+          rawText
         );
       }
 
