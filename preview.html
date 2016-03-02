@@ -691,6 +691,8 @@
       <li>&#x1F63E;</li>
       <li>&#x1F63F;</li>
       <li>&#x1F640;</li>
+      <li>&#x1F641;</li>
+      <li>&#x1F642;</li>
       <li>&#x1F645;</li>
       <li>&#x1F646;</li>
       <li>&#x1F647;</li>
@@ -903,7 +905,15 @@
       <li>&#xE50A;</li>
     </ul>
     <script>
-    twemoji.parse(document.getElementsByTagName('ul')[0], {"size":72});
+    var ul = document.getElementsByTagName('ul')[0];
+    var total = ul.getElementsByTagName('li').length;
+    var elapsed = +new Date;
+    twemoji.parse(ul, {"size":72});
+    elapsed = (+new Date) - elapsed;
+    document.body.insertBefore(
+      document.createTextNode(total + ' emoji parsed in ' + elapsed + 'ms'),
+      document.body.firstChild
+    );
     (function (img, metaKey, i) {
       function copyToClipboard(e) {
         prompt('Copy to clipboard via ' + metaKey + '+C and Enter', this.alt);
