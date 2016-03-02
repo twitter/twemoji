@@ -372,8 +372,8 @@ Queue([
       function sortMethod(a, b) {
         return !a.length ? 0 :
           b.length - a.length ||
-          parseInt(b[0], 16) - parseInt(a[0], 16) ||
-          sortMethod(b.slice(1), a.slice(1)
+          parseInt(a[0], 16) - parseInt(b[0], 16) ||
+          sortMethod(a.slice(1), b.slice(1)
         );
       }
 
