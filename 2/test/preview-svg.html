@@ -1692,7 +1692,10 @@
       <li>&#xE50A;</li>
     </ul>
     <script>
+    var elapsed = +new Date;
     twemoji.parse(document.getElementsByTagName('ul')[0], {"folder":"../svg","ext":".svg","base":""});
+    elapsed = (+new Date) - elapsed;
+    document.title += ' - ' + elapsed;
     (function (img, metaKey, i) {
       function copyToClipboard(e) {
         prompt('Copy to clipboard via ' + metaKey + '+C and Enter', this.alt);
