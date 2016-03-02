@@ -335,7 +335,6 @@ Queue([
     }
 
     // Items is an array of unicode sequences with \u escaping, like ["\u2963\ufe0f", "\u263a\ufe0f"]
-    // items get sorted by length (long to short), then unicode hex values (high to low)
     // output is "or" ed together using | for regex
     // ouput also combines adjacent items using character classes with ranges when they have common prefixes
     // Example: "aab", "aac", "aad", "aag", "ba" becomes "aa[b-dg]|ba"
@@ -369,6 +368,7 @@ Queue([
       return result.join('|');
 
       // a and b are arrays of hex UCS-2 units
+      // items get sorted by length (long to short), then unicode hex values (low to high)
       function sortMethod(a, b) {
         return !a.length ? 0 :
           b.length - a.length ||
