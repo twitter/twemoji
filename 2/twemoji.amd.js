@@ -232,6 +232,9 @@ define(function () {
       // not JIT based, and old browsers / engines
       UFE0Fg = /\uFE0F/g,
 
+      // avoid using a string literal like '\u200D' here because minifiers expand it inline
+      U200D = String.fromCharCode(0x200D),
+
       // used to find HTML special chars in attributes
       rescaper = /[&<>'"]/g,
 
@@ -316,7 +319,7 @@ define(function () {
      */
     function grabTheRightIcon(rawText) {
       // if variant is present as \uFE0F
-      return toCodePoint(rawText.indexOf('\u200D') < 0 ?
+      return toCodePoint(rawText.indexOf(U200D) < 0 ?
         rawText.replace(UFE0Fg, '') :
         rawText
       );
