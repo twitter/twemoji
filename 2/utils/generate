@@ -344,9 +344,14 @@ Queue([
       var result = [];
       var charClass = [];
       var charRange = [];
-      items.sort(sortMethod).forEach(function(item) {
-        var itemParts = item.split('\\u');
+      items.map(function (item) {
+        // Convert from "\u2963\ufe0f" into ["2963", "fe0f"]
+        return item.split('\\u').slice(1);
+      }).sort(sortMethod).forEach(function (itemParts) {
         var prefix = itemParts.slice(0, -1).join('\\u');
+        if (prefix) {
+          prefix = '\\u' + prefix;
+        }
         var suffix = itemParts.slice(-1);
         if (prefix !== currentPrefix) {
           flushCharClass();
@@ -363,7 +368,8 @@ Queue([
       flushCharClass();
       return result.join('|');
 
-      function sortMethod(a,b) {
+      // a and b are arrays of hex UCS-2 units
+      function sortMethod(a, b) {
         return !a.length ? 0 :
           b.length - a.length ||
           parseInt(b[0], 16) - parseInt(a[0], 16) ||
@@ -716,15 +722,14 @@ function createTwemoji(re) {
       /**
        * Used to both remove the possible variant
        *  and to convert utf16 into code points.
-       *  If there is a zero-width-joiner, leave the variant in.
+       *  If there is a zero-width-joiner (U+200D), leave the variants in.
        * @param   string    the raw text of the emoji match
        */
       function grabTheRightIcon(rawText) {
         // if variant is present as \uFE0F
-        return toCodePoint(
-          rawText.indexOf('\u200D') < 0 ?
-            rawText.replace(/\uFE0F/g, '') :
-            rawText
+        return toCodePoint(/\u200D/.test(rawText) ?
+          rawText :
+          rawText.replace(/\uFE0F/g, '')
         );
       }
 
