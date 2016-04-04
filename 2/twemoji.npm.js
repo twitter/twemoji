@@ -516,6 +516,14 @@ var twemoji = (function (
   }
 
   function parse(what, how) {
+    // first argument can only be string or HTML Element
+    if (
+      typeof what !== 'string' &&
+      !(what && what.nodeName)
+    ) {
+      return what;
+    }
+
     if (!how || typeof how === 'function') {
       how = {callback: how};
     }
