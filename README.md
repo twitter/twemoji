@@ -252,6 +252,25 @@ twemoji.parse(genericNode, {
 ```
 This will generate urls such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size based one.
 
+## Utilities
+
+Basic utilities / helpers to convert code points to JavaScript surrogates and vice versa.
+
+#### twemoji.convert.fromCodePoint()
+For given an HEX codepoint, returns UTF16 surrogate pairs.
+```js
+twemoji.convert.fromCodePoint('1f1e8');
+ // "\ud83c\udde8"
+```
+#### twemoji.convert.toCodePoint()
+For given UTF16 surrogate pairs, returns the equivalent HEX codepoint.
+```js
+ twemoji.convert.toCodePoint('\ud83c\udde8\ud83c\uddf3');
+ // "1f1e8-1f1f3"
+ 
+ twemoji.convert.toCodePoint('\ud83c\udde8\ud83c\uddf3', '~');
+ // "1f1e8~1f1f3"
+```
 
 ## Tips
 
