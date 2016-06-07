@@ -4,7 +4,7 @@ A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/
 
 ## Unicode 8.0 and Diversity
 The **twemoji V2** adheres to the [8.0 Unicode version](http://unicode.org/versions/Unicode8.0.0/) and **supports** 1661 different emoji, including **[diversity](http://www.unicode.org/reports/tr51/#Diversity)**.
-The previous twemoji V1 adheres to the [7.0 Unicode version](http://www.unicode.org/charts/PDF/Unicode-7.0/U70-1F300.pdf) and supports 872 different emoji.
+The previous twemoji V1 adheres to the [7.0 Unicode version](http://www.unicode.org/charts/PDF/Unicode-7.0/U70-1F300.pdf) and supports 874 different emoji.
 
 ## Version 2 CDN Support
 
@@ -267,7 +267,7 @@ For given UTF16 surrogate pairs, returns the equivalent HEX codepoint.
 ```js
  twemoji.convert.toCodePoint('\ud83c\udde8\ud83c\uddf3');
  // "1f1e8-1f1f3"
- 
+
  twemoji.convert.toCodePoint('\ud83c\udde8\ud83c\uddf3', '~');
  // "1f1e8~1f1f3"
 ```
