@@ -346,6 +346,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Twemoji for Pencil](https://github.com/nathanielw/Twemoji-for-Pencil) by [@Nathanielnw](https://twitter.com/nathanielnw): Use Twemoji in Pencil.
 * [FrwTwemoji - Twemoji in dotnet](https://github.com/FrenchW/FrwTwemoji) by [@FrenchW](https://twitter.com/frenchw): Use Twemoji in any dotnet project (C#, asp.net ...).
 * [Emojiawesome - Twemoji for Yellow](https://github.com/datenstrom/yellow-plugins/tree/master/emojiawesome) by [@datenstrom](https://github.com/datenstrom/): Use Twemoji in Yellow CMS.
+* [EmojiPanel for Twitter](https://github.com/danbovey/EmojiPanel) by [@danielbovey](https://twitter.com/danielbovey/status/749580050274582528): Insert Twemoji into your tweets on twitter.com.
 
 ## Committers and Contributors
 * Andrea Giammarchi (ex-Twitter)
