@@ -2,9 +2,8 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-## Unicode 8.0 and Diversity
-The **twemoji V2** adheres to the [8.0 Unicode version](http://unicode.org/versions/Unicode8.0.0/) and **supports** 1661 different emoji, including **[diversity](http://www.unicode.org/reports/tr51/#Diversity)**.
-The previous twemoji V1 adheres to the [7.0 Unicode version](http://www.unicode.org/charts/PDF/Unicode-7.0/U70-1F300.pdf) and supports 874 different emoji.
+## Unicode 9.0 and Diversity
+**Twemoji v2.1** adheres to [9.0 Unicode version](http://unicode.org/versions/Unicode9.0.0/) and supports **1,828** different emoji.
 
 ## Version 2 CDN Support
 
@@ -349,8 +348,9 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [EmojiPanel for Twitter](https://github.com/danbovey/EmojiPanel) by [@danielbovey](https://twitter.com/danielbovey/status/749580050274582528): Insert Twemoji into your tweets on twitter.com.
 
 ## Committers and Contributors
-* Andrea Giammarchi (ex-Twitter)
 * Tom Wuttke (Twitter)
+* Bryan Haggerty (Twitter)
+* Andrea Giammarchi (ex-Twitter)
 * Joen Asmussen (WordPress)
 * Marcus Kazmierczak (WordPress)
 
@@ -361,7 +361,7 @@ The rules for contributing are available at `CONTRIBUTING.md` file.
 Thank you to all of our [contributors](https://github.com/twitter/twemoji/graphs/contributors).
 
 ## License
-Copyright 2014 Twitter, Inc and other contributors
+Copyright 2016 Twitter, Inc and other contributors
 
 Code licensed under the MIT License: http://opensource.org/licenses/MIT
 
