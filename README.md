@@ -2,8 +2,8 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-## Unicode 9.0 and Diversity
-**Twemoji v2.1** adheres to [9.0 Unicode version](http://unicode.org/versions/Unicode9.0.0/) and supports **1,828** different emoji.
+## Unicode 9.0
+**Twemoji v2.1** adheres to [9.0 Unicode version](http://unicode.org/versions/Unicode9.0.0/) and supports **1,830** different emoji.
 
 ## Version 2 CDN Support
 
@@ -11,7 +11,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN suppor
 
 For the latter one, use the following in the `<head>` tag of your HTML document(s):
 ```html
-<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.1.1"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.1.2"></script>
 ```
 
 ## Breaking changes in V2
