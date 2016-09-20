@@ -2,16 +2,18 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-## Unicode 9.0
-**Twemoji v2.1** adheres to [9.0 Unicode version](http://unicode.org/versions/Unicode9.0.0/) and supports **1,830** different emoji.
+**Twemoji v2.2** adheres to the [Unicode 9.0 spec](http://unicode.org/versions/Unicode9.0.0/) and supports the [Emoji 4.0 draft spec](http://www.unicode.org/reports/tr51/tr51-8.html) (codepoints and supported emoji are subject to change until the Emoji 4.0 spec is ratified).
 
-## Version 2 CDN Support
+The Twemoji library offers support for **2,477** emojis, including skin tone and gender modifiers. 
 
-The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN support for both version 1 and version 2.
 
-For the latter one, use the following in the `<head>` tag of your HTML document(s):
+## CDN Support
+
+The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN support.
+
+Use the following in the `<head>` tag of your HTML document(s):
 ```html
-<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.1.2"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2"></script>
 ```
 
 ## Breaking changes in V2
@@ -24,26 +26,10 @@ There are few potentially breaking changes in `twemoji` version 2:
   * the `attributes` function will receives `(rawText, iconId)` instead of `(icon, variant)`
   * the **default** remote protocol is now **https** regardless the current site is _http_ or even _file_
   * the **default** PNG icon size is **72** pixels and **there are no other PNG assets** for 16 or 32.
-  * in order to access latest Unicode 8 ready assets you need to specify *folder* `2/72x72` or `2/svg`.
+  * in order to access latest assets you need to specify *folder* `2/72x72` or `2/svg`.
 
 Everything else is pretty much the same so if you were using defaults, all you need to do is to add the version `2/` before the `twmoji.js` file you were using.
 
-
-## Version 1 CDN Support
-
-The folks over at [MaxCDN](https://www.maxcdn.com) graciously provide CDN support.
-
-Just use the following in the `<head>` tag of your HTML document(s):
-
-```html
-<script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
-```
-
-Alternatively you can use [cdnjs](https://cdnjs.com/) if you prefer:
-
-```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/1.3.2/twemoji.min.js"></script>
-```
 
 ## API
 

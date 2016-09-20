@@ -19,9 +19,107 @@ var assets = {
   '2/svg': []
 };
 
+var skinToneOptions = [
+  '\\ud83c\\udffb',
+  '\\ud83c\\udffc',
+  '\\ud83c\\udffd',
+  '\\ud83c\\udffe',
+  '\\ud83c\\udfff'
+];
+
 // white spaces we don't want to catch via the RegExp
 // there is no asset equivalent for these
 var ignoreMissing = ['2002', '2003', '2005'];
+
+
+// basic utilities to convert codepoints to JSON strings
+function toJSON(codePoints) {
+  return codePoints.split('-').map(function (point) {
+    return UTF162JSON(fromCodePoint(point));
+  }).join('');
+}
+function fromCodePoint(codepoint) {
+  var code = typeof codepoint === 'string' ?
+        parseInt(codepoint, 16) : codepoint;
+  if (code < 0x10000) {
+    return String.fromCharCode(code);
+  }
+  code -= 0x10000;
+  return String.fromCharCode(
+    0xD800 + (code >> 10),
+    0xDC00 + (code & 0x3FF)
+  );
+}
+function UTF162JSON(text) {
+  for (var i = 0, r = []; i < text.length; i++) {
+    r.push('\\u' + ('000' + text.charCodeAt(i).toString(16)).slice(-4));
+  }
+  return r.join('');
+}
+
+// Items is an array of unicode sequences with \u escaping, like ["\u2963\ufe0f", "\u263a\ufe0f"]
+// items get sorted by length (long to short), then unicode hex values (low to high)
+// output is "or" ed together using | for regex
+// ouput also combines adjacent items using character classes with ranges when they have common prefixes
+// Example: "aab", "aac", "aad", "aag", "ba" becomes "aa[b-dg]|ba"
+function generateRegexPartial(items) {
+  var currentPrefix = null;
+  var result = [];
+  var charClass = [];
+  var charRange = [];
+  items.map(function (item) {
+    // Convert from "\u2963\ufe0f" into ["2963", "fe0f"]
+    return item.split('\\u').slice(1);
+  }).sort(sortMethod).forEach(function (itemParts) {
+    var prefix = itemParts.slice(0, -1).join('\\u');
+    if (prefix) {
+      prefix = '\\u' + prefix;
+    }
+    var suffix = itemParts.slice(-1);
+    if (prefix !== currentPrefix) {
+      flushCharClass();
+    }
+    currentPrefix = prefix;
+    var suffixMinusOne = UTF162JSON(String.fromCharCode(parseInt(suffix, 16) - 1));
+
+    if (charRange.length && charRange.slice(-1)[0] !== suffixMinusOne) {
+      flushCharRange();
+    }
+    charRange.push('\\u' + suffix);
+  });
+
+  flushCharClass();
+  return result.join('|');
+
+  // a and b are arrays of hex UCS-2 units
+  function sortMethod(a, b) {
+    return !a.length ? 0 :
+      b.length - a.length ||
+      parseInt(a[0], 16) - parseInt(b[0], 16) ||
+      sortMethod(a.slice(1), b.slice(1)
+    );
+  }
+
+  function flushCharRange() {
+    charClass = charClass.concat((charRange.length < 3) ?
+      charRange :
+      [ charRange[0], '-', charRange.slice(-1)[0] ]
+    );
+    charRange = [];
+  }
+
+  function flushCharClass() {
+    flushCharRange();
+    if (charClass.length) {
+      result.push(currentPrefix + (charClass.length == 1 ?
+        charClass[0] :
+        '[' + charClass.join('') + ']'
+      ));
+    }
+    charClass = [];
+    currentPrefix = null;
+  }
+}
 
 // basic utility to organize async code
 // see: http://webreflection.blogspot.co.uk/2012/03/tweet-sized-queue-system.html
@@ -118,7 +216,6 @@ Queue([
                   }
                 });
               }
-              
             },
             // and per each folder
             Object.keys(assets)
@@ -228,23 +325,15 @@ Queue([
     q.next();
   },
 
-  // with all info, generate a RegExp that will catch
-  // only standard emoji that are present in our assets
-  function generateRegExp(q) {
-    console.log('generating a RegExp for available assets');
-    var zwj = [];
-    var diversity = [];
-    var sensitive = [];
-    var sensitiveKeycaps = [];
-    var diversitySensitive = [];
-    var skinToneOptions = [
-      '\\ud83c\\udffb',
-      '\\ud83c\\udffc',
-      '\\ud83c\\udffd',
-      '\\ud83c\\udffe',
-      '\\ud83c\\udfff'
-    ];
-    var regular = [];
+  // detect complete sets of five skin tones and a base
+  function partitionEmojiTypes(q) {
+    console.log('partitioning emoji into types');
+    q.zwj = [];
+    q.diversity = [];
+    q.sensitive = [];
+    q.sensitiveKeycaps = [];
+    q.diversitySensitive = [];
+    q.regular = [];
     q.emojiSource.forEach(function (codePoints) {
       var u;
       var codePointsWithoutKeycap;
@@ -256,148 +345,131 @@ Queue([
         u = toJSON(codePoints);
         codePointsWithoutKeycap = codePoints.replace(/-20E3$/, '');
         if (codePoints.indexOf('200D') >= 0) {
-          zwj.push(u);
+          q.zwj.push(u);
         } else if (codePoints != codePointsWithoutKeycap && q.variantsSensitive.indexOf(codePointsWithoutKeycap) >= 0) {
-          sensitiveKeycaps.push(toJSON(codePointsWithoutKeycap));
+          q.sensitiveKeycaps.push(toJSON(codePointsWithoutKeycap));
         } else if (q.diversityBase.indexOf(codePoints.replace(/-1F3F[B-F]$/, '')) >= 0) {
           // This is a diversity Emoji with or without a skin tone modifier
           // Add it to the regex if this is the base without the modifier
           if (q.diversityBase.indexOf(codePoints) >= 0) {
             if (q.variantsSensitive.indexOf(codePoints) < 0) {
-              diversity.push(u);
+              q.diversity.push(u);
             } else {
-              diversitySensitive.push(u);
+              q.diversitySensitive.push(u);
             }
           }
         } else if (q.variantsSensitive.indexOf(codePoints) < 0) {
-          regular.push(u);
+          q.regular.push(u);
         } else {
-          sensitive.push(u);
+          q.sensitive.push(u);
         }
       }
     });
+    q.next();
+  },
 
+  function factorZwjSequences(q) {
+    q.zwjCommonPatterns = [];
+
+    // There are dozens of new ZWJ sequences that have common prefixes or suffixes with
+    // skin tone + gender variations. To keep the main regex from growing excessively large and
+    // slow, choose some common sub-expressions to factor.
+    var commonPatterns = [
+      {
+        name: 'leading man/woman zwj with optional skin tone',
+        re: '\\ud83d[\\udc68-\\udc69](?:\\ud83c[\\udffb-\\udfff])?\\u200d(.+?)',
+        numCombinations: 12
+      }, {
+        name: 'variant or skin tone before trailing female/male zwj',
+        re: '(.+?)(?:\\ufe0f|\\ud83c[\\udffb-\\udfff])\\u200d[\\u2640\\u2642]\\ufe0f',
+        numCombinations: 12
+      }, {
+        name: 'optional skin tone before trailing female/male zwj',
+        re: '(.+?)(?:\\ud83c[\\udffb-\\udfff])?\\u200d[\\u2640\\u2642]\\ufe0f',
+        numCombinations: 12
+      }
+    ];
+
+    commonPatterns.forEach(function(pattern) {
+      var mapOfMatches = {};
+      var re = new RegExp('^' + pattern.re + '$');
+      q.zwj.forEach(function(jsonString) {
+        var rawString = JSON.parse('"' + jsonString + '"');
+        var match = rawString.match(re);
+        if (match) {
+          var key = match[1];
+          mapOfMatches[key] = mapOfMatches[key] || [];
+          mapOfMatches[key].push(match[0]);
+        }
+      });
+      var replacements = [];
+      Object.keys(mapOfMatches).forEach(function(key) {
+        var matches = mapOfMatches[key];
+        // Only a complete set may be replaced
+        if (matches.length === pattern.numCombinations) {
+          replacements.push(UTF162JSON(key));
+          // Remove all items in the match set from the original zwj list
+          matches.forEach(function(rawString) {
+            var indexToRemove = q.zwj.indexOf(UTF162JSON(rawString));
+            if (indexToRemove >= 0) {
+              q.zwj.splice(indexToRemove, 1);
+            }
+          });
+        }
+      });
+      if (replacements.length) {
+        // Replace the wildcard section of the regex with a regex group of replacements
+        var re = pattern.re.replace('(.+?', '(?:' + generateRegexPartial(replacements));
+        q.zwjCommonPatterns.push(re);
+        console.log('Refactoring ' + replacements.length + ' complete sets of ' + pattern.numCombinations + ' zwj from ' + pattern.name);
+      } else {
+        console.log('did not find any complete sets of ' + pattern.name);
+      }
+    });
+
+    q.next();
+  },
+
+  // with all info, generate a RegExp that will catch
+  // only standard emoji that are present in our assets
+  function generateRegExp(q) {
+    console.log('generating a RegExp for available assets');
     q.re = '';
 
-    // The Zero-width joiner Emojis, if present, need to come first
-    if (zwj.length) {
-      q.re += generateRegexPartial(zwj) + '|';
+    // The Zero-width joiner common patterns, if present, need to come first
+    if (q.zwjCommonPatterns.length) {
+      q.re += q.zwjCommonPatterns.join('|') + '|';
+    }
+
+    // Then the rest of the zwjs
+    if (q.zwj.length) {
+      q.re += generateRegexPartial(q.zwj) + '|';
     }
 
     // Group the variant sensitive keycaps
-    if (sensitiveKeycaps.length) {
-      q.re += '(?:' + generateRegexPartial(sensitiveKeycaps) + ')\\ufe0f?\\u20e3|';
+    if (q.sensitiveKeycaps.length) {
+      q.re += '(?:' + generateRegexPartial(q.sensitiveKeycaps) + ')\\ufe0f?\\u20e3|';
     }
 
     // Next, add the diversity enabled Emoji that may include a skin tone suffix
-    if (diversity.length + diversitySensitive.length) {
+    if (q.diversity.length + q.diversitySensitive.length) {
       q.re += '(?:';
-      if (diversitySensitive.length) {
+      if (q.diversitySensitive.length) {
         // Some diversity are sensitive to variants
-        q.re += '(?:' + generateRegexPartial(diversitySensitive) + ')(?:\\ufe0f|(?!\\ufe0e))';
-        if (diversity.length) {
+        q.re += '(?:' + generateRegexPartial(q.diversitySensitive) + ')(?:\\ufe0f|(?!\\ufe0e))';
+        if (q.diversity.length) {
           q.re += '|';
         }
       }
-      q.re += generateRegexPartial(diversity) + ')(?:' + generateRegexPartial(skinToneOptions) + '|)|';
+      q.re += generateRegexPartial(q.diversity) + ')(?:' + generateRegexPartial(skinToneOptions) + '|)|';
     }
 
     // Next, the normal Emoji
-    q.re += generateRegexPartial(regular) + '|';
+    q.re += generateRegexPartial(q.regular) + '|';
 
     // Finally, add the rest of the sensitive ones that may be followed by U+FE0F but not U+FE0E
-    q.re += '(?:' + generateRegexPartial(sensitive) + ')(?:\\ufe0f|(?!\\ufe0e))';
+    q.re += '(?:' + generateRegexPartial(q.sensitive) + ')(?:\\ufe0f|(?!\\ufe0e))';
     q.next();
-
-    // basic utilities to convert codepoints to JSON strings
-    function toJSON(codePoints) {
-      return codePoints.split('-').map(function (point) {
-        return UTF162JSON(fromCodePoint(point));
-      }).join('');
-    }
-    function fromCodePoint(codepoint) {
-      var code = typeof codepoint === 'string' ?
-            parseInt(codepoint, 16) : codepoint;
-      if (code < 0x10000) {
-        return String.fromCharCode(code);
-      }
-      code -= 0x10000;
-      return String.fromCharCode(
-        0xD800 + (code >> 10),
-        0xDC00 + (code & 0x3FF)
-      );
-    }
-    function UTF162JSON(text) {
-      for (var i = 0, r = []; i < text.length; i++) {
-        r.push('\\u' + ('000' + text.charCodeAt(i).toString(16)).slice(-4));
-      }
-      return r.join('');
-    }
-
-    // Items is an array of unicode sequences with \u escaping, like ["\u2963\ufe0f", "\u263a\ufe0f"]
-    // output is "or" ed together using | for regex
-    // ouput also combines adjacent items using character classes with ranges when they have common prefixes
-    // Example: "aab", "aac", "aad", "aag", "ba" becomes "aa[b-dg]|ba"
-    function generateRegexPartial(items) {
-      var currentPrefix = null;
-      var result = [];
-      var charClass = [];
-      var charRange = [];
-      items.map(function (item) {
-        // Convert from "\u2963\ufe0f" into ["2963", "fe0f"]
-        return item.split('\\u').slice(1);
-      }).sort(sortMethod).forEach(function (itemParts) {
-        var prefix = itemParts.slice(0, -1).join('\\u');
-        if (prefix) {
-          prefix = '\\u' + prefix;
-        }
-        var suffix = itemParts.slice(-1);
-        if (prefix !== currentPrefix) {
-          flushCharClass();
-        }
-        currentPrefix = prefix;
-        var suffixMinusOne = UTF162JSON(String.fromCharCode(parseInt(suffix, 16) - 1));
-
-        if (charRange.length && charRange.slice(-1)[0] !== suffixMinusOne) {
-          flushCharRange();
-        }
-        charRange.push('\\u' + suffix);
-      });
-
-      flushCharClass();
-      return result.join('|');
-
-      // a and b are arrays of hex UCS-2 units
-      // items get sorted by length (long to short), then unicode hex values (low to high)
-      function sortMethod(a, b) {
-        return !a.length ? 0 :
-          b.length - a.length ||
-          parseInt(a[0], 16) - parseInt(b[0], 16) ||
-          sortMethod(a.slice(1), b.slice(1)
-        );
-      }
-
-      function flushCharRange() {
-        charClass = charClass.concat((charRange.length < 3) ?
-          charRange :
-          [ charRange[0], '-', charRange.slice(-1)[0] ]
-        );
-        charRange = [];
-      }
-
-      function flushCharClass() {
-        flushCharRange();
-        if (charClass.length) {
-          result.push(currentPrefix + (charClass.length == 1 ?
-            charClass[0] :
-            '[' + charClass.join('') + ']'
-          ));
-        }
-        charClass = [];
-        currentPrefix = null;
-      }
-    }
-
   },
 
   function generateFile(q) {
