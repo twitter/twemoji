@@ -18,7 +18,7 @@ Use the following in the `<head>` tag of your HTML document(s):
 
 ## Breaking changes in V2
 
-_TL;DR_: there's no `variant` anymore, all callbacks receive the transformed `iconId` and in some case the rawText too.
+_TL;DR_: there's no `variant` anymore, all callbacks receive the transformed `iconId` and in some cases the rawText too.
 
 There are a few potentially breaking changes in `twemoji` version 2:
 
