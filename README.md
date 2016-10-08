@@ -18,37 +18,37 @@ Use the following in the `<head>` tag of your HTML document(s):
 
 ## Breaking changes in V2
 
-_TL;DR_: there's no `variant` anymore, all callbacks receives the transformed `iconId` and in some case the rawText too.
+_TL;DR_: there's no `variant` anymore, all callbacks receive the transformed `iconId` and in some case the rawText too.
 
-There are few potentially breaking changes in `twemoji` version 2:
+There are a few potentially breaking changes in `twemoji` version 2:
 
   * the `parse` invoked function signature is now `(iconId, options)` instead of `(icon, options, variant)`
-  * the `attributes` function will receives `(rawText, iconId)` instead of `(icon, variant)`
-  * the **default** remote protocol is now **https** regardless the current site is _http_ or even _file_
+  * the `attributes` function now receives `(rawText, iconId)` instead of `(icon, variant)`
+  * the **default** remote protocol is now **https** regardless of whether the current site is _http_ or even _file_
   * the **default** PNG icon size is **72** pixels and **there are no other PNG assets** for 16 or 32.
   * in order to access latest assets you need to specify *folder* `2/72x72` or `2/svg`.
 
-Everything else is pretty much the same so if you were using defaults, all you need to do is to add the version `2/` before the `twmoji.js` file you were using.
+Everything else is pretty much the same, so if you were using the defaults, all you need to do is to add the version `2/` before the `twemoji.js` file you were using.
 
 
 ## API
 
-Following all methods exposed through the `twemoji` namespace.
+Following are all the methods exposed in the `twemoji` namespace.
 
 ### twemoji.parse( ... ) V1
 
-This is the main parsing utility and has 3 overloads per each parsing type.
+This is the main parsing utility and has 3 overloads per parsing type.
 
-There are mainly two kind of parsing: [string parsing](https://github.com/twitter/twemoji#string-parsing) and [DOM parsing](https://github.com/twitter/twemoji#dom-parsing).
+There are mainly two kinds of parsing: [string parsing](https://github.com/twitter/twemoji#string-parsing) and [DOM parsing](https://github.com/twitter/twemoji#dom-parsing).
 
-Each of them accept a callback to generate each image source or an options object with parsing info.
+Each of them accepts a callback to generate an image source or an options object with parsing info.
 
-Here is a walk through all parsing possibilities:
+Here is a walkthrough of all parsing possibilities:
 
 ##### string parsing (V1)
-Given a generic string, it will replace all emoji with an `<img>` tag.
+Given a generic string, replaces all emoji with an `<img>` tag.
 
-While this can be used to inject via `innerHTML` emoji image tags, please note that this method does not sanitize the string or prevent malicious code from being executed. As an example, if the text contains a `<script>` tag, this **will not** be converted into `&lt;script&gt;` since it's out of this method scope to prevent these kind of attacks.
+While this can be used to inject emoji via image tags in `innerHTML`, please note that this method does not sanitize the string or prevent malicious code from being executed. As an example, if the text contains a `<script>` tag, it **will not** be converted into `&lt;script&gt;` since it's out of this method's scope to prevent these kind of attacks.
 
 However, for already sanitized strings, this method can be considered safe enough. Please see DOM parsing if security is one of your major concerns.
 
@@ -66,7 +66,8 @@ I <img
 ```
 
 _string parsing + callback_
-If a callback is passed, the `src` attribute will be the one returned by the same callback.
+
+If a callback is passed, the value of the `src` attribute will be the value returned by the callback.
 ```js
 twemoji.parse(
   'I \u2764\uFE0F emoji!',
@@ -88,7 +89,8 @@ I <img
 By default, the `options.size` parameter will be the string `"36x36"` and the `variant` will be an optional `\uFE0F` char that is usually ignored by default. If your assets include or distinguish between `\u2764\uFE0F` and `\u2764`, you might want to use such a variable.
 
 _string parsing + callback returning_ `falsy`
-If the callback returns "falsy values" such `null`, `undefined`, `0`, `false`, or an empty string, nothing will change for that specific emoji.
+
+If the callback returns "falsy values" such as `null`, `undefined`, `0`, `false`, or an empty string, nothing will change for that specific emoji.
 ```js
 var i = 0;
 twemoji.parse(
@@ -112,6 +114,7 @@ emoji, m❤️n am<img
 ```
 
 _string parsing + object_
+
 In case an object is passed as second parameter, the passed `options` object will reflect its properties.
 ```js
 twemoji.parse(
@@ -136,9 +139,9 @@ I <img
 
 ##### DOM parsing
 
-Differently from `string` parsing, if the first argument is a `HTMLElement` generated image tags will replace emoji that are **inside `#text` node only** without compromising surrounding nodes or listeners, and avoiding completely the usage of `innerHTML`.
+In contrast to `string` parsing, if the first argument is an `HTMLElement`, generated image tags will replace emoji that are **inside `#text` nodes only** without compromising surrounding nodes or listeners, and completely avoiding the usage of `innerHTML`.
 
-If security is a major concern, this parsing can be considered the safest option but with a slightly penalized performance gap due to DOM operations that are inevitably *costly* compared to basic strings.
+If security is a major concern, this parsing can be considered the safest option but with a slight performance penalty due to DOM operations that are inevitably *costly*.
 
 ```js
 var div = document.createElement('div');
@@ -159,10 +162,10 @@ img.draggable;  // false
 
 ```
 
-All other overloads described for `string` are available exactly same way for DOM parsing.
+All other overloads described for `string` are available in exactly the same way for DOM parsing.
 
 ### Object as parameter
-Here the list of properties accepted by the optional object that could be passed to parse.
+Here's the list of properties accepted by the optional object that can be passed to the `parse` function.
 
 ```js
   {
@@ -178,7 +181,7 @@ Here the list of properties accepted by the optional object that could be passed
 ```
 
 ##### callback
-The function to invoke in order to generate images `src`.
+The function to invoke in order to generate image `src`(s).
 
 By default it is a function like the following one:
 ```js
@@ -218,37 +221,37 @@ If you modify the former, it will reflect as default for all parsed strings or n
 
 
 ##### className
-The default `class` per each generated image is `emoji`. It is possible to specify a different one through this property.
+The default `class` for each generated image is `emoji`. It is possible to specify a different one through this property.
 
 
 ##### size
-The default assets size is the same as `twemoji.size` which is `"36x36"`.
+The default asset size is the same as `twemoji.size` which is `"36x36"`.
 
 If you modify the former, it will reflect as default for all parsed strings or nodes.
 
 
 ##### folder
-In case there is no need to specify a size. It is possible to chose a folder, as is the case of SVG emoji.
+In case you don't want to specify a size for the image. It is possible to choose a folder, as in the case of SVG emoji.
 ```js
 twemoji.parse(genericNode, {
   folder: 'svg',
   ext: '.svg'
 });
 ```
-This will generate urls such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size based one.
+This will generate urls such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size based image.
 
 ## Utilities
 
 Basic utilities / helpers to convert code points to JavaScript surrogates and vice versa.
 
 #### twemoji.convert.fromCodePoint()
-For given an HEX codepoint, returns UTF16 surrogate pairs.
+For a given HEX codepoint, returns UTF-16 surrogate pairs.
 ```js
 twemoji.convert.fromCodePoint('1f1e8');
  // "\ud83c\udde8"
 ```
 #### twemoji.convert.toCodePoint()
-For given UTF16 surrogate pairs, returns the equivalent HEX codepoint.
+For given UTF-16 surrogate pairs, returns the equivalent HEX codepoint.
 ```js
  twemoji.convert.toCodePoint('\ud83c\udde8\ud83c\uddf3');
  // "1f1e8-1f1f3"
@@ -276,7 +279,7 @@ This will make sure emoji derive their width and height from the `font-size` of 
 
 #### UTF-8 Character Set
 
-To properly support emoji, the document character must be set to UTF-8. This can done by including the following meta tag in the document `<head>`
+To properly support emoji, the document character set must be set to UTF-8. This can done by including the following meta tag in the document `<head>`
 
 ```html
 <meta charset="utf-8">
@@ -315,7 +318,7 @@ npm install
 ./2/utils/generate
 ```
 
-If you'd like to test and/or propose some change to the V2 library please change `./2/utils/generate` file at its end so that everything will be generated properly once launched.
+If you'd like to test and/or propose some changes to the V2 library please change the `./2/utils/generate` file at its end so that everything will be generated properly once launched.
 
 
 ## Attribution Requirements
@@ -343,11 +346,13 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 
 The goal of this project is to simply provide emoji for everyone. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community due to the simple nature of the project.
 
-The rules for contributing are available at `CONTRIBUTING.md` file.
+The rules for contributing are available in the `CONTRIBUTING.md` file.
 
 Thank you to all of our [contributors](https://github.com/twitter/twemoji/graphs/contributors).
 
 ## License
 Copyright 2016 Twitter, Inc and other contributors
+
 Code licensed under the MIT License: http://opensource.org/licenses/MIT
+
 Graphics licensed under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
