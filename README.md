@@ -13,7 +13,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN 
 
 Use the following in the `<head>` tag of your HTML document(s):
 ```html
-<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2.2"></script>
 ```
 
 ## Breaking changes in V2
