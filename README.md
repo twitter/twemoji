@@ -336,6 +336,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Emojiawesome - Twemoji for Yellow](https://github.com/datenstrom/yellow-plugins/tree/master/emojiawesome) by [@datenstrom](https://github.com/datenstrom/): Use Twemoji in Yellow CMS.
 * [EmojiPanel for Twitter](https://github.com/danbovey/EmojiPanel) by [@danielbovey](https://twitter.com/danielbovey/status/749580050274582528): Insert Twemoji into your tweets on twitter.com.
 * [Twitter Color Emoji font](https://github.com/eosrei/twemoji-color-font) by [@bderickson](https://twitter.com/bderickson): Use Twemoji as your system default font on Linux & OS X.
+* [Emojica](https://github.com/xoudini/emojica) by [@xoudini](https://twitter.com/xoudini): An iOS framework allowing you to replace all standard emoji in strings with Twemoji.
 
 ## Committers and Contributors
 * Tom Wuttke (Twitter)
