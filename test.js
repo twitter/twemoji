@@ -44,17 +44,17 @@ wru.test([{
   name: 'string parsing + callback',
   test: function () {
     var result = false;
-    twemoji.parse('I \u2764 emoji!', function (icon, options, variant) {
-      result = icon === '2764' && options.size === '36x36' && !variant;
+    twemoji.parse('I \u2764 emoji!', function (icon, options) {
+      result = icon === '2764' && options.size === '36x36';
     });
     wru.assert('works OK without variant', result);
     result = false;
-    twemoji.parse('I \u2764\uFE0F emoji!', function (icon, options, variant) {
-      result = icon === '2764' && options.size === '36x36' && variant === '\uFE0F';
+    twemoji.parse('I \u2764\uFE0F emoji!', function (icon, options) {
+      result = icon === '2764' && options.size === '36x36';
     });
     wru.assert('works OK with variant', result);
     result = true;
-    twemoji.parse('I \u2764\uFE0E emoji!', function (icon, options, variant) {
+    twemoji.parse('I \u2764\uFE0E emoji!', function (icon, options) {
       result = false;
     });
     wru.assert('not invoked when \uFE0E is matched', result);
@@ -84,25 +84,12 @@ wru.test([{
     );
   }
 },{
-  name: 'twemoji.replace(str, callback)',
-  test: function () {
-    var result = false;
-    var str = twemoji.replace('I \u2764\uFE0E emoji!', function (match, emoji, variant) {
-      result =  match === '\u2764\uFE0E' &&
-                emoji === '\u2764\uFE0E' &&
-                variant === '\uFE0E';
-      return '<3';
-    });
-    wru.assert('all exepected values are passed through', result);
-    wru.assert('returned value is the expected', str === 'I <3 emoji!');
-  }
-},{
   name: 'twemoji.test(str)',
   test: function () {
     wru.assert(
       twemoji.test('I \u2764 emoji!') &&
       twemoji.test('I \u2764\uFE0F emoji!') &&
-      twemoji.test('I \u2764\uFE0E emoji!') &&
+      !twemoji.test('I \u2764\uFE0E emoji!') &&
       !twemoji.test('nope')
     );
   }
@@ -174,15 +161,15 @@ wru.test([{
     var result = false,
         div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764 emoji!'));
-    twemoji.parse(div, function (icon, options, variant) {
-      result = icon === '2764' && options.size === '36x36' && !variant;
+    twemoji.parse(div, function (icon, options) {
+      result = icon === '2764' && options.size === '36x36';
     });
     wru.assert('works OK without variant', result);
     result = false;
     div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764\uFE0F emoji!'));
-    twemoji.parse(div, function (icon, options, variant) {
-      result = icon === '2764' && options.size === '36x36' && variant === '\uFE0F';
+    twemoji.parse(div, function (icon, options) {
+      result = icon === '2764' && options.size === '36x36';
     });
     wru.assert('works OK with variant', result);
     result = true;
@@ -209,8 +196,8 @@ wru.test([{
     div.appendChild(document.createTextNode('I \u2764 emoji!'));
     twemoji.parse(div, {
       size: 16,
-      callback: function (icon, options, variant) {
-        result = icon === '2764' && options.size === '16x16' && !variant;
+      callback: function (icon, options) {
+        result = icon === '2764' && options.size === '16x16';
       }
     });
     wru.assert('works OK without variant', result);
@@ -219,8 +206,8 @@ wru.test([{
     div.appendChild(document.createTextNode('I \u2764\uFE0F emoji!'));
     twemoji.parse(div, {
       size: 72,
-      callback: function (icon, options, variant) {
-        result = icon === '2764' && options.size === '72x72' && !!variant;
+      callback: function (icon, options) {
+        result = icon === '2764' && options.size === '72x72';
       }
     });
     wru.assert('works OK with variant', result);
@@ -315,9 +302,9 @@ wru.test([{
       twemoji.parse(
         'I \u2764 emoji!',
         {
-          attributes: function(icon) {
+          attributes: function(rawText, iconId) {
             return {
-              title: 'Emoji: ' + icon,
+              title: 'Emoji: ' + rawText,
               'data-test': 'We all <3 emoji'
             };
           }
@@ -326,7 +313,25 @@ wru.test([{
     );
   }
 },{
-  name: 'string parsing + attributes callback content properly encoded',
+  name: 'string parsing + attributes callback icon id',
+  test: function () {
+    wru.assert(
+      'custom attributes are inserted',
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '36x36/2764.png" title="Emoji: 2764" data-test="We all &lt;3 emoji"> emoji!' ===
+      twemoji.parse(
+        'I \u2764 emoji!',
+        {
+          attributes: function(rawText, iconId) {
+            return {
+              title: 'Emoji: ' + iconId,
+              'data-test': 'We all <3 emoji'
+            };
+          }
+        }
+      )
+    );
+  }
+},{  name: 'string parsing + attributes callback content properly encoded',
   test: function () {
     wru.assert(
       'custom attributes are inserted',
@@ -334,7 +339,7 @@ wru.test([{
       twemoji.parse(
         'I \u2764 emoji!',
         {
-          attributes: function(icon) {
+          attributes: function(rawText, iconId) {
             return {
               title: '&amp;lt;script&amp;gt;alert("yo")&amp;lt;/script&amp;gt;'
             };
@@ -352,7 +357,7 @@ wru.test([{
       twemoji.parse(
         'I \u2764 emoji!',
         {
-          attributes: function(icon) {
+          attributes: function(rawText, iconId) {
             return {
               title: 'test',
               onsomething: 'whoops!',
@@ -373,9 +378,9 @@ wru.test([{
     div.appendChild(document.createTextNode('I \u2764 emoji!'));
     twemoji.parse(
       div, { 
-        attributes: function(icon) { 
+        attributes: function(rawText, iconId) {
           return { 
-            title: 'Emoji: ' + icon,
+            title: 'Emoji: ' + rawText,
             'data-test': 'We all <3 emoji',
             onclick: 'nope',
             onmousedown: 'nada'
@@ -462,34 +467,15 @@ wru.test([{
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);
   }
-},{
+}, {
   name: 'multiple parsing using a callback',
   test: function () {
     wru.assert(
       'FE0E is still ignored',
       twemoji.parse('\u25c0 \u25c0\ufe0e \u25c0\ufe0f', {
-        callback: function(icon){ return 'icon'; }
+        callback: function(iconId, options){return 'icon';}
       }) ===
       '<img class="emoji" draggable="false" alt="\u25c0" src="icon"> \u25c0\ufe0e <img class="emoji" draggable="false" alt="\u25c0\ufe0f" src="icon">'
-    );
-  }
-},{
-  name: 'non standard variant within others',
-  test: function () {
-    var a = [
-      'normal',
-      'forced-as-text',
-      'forced-as-apple-graphic',
-      'forced-as-graphic'
-    ];
-    wru.assert('normal forced-as-text forced-as-apple-graphic forced-as-graphic' ===
-      twemoji.replace('\u25c0 \u25c0\ufe0e 5\ufe0f\u20e3 \u25c0\ufe0f', function(match, icon, variant){
-        if (variant === '\uFE0E') return a[1];
-        if (variant === '\uFE0F') return a[3];
-        if (!variant) return a[
-          icon.length === 3 && icon.charAt(1) === '\uFE0F' ? 2 : 0
-        ];
-      })
     );
   }
 },{
