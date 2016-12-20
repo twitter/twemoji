@@ -595,6 +595,7 @@ function createTwemoji(re) {
        *  and to convert utf16 into code points
        * @param   string    the emoji surrogate pair
        * @param   string    the optional variant char, if any
+       * @return  string    the code point
        */
       function grabTheRightIcon(icon, variant) {
         // if variant is present as \uFE0F
