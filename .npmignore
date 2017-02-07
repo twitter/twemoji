@@ -12,9 +12,6 @@ assets
 2/templates
 2/test
 2/utils
-2/twemoji.amd.js
-2/twemoji.js
-2/twemoji.min.js
 bower.json
 build
 component.json
