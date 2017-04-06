@@ -141,9 +141,9 @@ Queue([
   // grab the list of emoji that behave differently when
   // variants such \uFE0E and \uFE0F are in place
   function grabStandardVariants(q) {
-    console.log('fetching StandardizedVariants.txt ... ');
+    console.log('fetching emoji-variation-sequences.txt ... ');
     http.get(
-      "http://unicode.org/Public/UNIDATA/StandardizedVariants.txt",
+      "http://unicode.org/Public/emoji/latest/emoji-variation-sequences.txt",
       function(res) {
         var chunks = [];
         if (res.statusCode == 200) {
