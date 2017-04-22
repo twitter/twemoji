@@ -12,6 +12,12 @@ Just use the following in the `<head>` tag of your HTML document(s):
 <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
 ```
 
+Alternatively you can use [cdnjs](https://cdnjs.com/) if you prefer:
+
+```html
+<script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/1.3.2/twemoji.min.js"></script>
+```
+
 ## API
 
 Following all methods exposed through the `twemoji` namespace.
