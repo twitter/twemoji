@@ -2,9 +2,9 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-**Twemoji v2.2** adheres to the [Unicode 9.0 spec](http://unicode.org/versions/Unicode9.0.0/) and supports the [Emoji 4.0 draft spec](http://www.unicode.org/reports/tr51/tr51-8.html) (codepoints and supported emoji are subject to change until the Emoji 4.0 spec is ratified).
+**Twemoji v2.3** adheres to the [Unicode 10.0 draft spec](http://unicode.org/versions/Unicode10.0.0/) and supports the [Emoji 5.0 draft spec](http://unicode.org/reports/tr51/proposed.html)
 
-The Twemoji library offers support for **2,477** emojis, including skin tone and gender modifiers. 
+The Twemoji library offers support for **2,661** emojis, including skin tone and gender modifiers. 
 
 
 ## CDN Support
@@ -13,7 +13,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN 
 
 Use the following in the `<head>` tag of your HTML document(s):
 ```html
-<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2.3"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.3.0"></script>
 ```
 
 ## Breaking changes in V2
@@ -339,8 +339,8 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Emojica](https://github.com/xoudini/emojica) by [@xoudini](https://twitter.com/xoudini): An iOS framework allowing you to replace all standard emoji in strings with Twemoji.
 
 ## Committers and Contributors
-* Tom Wuttke (Twitter)
 * Bryan Haggerty (Twitter)
+* Tom Wuttke (ex-Twitter)
 * Andrea Giammarchi (ex-Twitter)
 * Joen Asmussen (WordPress)
 * Marcus Kazmierczak (WordPress)
@@ -352,7 +352,7 @@ The rules for contributing are available in the `CONTRIBUTING.md` file.
 Thank you to all of our [contributors](https://github.com/twitter/twemoji/graphs/contributors).
 
 ## License
-Copyright 2016 Twitter, Inc and other contributors
+Copyright 2017 Twitter, Inc and other contributors
 
 Code licensed under the MIT License: http://opensource.org/licenses/MIT
 
