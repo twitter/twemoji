@@ -73,7 +73,7 @@ Queue([
         res.on('data', chunks.push.bind(chunks));
         // once done ...
         res.on('end', function () {
-          console.log('analizing EmojiSources VS our assets ... ');
+          console.log('analyzing EmojiSources VS our assets ... ');
           // store all missing assets in one object
           var missing = {};
           // will be used to store an array with all missing
@@ -114,7 +114,7 @@ Queue([
                   }
                 });
               }
-              
+
             },
             // and per each folder
             Object.keys(assets)
@@ -750,7 +750,7 @@ function createTwemoji(re) {
                 '"'
               );
               attrib = options.attributes(icon, variant);
-              for (attrname in attrib) { 
+              for (attrname in attrib) {
                 if (
                   attrib.hasOwnProperty(attrname) &&
                   // don't allow any handlers to be set + don't allow overrides
