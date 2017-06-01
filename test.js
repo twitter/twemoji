@@ -364,7 +364,7 @@ wru.test([{
       )
     );
   }
-},{    
+},{
   name: 'DOM parsing + attributes callback',
   test: function () {
     var img,
@@ -372,18 +372,18 @@ wru.test([{
         div = document.createElement('div');
     div.appendChild(document.createTextNode('I \u2764 emoji!'));
     twemoji.parse(
-      div, { 
-        attributes: function(icon) { 
-          return { 
+      div, {
+        attributes: function(icon) {
+          return {
             title: 'Emoji: ' + icon,
             'data-test': 'We all <3 emoji',
             onclick: 'nope',
             onmousedown: 'nada'
-          }; 
+          };
         }
       }
-     
-    );    
+
+    );
     wru.assert('default parsing works creating 3 nodes', div.childNodes.length === 3);
     wru.assert('first child is the expected one', div.removeChild(div.firstChild).nodeValue === 'I ');
     img = div.removeChild(div.firstChild);
@@ -400,7 +400,7 @@ wru.test([{
     wru.assert('img on attributes are omitted',
       img.onclick === null &&
       img.onmousedown === null
-    );  
+    );
   }
 },{
   name: 'folder option',
@@ -442,7 +442,7 @@ wru.test([{
       div.firstChild.className === 'emoji' &&
       div.firstChild.getAttribute('draggable') === 'false' &&
       div.firstChild.getAttribute('alt') === "5️⃣" &&
-      div.firstChild.src === 'http://twemoji.maxcdn.com/36x36/35-20e3.png'
+      div.firstChild.src === 'https://twemoji.maxcdn.com/36x36/35-20e3.png'
     );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 3);
@@ -457,7 +457,7 @@ wru.test([{
       div.firstChild.className === 'emoji' &&
       div.firstChild.getAttribute('draggable') === 'false' &&
       div.firstChild.getAttribute('alt') === "5⃣" &&
-      div.firstChild.src === 'http://twemoji.maxcdn.com/36x36/35-20e3.png'
+      div.firstChild.src === 'https://twemoji.maxcdn.com/36x36/35-20e3.png'
     );
     wru.assert('the length is preserved',
       div.getElementsByTagName('img')[0].alt.length === 2);
