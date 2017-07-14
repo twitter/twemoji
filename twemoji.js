@@ -37,6 +37,9 @@ var twemoji = (function (
       // default class name, by default 'emoji'
       className: 'emoji',
 
+      // template function for custom emoji wrapping
+      template: null,
+
       // basic utilities / helpers to convert code points
       // to JavaScript surrogates and vice versa
       convert: {
@@ -482,6 +485,9 @@ var twemoji = (function (
             }
           }
           ret = ret.concat('>');
+          if (options.template) {
+            ret = options.template.call(null, ret)
+          }
         }
       }
       return ret;
@@ -551,6 +557,7 @@ var twemoji = (function (
       ext:        how.ext || twemoji.ext,
       size:       how.folder || toSizeSquaredAsset(how.size || twemoji.size),
       className:  how.className || twemoji.className,
+      template:   how.template || twemoji.template,
       onerror:    how.onerror || twemoji.onerror
     });
   }
