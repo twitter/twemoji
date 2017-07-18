@@ -11,13 +11,13 @@ wru.test([{
     wru.assert(
       'default parsing works',
       twemoji.parse('I \u2764 emoji!') ===
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png"> emoji!'
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png"/> emoji!'
     );
     // with "as image" variant
     wru.assert(
       'default \uFE0F variant parsing works',
       twemoji.parse('I \u2764\uFE0F emoji!') ===
-      'I <img class="emoji" draggable="false" alt="\u2764\uFE0F" src="' + base + '72x72/2764.png"> emoji!'
+      'I <img class="emoji" draggable="false" alt="\u2764\uFE0F" src="' + base + '72x72/2764.png"/> emoji!'
     );
     // with "as text" variant
     wru.assert(
@@ -32,12 +32,12 @@ wru.test([{
     wru.assert(
       'number is squared',
       twemoji.parse('I \u2764 emoji!', {size: 72}) ===
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png"> emoji!'
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png"/> emoji!'
     );
     wru.assert(
       'string is preserved',
       twemoji.parse('I \u2764 emoji!', {size: 'any-size'}) ===
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + 'any-size/2764.png"> emoji!'
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + 'any-size/2764.png"/> emoji!'
     );
   }
 },{
@@ -73,7 +73,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'size is overwritten',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="72x72/2764.png"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="72x72/2764.png"/> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -226,7 +226,7 @@ wru.test([{
 },{
   name: 'nested nodes',
   test: function () {
-    var str = '<img class="emoji" draggable="false" alt="\u2764" src="https://twemoji.maxcdn.com/72x72/2764.png">',
+    var str = '<img class="emoji" draggable="false" alt="\u2764" src="https://twemoji.maxcdn.com/72x72/2764.png"/>',
         div = document.createElement('div'),
         p,
         img;
@@ -278,7 +278,7 @@ wru.test([{
   name: 'string parsing + className',
   test: function () {
     var className = 'img-' + Math.random();
-    var img = 'I <img class="' + className + '" draggable="false" alt="\u2764" src="72x72/2764.png"> emoji!';
+    var img = 'I <img class="' + className + '" draggable="false" alt="\u2764" src="72x72/2764.png"/> emoji!';
     wru.assert(
       'className is overwritten',
       img ===
@@ -309,7 +309,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="Emoji: \u2764" data-test="We all &lt;3 emoji"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="Emoji: \u2764" data-test="We all &lt;3 emoji"/> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -328,7 +328,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="Emoji: 2764" data-test="We all &lt;3 emoji"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="Emoji: 2764" data-test="We all &lt;3 emoji"/> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -346,7 +346,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="\u2764" src="' + base + '72x72/2764.png" title="&amp;amp;lt;script&amp;amp;gt;alert(&quot;yo&quot;)&amp;amp;lt;/script&amp;amp;gt;"/> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -364,7 +364,7 @@ wru.test([{
   test: function () {
     wru.assert(
       'custom attributes are inserted',
-      'I <img class="emoji" draggable="false" alt="❤" src="' + base + '72x72/2764.png" title="test"> emoji!' ===
+      'I <img class="emoji" draggable="false" alt="❤" src="' + base + '72x72/2764.png" title="test"/> emoji!' ===
       twemoji.parse(
         'I \u2764 emoji!',
         {
@@ -421,7 +421,7 @@ wru.test([{
 },{
   name: 'folder option',
   test: function () {
-    var img = 'I <img class="emoji" draggable="false" alt="\u2764" src="svg/2764.svg"> emoji!';
+    var img = 'I <img class="emoji" draggable="false" alt="\u2764" src="svg/2764.svg"/> emoji!';
     wru.assert(
       'folder is accepted',
       img ===
@@ -542,7 +542,7 @@ wru.test([{
       twemoji.parse('\u25c0 \u25c0\ufe0e \u25c0\ufe0f', {
         callback: function(iconId, options){return 'icon';}
       }) ===
-      '<img class="emoji" draggable="false" alt="\u25c0" src="icon"> \u25c0\ufe0e <img class="emoji" draggable="false" alt="\u25c0\ufe0f" src="icon">'
+      '<img class="emoji" draggable="false" alt="\u25c0" src="icon"/> \u25c0\ufe0e <img class="emoji" draggable="false" alt="\u25c0\ufe0f" src="icon"/>'
     );
   }
 },{
@@ -566,6 +566,34 @@ wru.test([{
     div.innerHTML = twemoji.parse('"\u2b1c\uFE0E"');
     wru.assert('correct length', div.getElementsByTagName('img').length === 0);
     wru.assert('expected html', div.innerHTML === '"\u2b1c\uFE0E"');
+  }
+}, {
+  name: 'Specific elements are not ignored',
+  test: function () {
+    var innerHTML, div = document.createElement('div');
+    div.innerHTML = '<iframe>\u2764</iframe>';
+    innerHTML = div.innerHTML;
+    twemoji.parse(div);
+    wru.assert('Exclude tags', div.innerHTML === div.innerHTML);
+    div.innerHTML = '<customiframe>\u2764</customiframe>';
+    wru.assert('Avoid false positive',
+      /^<customiframe><img .*?><\/customiframe>$/.test(twemoji.parse(div).innerHTML));
+  }
+}, {
+  name: 'XHTML parseNode compatibility',
+  test: function () {
+    var frame = document.createElement('iframe');
+    frame.src = 'data:application/xhtml+xml;charset=utf-8,%3Cx%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%E2%9D%A4%3C%2Fx%3E';
+    document.body.appendChild(frame);
+    setTimeout(wru.async(function () {
+      twemoji.parse(frame.contentDocument.documentElement);
+      if (frame.contentDocument.documentElement.outerHTML.indexOf("<html>") == 0) {
+        wru.assert('unable to test XHTML due to iframe not loading');
+      } else {
+        wru.assert('parse XHTML node', /^<x.*?><img .*?><\/x>$/.test(twemoji.parse(frame.contentDocument.documentElement).outerHTML));
+      }
+      document.body.removeChild(frame);
+    }, 10));
   }
 }, {
   name: 'SVG Elements are ignored',
