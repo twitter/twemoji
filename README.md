@@ -65,7 +65,7 @@ I <img
   class="emoji"
   draggable="false"
   alt="❤️"
-  src="https://twemoji.maxcdn.com/36x36/2764.png"> emoji!
+  src="https://twemoji.maxcdn.com/36x36/2764.png"/> emoji!
 */
 ```
 
@@ -86,7 +86,7 @@ I <img
   class="emoji"
   draggable="false"
   alt="❤️"
-  src="/assets/36x36/2764.gif"> emoji!
+  src="/assets/36x36/2764.gif"/> emoji!
 */
 ```
 
@@ -113,7 +113,7 @@ emoji, m❤️n am<img
   class="emoji"
   draggable="false"
   alt="❤️"
-  src="/assets/2764.png">ur
+  src="/assets/2764.png"/>ur
 */
 ```
 
@@ -137,7 +137,7 @@ I <img
   class="emoji"
   draggable="false"
   alt="❤️"
-  src="/assets/128x128/2764.gif"> emoji!
+  src="/assets/128x128/2764.gif"/> emoji!
 */
 ```
 
