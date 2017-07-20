@@ -6,6 +6,10 @@ A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/
 
 The Twemoji library offers support for **2,661** emojis, including skin tone and gender modifiers. 
 
+#### Please note
+The files in the root folder in this project are deprecated and listed for CDN and historical reasons.
+
+Please use the files for the current version (2) instead, located under the folder `./2/`.
 
 ## CDN Support
 
