@@ -88,7 +88,7 @@ var twemoji = (function (
        */
       onerror: function onerror() {
         if (this.parentNode) {
-          this.parentNode.replaceChild(createText(this.alt), this);
+          this.parentNode.replaceChild(createText(this.alt, false), this);
         }
       },
 
@@ -256,8 +256,8 @@ var twemoji = (function (
    * @param   string  text used to create DOM text node
    * @return  Node  a DOM node with that text
    */
-  function createText(text) {
-    return document.createTextNode(text);
+  function createText(text, clean) {
+    return document.createTextNode(clean ? text.replace(UFE0Fg, '') : text);
   }
 
   /**
@@ -366,7 +366,7 @@ var twemoji = (function (
         index = match.index;
         if (index !== i) {
           fragment.appendChild(
-            createText(text.slice(i, index))
+            createText(text.slice(i, index), true)
           );
         }
         rawText = match[0];
@@ -394,7 +394,7 @@ var twemoji = (function (
           modified = true;
           fragment.appendChild(img);
         }
-        if (!img) fragment.appendChild(createText(rawText));
+        if (!img) fragment.appendChild(createText(rawText, false));
         img = null;
       }
       // is there actually anything to replace in here ?
@@ -402,7 +402,7 @@ var twemoji = (function (
         // any text left to be added ?
         if (i < text.length) {
           fragment.appendChild(
-            createText(text.slice(i))
+            createText(text.slice(i), true)
           );
         }
         // replace the text node only, leave intact

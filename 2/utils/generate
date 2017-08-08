@@ -576,7 +576,7 @@ function createTwemoji(re) {
            */
           onerror: function onerror() {
             if (this.parentNode) {
-              this.parentNode.replaceChild(createText(this.alt), this);
+              this.parentNode.replaceChild(createText(this.alt, false), this);
             }
           },
 
@@ -744,8 +744,8 @@ function createTwemoji(re) {
        * @param   string  text used to create DOM text node
        * @return  Node  a DOM node with that text
        */
-      function createText(text) {
-        return document.createTextNode(text);
+      function createText(text, clean) {
+        return document.createTextNode(clean ? text.replace(UFE0Fg, '') : text);
       }
 
       /**
@@ -854,7 +854,7 @@ function createTwemoji(re) {
             index = match.index;
             if (index !== i) {
               fragment.appendChild(
-                createText(text.slice(i, index))
+                createText(text.slice(i, index), true)
               );
             }
             rawText = match[0];
@@ -882,7 +882,7 @@ function createTwemoji(re) {
               modified = true;
               fragment.appendChild(img);
             }
-            if (!img) fragment.appendChild(createText(rawText));
+            if (!img) fragment.appendChild(createText(rawText, false));
             img = null;
           }
           // is there actually anything to replace in here ?
@@ -890,7 +890,7 @@ function createTwemoji(re) {
             // any text left to be added ?
             if (i < text.length) {
               fragment.appendChild(
-                createText(text.slice(i))
+                createText(text.slice(i), true)
               );
             }
             // replace the text node only, leave intact
@@ -1057,7 +1057,7 @@ function createTwemoji(re) {
       // drop current indentation
       .replace(/^    /gm, '')
       // add the RegExp in the right place
-      .replace('re = /twemoji/', 're = /' + re + '/g')
+      .replace('re = /twemoji/', 're = /' + fs.readFileSync(__dirname + '/re').toString() + '/g')
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +
