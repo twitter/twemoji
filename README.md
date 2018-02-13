@@ -344,6 +344,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 
 ## Committers and Contributors
 * Bryan Haggerty (Twitter)
+* Nathan Downs (Twitter)
 * Tom Wuttke (ex-Twitter)
 * Andrea Giammarchi (ex-Twitter)
 * Joen Asmussen (WordPress)
@@ -356,7 +357,7 @@ The rules for contributing are available in the `CONTRIBUTING.md` file.
 Thank you to all of our [contributors](https://github.com/twitter/twemoji/graphs/contributors).
 
 ## License
-Copyright 2017 Twitter, Inc and other contributors
+Copyright 2018 Twitter, Inc and other contributors
 
 Code licensed under the MIT License: http://opensource.org/licenses/MIT
 
