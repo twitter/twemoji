@@ -502,6 +502,10 @@ function createTwemoji(re) {
 
       /*jshint maxparams:4 */
 
+      // RegExp based on emoji's official Unicode standards
+      // http://www.unicode.org/Public/UNIDATA/EmojiSources.txt
+      var re = /twemoji/;
+
       var
         // the exported module object
         twemoji = {
@@ -560,6 +564,9 @@ function createTwemoji(re) {
              */
             toCodePoint: toCodePoint
           },
+
+          // expose emoji unicode RegExp that is internally used for parsing (read only)
+          re: re,
 
 
         /////////////////////////
@@ -710,10 +717,6 @@ function createTwemoji(re) {
           "'": '&#39;',
           '"': '&quot;'
         },
-
-        // RegExp based on emoji's official Unicode standards
-        // http://www.unicode.org/Public/UNIDATA/EmojiSources.txt
-        re = /twemoji/,
 
         // avoid runtime RegExp creation for not so smart,
         // not JIT based, and old browsers / engines
