@@ -1604,9 +1604,9 @@ wru.test([{
       '\u2716\ufe0f',
       '\ud83d\udcb2',
       '\ud83d\udcb1',
-      '\xa9',
-      '\xae',
-      '\u2122',
+      '\xa9\ufe0f',
+      '\xae\ufe0f',
+      '\u2122\ufe0f',
       '\ud83d\udd1a',
       '\ud83d\udd19',
       '\ud83d\udd1b',
@@ -1917,7 +1917,7 @@ wru.test([{
     allIosEmoji.forEach(function (emoji) {
       div.innerHTML = emoji;
       twemoji.parse(div);
-      wru.assert(`recognized as graphical`,
+      wru.assert(`${emoji} recognized as graphical`,
           div.firstChild.className === 'emoji' &&
           div.firstChild.getAttribute('draggable') === 'false' &&
           div.firstChild.getAttribute('alt') === emoji
