@@ -1917,7 +1917,7 @@ wru.test([{
     allIosEmoji.forEach(function (emoji) {
       div.innerHTML = emoji;
       twemoji.parse(div);
-      wru.assert(`${emoji} recognized as graphical`,
+      wru.assert('' + emoji + 'recognized as graphical',
           div.firstChild.className === 'emoji' &&
           div.firstChild.getAttribute('draggable') === 'false' &&
           div.firstChild.getAttribute('alt') === emoji
