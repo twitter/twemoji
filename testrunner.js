@@ -22,9 +22,9 @@ var
             // retrieve the total executed tests number
             total: ''.concat(
               passed,
-              ' blocks (',
+              ' tests (',
               resultHeader ? resultHeader.textContent.replace(/\D/g, '') : 'no',
-              ' single tests)'
+              ' assertions)'
             ),
             passed: passed,
             failed: Math.max(0, document.querySelectorAll('.fail').length - 1),
