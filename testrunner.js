@@ -17,12 +17,13 @@ var
         var results = page.evaluate(function() {
           // remove the first node with the total from the following counts
           var passed = Math.max(0, document.querySelectorAll('.pass').length - 1);
+          var resultHeader = document.querySelector('#wru strong');
           return {
             // retrieve the total executed tests number
             total: ''.concat(
               passed,
               ' blocks (',
-              document.querySelector('#wru strong').textContent.replace(/\D/g, ''),
+              resultHeader ? resultHeader.textContent.replace(/\D/g, '') : 'no',
               ' single tests)'
             ),
             passed: passed,
@@ -39,7 +40,7 @@ var
         console.log('failed:  ' + results.failed);
         console.log('errored: ' + results.errored);
         console.log('- - - - - - - - - -');
-        if (0 < results.failed + results.errored) {
+        if (results.passed === 0 || 0 < results.failed + results.errored) {
           phantom.exit(1);
         } else test();
       }, 1000);
