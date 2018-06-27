@@ -1057,7 +1057,7 @@ function createTwemoji(re) {
       // drop current indentation
       .replace(/^    /gm, '')
       // add the RegExp in the right place
-      .replace('re = /twemoji/', `re = ${fs.readFileSync(path.join(__dirname, 'regex')).toString().trim()}`)
+      .replace('re = /twemoji/', `re = /${fs.readFileSync(path.join(__dirname, 'regex')).toString().trim()}/g`)
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +
