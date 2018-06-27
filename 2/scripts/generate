@@ -8,6 +8,7 @@
 var fs = require('fs');
 var http = require('http');
 var path = require('path');
+var Utils = require('./utils');
 
 function file(which) {
   return path.join(__dirname, '../..', which);
@@ -30,32 +31,6 @@ var skinToneOptions = [
 // white spaces we don't want to catch via the RegExp
 // there is no asset equivalent for these
 var ignoreMissing = ['2002', '2003', '2005'];
-
-
-// basic utilities to convert codepoints to JSON strings
-function toJSON(codePoints) {
-  return codePoints.split('-').map(function (point) {
-    return UTF162JSON(fromCodePoint(point));
-  }).join('');
-}
-function fromCodePoint(codepoint) {
-  var code = typeof codepoint === 'string' ?
-        parseInt(codepoint, 16) : codepoint;
-  if (code < 0x10000) {
-    return String.fromCharCode(code);
-  }
-  code -= 0x10000;
-  return String.fromCharCode(
-    0xD800 + (code >> 10),
-    0xDC00 + (code & 0x3FF)
-  );
-}
-function UTF162JSON(text) {
-  for (var i = 0, r = []; i < text.length; i++) {
-    r.push('\\u' + ('000' + text.charCodeAt(i).toString(16)).slice(-4));
-  }
-  return r.join('');
-}
 
 // Items is an array of unicode sequences with \u escaping, like ["\u2963\ufe0f", "\u263a\ufe0f"]
 // items get sorted by length (long to short), then unicode hex values (low to high)
@@ -80,7 +55,7 @@ function generateRegexPartial(items) {
       flushCharClass();
     }
     currentPrefix = prefix;
-    var suffixMinusOne = UTF162JSON(String.fromCharCode(parseInt(suffix, 16) - 1));
+    var suffixMinusOne = Utils.UTF162JSON(String.fromCharCode(parseInt(suffix, 16) - 1));
 
     if (charRange.length && charRange.slice(-1)[0] !== suffixMinusOne) {
       flushCharRange();
@@ -342,12 +317,12 @@ Queue([
         return hex.length < 4 ? ('000' + hex).slice(-4) : hex;
       });
       if (q.ignore.indexOf(codePoints) < 0) {
-        u = toJSON(codePoints);
+        u = Utils.toJSON(codePoints);
         codePointsWithoutKeycap = codePoints.replace(/-20E3$/, '');
         if (codePoints.indexOf('200D') >= 0) {
           q.zwj.push(u);
         } else if (codePoints != codePointsWithoutKeycap && q.variantsSensitive.indexOf(codePointsWithoutKeycap) >= 0) {
-          q.sensitiveKeycaps.push(toJSON(codePointsWithoutKeycap));
+          q.sensitiveKeycaps.push(Utils.toJSON(codePointsWithoutKeycap));
         } else if (q.diversityBase.indexOf(codePoints.replace(/-1F3F[B-F]$/, '')) >= 0) {
           // This is a diversity Emoji with or without a skin tone modifier
           // Add it to the regex if this is the base without the modifier
@@ -407,10 +382,10 @@ Queue([
         var matches = mapOfMatches[key];
         // Only a complete set may be replaced
         if (matches.length === pattern.numCombinations) {
-          replacements.push(UTF162JSON(key));
+          replacements.push(Utils.UTF162JSON(key));
           // Remove all items in the match set from the original zwj list
           matches.forEach(function(rawString) {
-            var indexToRemove = q.zwj.indexOf(UTF162JSON(rawString));
+            var indexToRemove = q.zwj.indexOf(Utils.UTF162JSON(rawString));
             if (indexToRemove >= 0) {
               q.zwj.splice(indexToRemove, 1);
             }
