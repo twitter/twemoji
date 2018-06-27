@@ -8,6 +8,30 @@
 var fs = require('fs');
 var path = require('path');
 
+var regex = new RegExp(fs.readFileSync(file('utils/regex')).toString(), 'g');
+
+function fromCodePoint(codepoint) {
+  var code = typeof codepoint === 'string' ?
+        parseInt(codepoint, 16) : codepoint;
+  if (code < 0x10000) {
+    return String.fromCharCode(code);
+  }
+  code -= 0x10000;
+  return String.fromCharCode(
+    0xD800 + (code >> 10),
+    0xDC00 + (code & 0x3FF)
+  );
+}
+
+function countEmoji(emoji) {
+  var count = 0;
+  regex.lastIndex = 0;
+  while (regex.exec(emoji)) {
+    count++;
+  }
+  return count;
+}
+
 function file(which) {
   return path.join(__dirname, '..', which);
 }
@@ -15,9 +39,16 @@ function file(which) {
 fs.readdir(file('assets'), function (err, files) {
   var page = fs.readFileSync(file('templates/preview.html')).toString().replace(
     '{{emoji-list}}',
-    '<li>' + files.map(function (file) {
-      return file.replace('.ai', '').split('-').map(function (hex) {
-        return '&#x' + hex.toUpperCase() + ';';
+    '<li>' + files.map(function (filename) {
+      var codepoints = filename.replace('.ai', '').split('-');
+      var emoji = codepoints.map(function(codepoint) {
+        return fromCodePoint(codepoint);
+      }).join('');
+      if (countEmoji(emoji + '\ufe0f') === 1) {
+        codepoints.push('fe0f');
+      }
+      return codepoints.map(function (codepoint) {
+        return '&#x' + codepoint.toUpperCase() + ';';
       }).join('');
     }).join('</li>\n      <li>')+ '</li>'
   );
