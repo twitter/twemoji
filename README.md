@@ -4,7 +4,7 @@ A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/
 
 **Twemoji v11.0** adheres to the [Unicode 11.0 spec](https://unicode.org/versions/Unicode11.0.0/) and supports the [Emoji 11.0 draft spec](https://www.unicode.org/reports/tr51/tr51-13.html)
 
-The Twemoji library offers support for **2,841** emojis, including skin tone and gender modifiers. 
+The Twemoji library offers support for **2,841** emojis, including skin tone and gender modifiers.
 
 #### Please note
 The files in the root folder in this project are deprecated and listed for CDN and historical reasons.
@@ -319,10 +319,10 @@ cd twemoji
 npm install
 
 # generate 2/twemoji*.js files
-./2/utils/generate
+./2/scripts/generate
 ```
 
-If you'd like to test and/or propose some changes to the V2 library please change the `./2/utils/generate` file at its end so that everything will be generated properly once launched.
+If you'd like to test and/or propose some changes to the V2 library please change the `./2/scripts/generate` file at its end so that everything will be generated properly once launched.
 
 
 ## Attribution Requirements

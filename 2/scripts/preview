@@ -8,7 +8,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var regex = new RegExp(fs.readFileSync(file('utils/regex')).toString(), 'g');
+var regex = new RegExp(fs.readFileSync(file('scripts/regex')).toString(), 'g');
 
 function fromCodePoint(codepoint) {
   var code = typeof codepoint === 'string' ?
