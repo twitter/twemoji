@@ -534,7 +534,35 @@ wru.test([{
       div.firstChild.src === 'https://twemoji.maxcdn.com/2/72x72/2639.png'
     );
   }
-}, {
+},{
+  name: 'lone vs16s',
+  test: function () {
+    wru.assert('are not parsed in strings',
+     twemoji.parse('\ufe0f') === '\ufe0f'
+    );
+
+    var div = document.createElement('div');
+    div.innerHTML = '\ufe0f';
+    twemoji.parse(div);
+    wru.assert('are not parsed in nodes',
+      div.innerHTML === '\ufe0f'
+    );
+  }
+},{
+  name: 'unnecessary vs16s',
+  test: function () {
+    wru.assert('are not parsed in strings',
+     twemoji.parse('\ud83d\ude10\ufe0f') === '<img class="emoji" draggable="false" alt="\ud83d\ude10" src="https://twemoji.maxcdn.com/2/72x72/1f610.png"/>\ufe0f'
+    );
+
+    var div = document.createElement('div');
+    div.innerHTML = '\ud83d\ude10\ufe0f';
+    twemoji.parse(div);
+    wru.assert('are not parsed in nodes',
+      div.children.length === 1 && div.innerText === '\ufe0f'
+    );
+  }
+},{
   name: 'multiple parsing using a callback',
   test: function () {
     wru.assert(
