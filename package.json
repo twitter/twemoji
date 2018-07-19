@@ -17,8 +17,8 @@
     "unicode"
   ],
   "devDependencies": {
-    "uglify-js": "2.6.2",
-    "phantomjs-prebuilt": "2.1.4"
+    "phantomjs-prebuilt": "^2.1.16",
+    "uglify-js": "2.6.2"
   },
   "author": {
     "name": "Twitter, Inc.",
