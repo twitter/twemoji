@@ -143,7 +143,7 @@ Queue([
   function grabStandardVariants(q) {
     console.log('fetching emoji-variation-sequences.txt ... ');
     http.get(
-      "http://unicode.org/Public/emoji/latest/emoji-variation-sequences.txt",
+      "http://www.unicode.org/Public/emoji/11.0/emoji-variation-sequences.txt",
       function(res) {
         var chunks = [];
         if (res.statusCode == 200) {
