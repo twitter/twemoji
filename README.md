@@ -2,7 +2,7 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-**Twemoji v11.2** adheres to the [Unicode 11.0 spec](https://unicode.org/versions/Unicode11.0.0/) and supports the [Emoji 11.0 spec](https://www.unicode.org/reports/tr51/)
+**Twemoji v11.3** adheres to the [Unicode 11.0 spec](https://unicode.org/versions/Unicode11.0.0/) and supports the [Emoji 11.0 spec](https://www.unicode.org/reports/tr51/)
 
 The Twemoji library offers support for **2,841** emojis, including skin tone and gender modifiers.
 
@@ -17,7 +17,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN 
 
 Use the following in the `<head>` tag of your HTML document(s):
 ```html
-<script src="//twemoji.maxcdn.com/2/twemoji.min.js?11.2"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?11.3"></script>
 ```
 
 ## Breaking changes in V2
