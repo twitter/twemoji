@@ -332,7 +332,7 @@ var twemoji = (function (
 
   /**
    * DOM version of the same logic / parser:
-   *  emojify all found sub-text nodes placing images node instead.
+   *  emojify all found sub-text nodes placing image nodes instead.
    * @param   Element   generic DOM node with some text in some child node
    * @param   Object    options  containing info about how to parse
     *
