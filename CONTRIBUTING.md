@@ -49,7 +49,7 @@ project:
 1. Create a new topic branch to contain your feature, change, or fix:
 
 2. Commit your changes in logical chunks. Provide clear and explanatory commit
-   messages. Use git's [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   messages. Use git's [interactive rebase](https://help.github.com/articles/about-git-rebase)
    feature to tidy up your commits before making them public.
 
 3. Locally merge (or rebase) the upstream development branch into your topic branch:
