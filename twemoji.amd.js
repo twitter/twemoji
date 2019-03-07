@@ -449,7 +449,7 @@ define(function () {
         // verify the variant is not the FE0E one
         // this variant means "emoji as text" and should not
         // require any action/replacement
-        // http://unicode.org/Public/UNIDATA/StandardizedVariants.html
+        // http://www.unicode.org/Public/4.1.0/ucd/StandardizedVariants.html
         if (variant !== '\uFE0E') {
           src = options.callback(
             grabTheRightIcon(icon, variant),
