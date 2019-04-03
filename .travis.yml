@@ -6,5 +6,5 @@ git:
 branches:
   only:
     - gh-pages
-install: yarn install
+install: yarn install --frozen-lockfile
 script: yarn test
