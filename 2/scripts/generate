@@ -9,6 +9,7 @@ var fs = require('fs');
 var http = require('http');
 var path = require('path');
 var Utils = require('./utils');
+var regex = require('twemoji-parser/dist/lib/regex').default;
 
 function file(which) {
   return path.join(__dirname, '../..', which);
@@ -1032,7 +1033,7 @@ function createTwemoji(re) {
       // drop current indentation
       .replace(/^    /gm, '')
       // add the RegExp in the right place
-      .replace('re = /twemoji/', `re = /${fs.readFileSync(path.join(__dirname, 'regex')).toString().trim()}/g`)
+      .replace('re = /twemoji/', `re = ${regex.toString()}`)
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +

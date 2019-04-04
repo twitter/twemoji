@@ -39,14 +39,12 @@ require('child_process').spawn(
     '--verbose',
     file('twemoji.js'),
     '-o',
-    file('twemoji.tmp.js')
+    file('twemoji.min.js')
   ]
 ).on('close', function () {
   fs.writeFileSync(
     file('twemoji.min.js'),
     '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */\n' +
-    fs.readFileSync(file('twemoji.tmp.js'))
+    fs.readFileSync(file('twemoji.min.js')) + '\n'
   );
-  fs.unlink(file('twemoji.tmp.js'));
-  // gzip -c twemoji.min.js | wc -c
 });
