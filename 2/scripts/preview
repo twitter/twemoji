@@ -7,18 +7,9 @@
 // dependencies
 var fs = require('fs');
 var path = require('path');
+var { parse } = require('twemoji-parser');
 var Utils = require('./utils');
 
-var regex = new RegExp(fs.readFileSync(file('scripts/regex')).toString(), 'g');
-
-function countEmoji(emoji) {
-  var count = 0;
-  regex.lastIndex = 0;
-  while (regex.exec(emoji)) {
-    count++;
-  }
-  return count;
-}
 
 function file(which) {
   return path.join(__dirname, '..', which);
@@ -32,7 +23,7 @@ fs.readdir(file('assets'), function (err, files) {
       var emoji = codepoints.map(function(codepoint) {
         return Utils.fromCodePoint(codepoint);
       }).join('');
-      if (countEmoji(emoji + '\ufe0f') === 1) {
+      if (parse(`${emoji}\ufe0f`).length === 1) {
         codepoints.push('fe0f');
       }
       return codepoints.map(function (codepoint) {
