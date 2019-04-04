@@ -312,11 +312,11 @@ If you'd like to test and/or contribute please follow these instructions.
 
 ```bash
 # clone this repo
-git clone https://github.com/twitter/twemoji.git
+git clone -b gh-pages https://github.com/twitter/twemoji.git
 cd twemoji
 
 # install dependencies
-npm install
+yarn install
 
 # generate 2/twemoji*.js files
 ./2/scripts/generate
