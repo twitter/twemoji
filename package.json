@@ -33,5 +33,8 @@
   "unpkg": "./2/twemoji.min.js",
   "scripts": {
     "test": "phantomjs testrunner.js"
+  },
+  "dependencies": {
+    "twemoji-parser": "12.0.0"
   }
 }

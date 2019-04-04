@@ -580,6 +580,11 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
+twemoji-parser@12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-12.0.0.tgz#870ea374b495595baa3bddb719e902b39ea7ccd1"
+  integrity sha512-JWZHBY32zKXo6GQ/JIQGLbbSQ5a3k+NHh5VkQ5AJFA++6cr+EtErj1aG8H4K7x8GwQ9/YzArNBQ06ryvKZL+WQ==
+
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
