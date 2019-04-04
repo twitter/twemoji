@@ -2,9 +2,9 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-**Twemoji v11.4** adheres to the [Unicode 11.0 spec](https://unicode.org/versions/Unicode11.0.0/) and supports the [Emoji 11.0 spec](https://www.unicode.org/reports/tr51/)
+**Twemoji v12.0** adheres to the [Unicode 12.0 spec](https://unicode.org/versions/Unicode12.0.0/) and supports the [Emoji 12.0 spec](https://www.unicode.org/reports/tr51/tr51-16.html)
 
-The Twemoji library offers support for **2,841** emojis, including skin tone and gender modifiers.
+The Twemoji library offers support for **3,071** emojis.
 
 #### Please note
 The files in the root folder in this project are deprecated and listed for CDN and historical reasons.
@@ -17,7 +17,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN 
 
 Use the following in the `<head>` tag of your HTML document(s):
 ```html
-<script src="//twemoji.maxcdn.com/2/twemoji.min.js?11.4"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?12.0.0"></script>
 ```
 
 ## Breaking changes in V2
@@ -357,7 +357,7 @@ The rules for contributing are available in the `CONTRIBUTING.md` file.
 Thank you to all of our [contributors](https://github.com/twitter/twemoji/graphs/contributors).
 
 ## License
-Copyright 2018 Twitter, Inc and other contributors
+Copyright 2019 Twitter, Inc and other contributors
 
 Code licensed under the MIT License: http://opensource.org/licenses/MIT
 
