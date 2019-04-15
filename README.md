@@ -4,7 +4,7 @@ A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/
 
 **Twemoji v12.0** adheres to the [Unicode 12.0 spec](https://unicode.org/versions/Unicode12.0.0/) and supports the [Emoji 12.0 spec](https://www.unicode.org/reports/tr51/tr51-16.html)
 
-The Twemoji library offers support for **3,071** emojis.
+The Twemoji library offers support for **3,075** emojis.
 
 #### Please note
 The files in the root folder in this project are deprecated and listed for CDN and historical reasons.
