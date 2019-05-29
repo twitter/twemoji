@@ -1,8 +1,7 @@
 var
   webpage = require('webpage'),
   urls = [
-    '2/test/index.html',
-    'test.html'
+    '2/test/index.html'
   ]
 ;
 
