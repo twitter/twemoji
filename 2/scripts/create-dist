@@ -34,9 +34,9 @@ fs.writeFileSync(
 );
 
 spawnSync(
-  'node',
+  'yarnpkg',
   [
-    path.join(__dirname, '../../', 'node_modules/uglify-js/bin/uglifyjs'),
+    'uglifyjs',
     '--verbose',
     file('twemoji.js'),
     '-o',
