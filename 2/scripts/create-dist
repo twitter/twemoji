@@ -44,12 +44,12 @@ spawnSync(
   ]
 );
 
-fs.writeFileSync(
-  file('twemoji.min.js'),
-  '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */\n' +
-  fs.readFileSync(file('twemoji.tmp.js'))
-);
+const copyright = '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */';
+const minifiedContents = fs.readFileSync(file('twemoji.tmp.js'));
 fs.unlinkSync(file('twemoji.tmp.js'));
+
+fs.writeFileSync(file('twemoji.min.js'), `${copyright}\n${minifiedContents}`);
+fs.writeFileSync(file('twemoji.esm.js'), `${copyright}\n${minifiedContents}\nexport default twemoji;`);
 
 const algorithm = 'sha384';
 const digest = spawnSync('openssl', ['dgst', `-${algorithm}`, '-binary', file('twemoji.min.js')]);
