@@ -29,7 +29,7 @@
     "url": "git://github.com/twitter/twemoji.git"
   },
   "main": "./2/twemoji.npm.js",
-  "module": "./2/esm.js",
+  "module": "./2/twemoji.esm.js",
   "unpkg": "./2/twemoji.min.js",
   "scripts": {
     "test": "phantomjs ./2/test/testrunner.js"
