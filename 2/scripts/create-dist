@@ -57,9 +57,7 @@ if (digest.status || digest.signal){
   throw new Error(digest.stderr.toString('utf8'));
 }
 const integrityHash = digest.stdout.toString('base64');
-const integrity = ``;
 const { version } = require('../../package.json');
-const src = ``
 
 function updateScript(filename) {
   const newScript = `<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?${version}" integrity="${algorithm}-${integrityHash}"`
