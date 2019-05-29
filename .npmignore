@@ -17,9 +17,6 @@ build
 component.json
 index.html
 node_modules
-preview*
 svg.sh
-test.*
-test*
 twemoji*
 !2/twemoji*
