@@ -4,12 +4,12 @@
     https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
 */
 
-var fs = require('fs');
-var path = require('path');
-var { spawnSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const { spawnSync } = require('child_process');
 
-function file(which) {
-  return path.join(__dirname, '..', which);
+function file(...which) {
+  return path.join(__dirname, '..', ...which);
 }
 
 fs.writeFileSync(
@@ -50,3 +50,20 @@ fs.writeFileSync(
   fs.readFileSync(file('twemoji.tmp.js'))
 );
 fs.unlinkSync(file('twemoji.tmp.js'));
+
+const algorithm = 'sha384';
+const digest = spawnSync('openssl', ['dgst', `-${algorithm}`, '-binary', file('twemoji.min.js')]);
+if (digest.status || digest.signal){
+  throw new Error(digest.stderr.toString('utf8'));
+}
+const integrity = `integrity="${algorithm}-${digest.stdout.toString('base64')}"`;
+
+function updateIntegrity(filename) {
+  fs.writeFileSync(
+    filename,
+    fs.readFileSync(filename).toString('utf8').replace(/integrity="[^ ]*"/, integrity));
+}
+
+updateIntegrity(file('..', 'README.md'));
+updateIntegrity(file('templates', 'preview.html'));
+
