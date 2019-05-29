@@ -604,3 +604,4 @@ function createTwemoji() {
 
 createTwemoji();
 require('./create-dist');
+require('./preview');
