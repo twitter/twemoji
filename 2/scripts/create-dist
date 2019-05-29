@@ -6,6 +6,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var { spawnSync } = require('child_process');
 
 function file(which) {
   return path.join(__dirname, '..', which);
@@ -32,19 +33,20 @@ fs.writeFileSync(
   '\n  return twemoji;\n});'
 );
 
-require('child_process').spawn(
+spawnSync(
   'node',
   [
     path.join(__dirname, '../../', 'node_modules/uglify-js/bin/uglifyjs'),
     '--verbose',
     file('twemoji.js'),
     '-o',
-    file('twemoji.min.js')
+    file('twemoji.tmp.js')
   ]
-).on('close', function () {
-  fs.writeFileSync(
-    file('twemoji.min.js'),
-    '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */\n' +
-    fs.readFileSync(file('twemoji.min.js')) + '\n'
-  );
-});
+);
+
+fs.writeFileSync(
+  file('twemoji.min.js'),
+  '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */\n' +
+  fs.readFileSync(file('twemoji.tmp.js'))
+);
+fs.unlinkSync(file('twemoji.tmp.js'));
