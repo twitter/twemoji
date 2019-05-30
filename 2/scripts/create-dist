@@ -51,19 +51,15 @@ fs.unlinkSync(file('twemoji.tmp.js'));
 fs.writeFileSync(file('twemoji.min.js'), `${copyright}\n${minifiedContents}`);
 fs.writeFileSync(file('twemoji.esm.js'), `${copyright}\n${minifiedContents}\nexport default twemoji;`);
 
-const algorithm = 'sha384';
-const digest = spawnSync('openssl', ['dgst', `-${algorithm}`, '-binary', file('twemoji.min.js')]);
-if (digest.status || digest.signal){
-  throw new Error(digest.stderr.toString('utf8'));
-}
-const integrityHash = digest.stdout.toString('base64');
 const { version } = require('../../package.json');
 
 function updateScript(filename) {
-  const newScript = `<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?${version}" integrity="${algorithm}-${integrityHash}"`
+  const newScript = `<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?${version}"`;
   fs.writeFileSync(
     filename,
-    fs.readFileSync(filename).toString('utf8').replace(/<script src="[^ ]*" integrity="[^ ]*"/, newScript));
+    fs.readFileSync(filename)
+      .toString('utf8')
+      .replace(/<script src="[^ ]*twemoji.min.js[^ ]*"/, newScript));
 }
 
 updateScript(file('..', 'README.md'));
