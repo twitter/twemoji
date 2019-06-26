@@ -13,5 +13,5 @@ git add -f $OUT
 git checkout $PUBLISH_BRANCH
 git pull origin $PUBLISH_BRANCH
 git mv -f $OUT $VERSION
-git commit -m "Update the Twemoji project and push to $PUBLISH_BRANCH"
+git commit -q -m "Update the Twemoji project and push to $PUBLISH_BRANCH"
 git push origin $PUBLISH_BRANCH
