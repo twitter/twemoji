@@ -6,7 +6,8 @@ ROOT=$(
 )
 OUT="$ROOT/dist/"
 PUBLISH_BRANCH=$1
-VERSION=$2
+# For this to work, the version specification must be on the second line of package.json
+VERSION=$(cat "$ROOT/package.json" | sed '2!d' | egrep -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 git fetch --all
 git add -f $OUT

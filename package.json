@@ -36,7 +36,7 @@
     "version": "yarn version",
     "build": "./scripts/generate",
     "test": "phantomjs ./src/test/testrunner.js",
-    "deploy": "./scripts/deploy.sh gh-pages 12.0.4",
+    "deploy": "./scripts/deploy.sh gh-pages",
     "prepublish": "run-s version build test deploy"
   },
   "dependencies": {
