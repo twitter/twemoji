@@ -15,3 +15,5 @@ git pull origin $PUBLISH_BRANCH
 git mv -f $OUT $VERSION
 git commit -q -m "Update the Twemoji project and push to $PUBLISH_BRANCH"
 git push origin $PUBLISH_BRANCH
+# Return to your working branch
+git checkout -
