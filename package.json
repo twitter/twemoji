@@ -29,18 +29,18 @@
     "type": "git",
     "url": "git://github.com/twitter/twemoji.git"
   },
-  "main": "./2/twemoji.npm.js",
-  "module": "./2/twemoji.esm.js",
-  "unpkg": "./2/twemoji.min.js",
+  "main": "./dist/twemoji.npm.js",
+  "module": "./dist/twemoji.esm.js",
+  "unpkg": "./dist/twemoji.min.js",
   "scripts": {
-    "build": "./2/scripts/generate",
-    "test": "phantomjs ./2/test/testrunner.js",
+    "build": "./scripts/generate",
+    "test": "phantomjs ./src/test/testrunner.js",
     "prepublish": "run-s build test"
   },
   "dependencies": {
     "twemoji-parser": "12.0.0"
   },
   "files": [
-    "2/twemoji*.js"
+    "dist/twemoji*.js"
   ]
 }

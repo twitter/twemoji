@@ -19,7 +19,7 @@ function distFile(...which) {
   return path.join(__dirname, '..', 'dist', ...which);
 }
 
-fs.readdir(file('assets'), function (err, files) {
+fs.readdir(file('assets/ai'), function (err, files) {
   var page = fs.readFileSync(file('src/templates/preview.html')).toString().replace(
     '{{emoji-list}}',
     '<li>' + files.map(function (filename) {
