@@ -12,6 +12,9 @@ git fetch --all
 git add -f $OUT
 git checkout $PUBLISH_BRANCH
 git pull origin $PUBLISH_BRANCH
+if [ -d $VERSION ]; then
+  rm -r $VERSION
+if
 git mv -f $OUT $VERSION
 git commit -q -m "Update the Twemoji project and push to $PUBLISH_BRANCH"
 git push origin $PUBLISH_BRANCH
