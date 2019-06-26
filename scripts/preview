@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+/*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
+    https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+*/
+
+// dependencies
+var fs = require('fs');
+var path = require('path');
+var { parse } = require('twemoji-parser');
+var Utils = require('./utils');
+
+
+function file(which) {
+  return path.join(__dirname, '..', which);
+}
+
+function distFile(...which) {
+  return path.join(__dirname, '..', 'dist', ...which);
+}
+
+fs.readdir(file('assets'), function (err, files) {
+  var page = fs.readFileSync(file('src/templates/preview.html')).toString().replace(
+    '{{emoji-list}}',
+    '<li>' + files.map(function (filename) {
+      var codepoints = filename.replace('.ai', '').split('-');
+      var emoji = codepoints.map(function(codepoint) {
+        return Utils.fromCodePoint(codepoint);
+      }).join('');
+      if (parse(`${emoji}\ufe0f`).length === 1) {
+        codepoints.push('fe0f');
+      }
+      return codepoints.map(function (codepoint) {
+        return '&#x' + codepoint.toUpperCase() + ';';
+      }).join('');
+    }).join('</li>\n      <li>')+ '</li>'
+  );
+  fs.writeFileSync(
+    distFile('preview.html'),
+    page.replace(
+      '{{emoji-options}}',
+      JSON.stringify({
+        size: 72
+      })
+    )
+  );
+  fs.writeFileSync(
+    distFile('preview-svg.html'),
+    page.replace(
+      '{{emoji-options}}',
+      JSON.stringify({
+        folder: 'svg',
+        ext: '.svg',
+        base: ''
+      })
+    )
+  );
+});

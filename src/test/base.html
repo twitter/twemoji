@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>basic test</title>
+    <style>
+    img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+    }
+    .emojis {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+    </style>
+    <script src="../twemoji.js" defer></script>
+    <script>
+    this.onload = function () {
+      twemoji.parse(document.body, {
+        folder: 'svg',
+        ext: '.svg'
+      });
+    };
+    </script>
+  </head>
+  <body>
+    <div class="wrapper u-fullMinHeight u-verticalCenter">
+      <main class="u-size620">
+        <h1 class="u-textCenter">Rendering Twemoji</h1>
+        <div class="emojis u-textCenter">
+          🏆️📝️📨️
+        </div>
+        <div class="emojis u-textCenter">
+          💼💡❎
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
