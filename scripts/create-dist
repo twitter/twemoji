@@ -4,7 +4,7 @@
     https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
 */
 
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const { spawnSync } = require('child_process');
 
@@ -56,5 +56,5 @@ fs.writeFileSync(distFile('twemoji.min.js'), `${copyright}\n${minifiedContents}`
 fs.writeFileSync(distFile('twemoji.esm.js'), `${copyright}\n${minifiedContents}\nexport default twemoji;`);
 
 // Copy the png assets and svgs to the dist folder
-fs.copyFileSync(file('assets/svg'), distFile('svg'));
-fs.copyFileSync(file('assets/72x72'), distFile('72x72'));
+fs.copySync(file('assets/svg'), distFile('svg'));
+fs.copySync(file('assets/72x72'), distFile('72x72'));

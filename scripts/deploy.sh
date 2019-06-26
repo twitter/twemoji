@@ -4,7 +4,7 @@ ROOT=$(
   cd $(dirname $0)/..
   /bin/pwd
 )
-OUTPUT="$ROOT/dist/"
+OUT="$ROOT/dist/"
 PUBLISH_BRANCH=$1
 VERSION=$2
 

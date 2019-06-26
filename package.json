@@ -33,12 +33,14 @@
   "module": "./dist/twemoji.esm.js",
   "unpkg": "./dist/twemoji.min.js",
   "scripts": {
+    "version": "yarn version",
     "build": "./scripts/generate",
     "test": "phantomjs ./src/test/testrunner.js",
-    "deploy": "./scripts/deploy.sh gh-pages-new 12.0.4",
+    "deploy": "./scripts/deploy.sh gh-pages 12.0.4",
     "prepublish": "run-s version build test deploy"
   },
   "dependencies": {
+    "fs-extra": "^8.0.1",
     "twemoji-parser": "12.0.0"
   },
   "files": [
