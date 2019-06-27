@@ -33,6 +33,26 @@ Contribution enquiries should take place before any significant pull request,
 otherwise you risk spending a lot of time working on something that we might
 have good reasons for rejecting.
 
+## Making Changes
+
+### Build
+
+If you'd like to test and/or contribute please follow these instructions.
+
+```bash
+# clone this repo
+git clone -b gh-pages https://github.com/twitter/twemoji.git
+cd twemoji
+
+# install dependencies
+yarn install
+
+# generate 2/twemoji*.js files
+./2/scripts/generate
+```
+
+If you'd like to test and/or propose some changes to the V2 library please change the `./2/scripts/generate` file at its end so that everything will be generated properly once launched.
+
 ## Pull requests
 
 Good pull requests - patches, improvements, new features - are a fantastic
@@ -64,5 +84,5 @@ project:
 By contributing your code:
 
 You agree to license your contribution under the terms of the MIT (for code) and CC-BY (for graphics) licenses
-https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
-https://github.com/twitter/twemoji/blob/gh-pages/LICENSE-GRAPHICS
+<https://github.com/twitter/twemoji/blob/gh-pages/LICENSE>
+<https://github.com/twitter/twemoji/blob/gh-pages/LICENSE-GRAPHICS>
