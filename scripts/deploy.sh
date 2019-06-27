@@ -13,11 +13,15 @@ git fetch --all
 git add -f $OUT
 git checkout $PUBLISH_BRANCH
 git pull origin $PUBLISH_BRANCH
+cd "v/"
+# If the folder already exists we want to repalce it
 if [ -d $VERSION ]; then
   rm -r $VERSION
 fi
+# Create new version folder out of dist/
 git mv -f $OUT $VERSION
 git commit -q -m "Update the Twemoji project and push to $PUBLISH_BRANCH"
 git push origin $PUBLISH_BRANCH
 # Return to your working branch
 git checkout -
+cd $ROOT
