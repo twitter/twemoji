@@ -23,6 +23,11 @@ fi
 # Create new version folder out of dist/
 mv -f $DIST $VERSION
 git add $VERSION
+
+rm latest
+ln -s $VERSION latest
+git add latest
+
 git commit -q -m "Publish v$VERSION"
 git push origin $PUBLISH_BRANCH
 popd
