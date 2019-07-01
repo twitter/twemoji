@@ -33,11 +33,10 @@
   "module": "./dist/twemoji.esm.js",
   "unpkg": "./dist/twemoji.min.js",
   "scripts": {
-    "version": "yarn version",
     "build": "./scripts/generate",
     "test": "phantomjs ./src/test/testrunner.js",
     "deploy": "./scripts/deploy.sh gh-pages",
-    "prepublishOnly": "run-s version build test deploy"
+    "prepublishOnly": "run-s build test deploy"
   },
   "dependencies": {
     "fs-extra": "^8.0.1",
