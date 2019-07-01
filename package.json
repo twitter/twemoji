@@ -37,7 +37,8 @@
     "build": "./scripts/generate",
     "test": "phantomjs ./src/test/testrunner.js",
     "deploy": "./scripts/deploy.sh gh-pages",
-    "prepublishOnly": "run-s version build test deploy"
+    "prerelease": "run-s version build test deploy",
+    "release": "yarn publish"
   },
   "dependencies": {
     "fs-extra": "^8.0.1",
