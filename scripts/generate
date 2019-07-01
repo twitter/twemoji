@@ -10,6 +10,7 @@ var http = require('http');
 var path = require('path');
 var Utils = require('./utils');
 var regex = require('twemoji-parser/dist/lib/regex').default;
+var { version } = require('../package.json');
 
 function file(which) {
   return path.join(__dirname, '..', which);
@@ -46,7 +47,7 @@ function createTwemoji() {
         /////////////////////////
 
           // default assets url, by default will be Twitter Inc. CDN
-          base: 'https://twemoji.maxcdn.com/v/latest/',
+          base: 'https://twemoji.maxcdn.com/v/$VERSION/',
 
           // default assets file extensions, by default '.png'
           ext: '.png',
@@ -592,6 +593,7 @@ function createTwemoji() {
       .replace(/^    /gm, '')
       // add the RegExp in the right place
       .replace('re = /twemoji/', `re = ${regex.toString()}`)
+      .replace('$VERSION', version)
       // add the full license
       .replace('/*! (C) Twitter Inc. */',
         '/*! (C) Twitter Inc. *//*\n' +
