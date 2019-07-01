@@ -42,7 +42,7 @@
   "dependencies": {
     "fs-extra": "^8.0.1",
     "jsonfile": "^5.0.0",
-    "twemoji-parser": "12.0.0",
+    "twemoji-parser": "12.1.0",
     "universalify": "^0.1.2"
   },
   "files": [
