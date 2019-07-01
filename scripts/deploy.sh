@@ -1,16 +1,15 @@
-#!/bin/bash 
+#!/bin/bash
+set -euxo pipefail
 
 ROOT=$(
   cd $(dirname $0)/..
   /bin/pwd
 )
-OUT="$ROOT/dist/"
+DIST="$ROOT/dist/"
 PUBLISH_BRANCH=$1
-# For this to work, the version specification must be on the second line of package.json
-VERSION=$(cat "$ROOT/package.json" | sed '2!d' | egrep -o '[0-9]+\.[0-9]+\.[0-9]+')
+VERSION=$(cat package.json | jq -r .version)
 
 git fetch --all
-git add -f $OUT
 git checkout $PUBLISH_BRANCH
 git pull origin $PUBLISH_BRANCH
 cd "v/"
@@ -19,8 +18,9 @@ if [ -d $VERSION ]; then
   rm -r $VERSION
 fi
 # Create new version folder out of dist/
-git mv -f $OUT $VERSION
-git commit -q -m "Update the Twemoji project and push to $PUBLISH_BRANCH"
+mv -f $DIST $VERSION
+git add $VERSION
+git commit -q -m "Publish v$VERSION"
 git push origin $PUBLISH_BRANCH
 # Return to your working branch
 git checkout -
