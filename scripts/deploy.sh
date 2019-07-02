@@ -24,9 +24,11 @@ fi
 cp -r $DIST $VERSION
 git add $VERSION
 
-rm latest
-ln -s $VERSION latest
-git add latest
+if [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  rm latest
+  ln -s $VERSION latest
+  git add latest
+fi
 
 git commit -q -m "Publish v$VERSION"
 git push origin $PUBLISH_BRANCH
