@@ -20,8 +20,8 @@ pushd "v/"
 if [ -d $VERSION ]; then
   rm -r $VERSION
 fi
-# Create new version folder out of dist/
-mv -f $DIST $VERSION
+
+cp -r $DIST $VERSION
 git add $VERSION
 
 rm latest
