@@ -15,7 +15,7 @@ The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN 
 Use the following in the `<head>` tag of your HTML document(s):
 
 ```html
-<script src="https://twemoji.maxcdn.com/latest/twemoji.min.js" crossorigin="anonymous"></script>
+<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 ```
 
 This guarantees that you will always use the latest version of the library.

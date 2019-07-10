@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+
+/*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
+    https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+*/
+
+const fs = require('fs-extra');
+const path = require('path');
+const { spawnSync } = require('child_process');
+
+function file(...which) {
+  return path.join(__dirname, '..', ...which);
+}
+
+function distFile(...which) {
+  return path.join(__dirname, '..', 'dist', ...which);
+}
+
+fs.writeFileSync(
+  distFile('twemoji.npm.js'),
+  [
+    'var location = global.location || {};',
+    fs.readFileSync(distFile('twemoji.js')),
+    'if (!location.protocol) {',
+    '  twemoji.base = twemoji.base.replace(/^http:/, "");',
+    '}',
+    'module.exports = twemoji;'
+  ].join('\n')
+);
+
+fs.writeFileSync(
+  distFile('twemoji.amd.js'),
+  'define(function () {\n' +
+    fs.readFileSync(distFile('twemoji.js')).toString().replace(
+      /^(.)/gm, '  $1'
+    ) +
+  '\n  return twemoji;\n});'
+);
+
+spawnSync(
+  'yarnpkg',
+  [
+    'uglifyjs',
+    '--verbose',
+    distFile('twemoji.js'),
+    '-o',
+    distFile('twemoji.tmp.js')
+  ]
+);
+
+const copyright = '/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */';
+const minifiedContents = fs.readFileSync(distFile('twemoji.tmp.js'));
+fs.unlinkSync(distFile('twemoji.tmp.js'));
+
+fs.writeFileSync(distFile('twemoji.min.js'), `${copyright}\n${minifiedContents}`);
+fs.writeFileSync(distFile('twemoji.esm.js'), `${copyright}\n${minifiedContents}\nexport default twemoji;`);
+
+// Copy the png assets and svgs to the dist folder
+fs.copySync(file('assets/svg'), distFile('svg'));
+fs.copySync(file('assets/72x72'), distFile('72x72'));
