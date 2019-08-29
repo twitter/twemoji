@@ -116,7 +116,7 @@ The default `class` for each generated image is `emoji`. It is possible to speci
 
 ##### size
 
-The default asset size is the same as `twemoji.size` which is `"36x36"`.
+The default asset size is the same as `twemoji.size` which is `"72x72"`.
 
 If you modify the former, it will reflect as default for all parsed strings or nodes.
 
