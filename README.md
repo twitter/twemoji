@@ -56,7 +56,7 @@ var img = div.querySelector('img');
 // note the div is preserved
 img.parentNode === div; // true
 
-img.src;        // https://twemoji.maxcdn.com/2/72x72/2764.png
+img.src;        // https://twemoji.maxcdn.com/v/latest/72x72/2764.png
 img.alt;        // \u2764\uFE0F
 img.className;  // emoji
 img.draggable;  // false
