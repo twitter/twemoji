@@ -56,7 +56,7 @@ var img = div.querySelector('img');
 // note the div is preserved
 img.parentNode === div; // true
 
-img.src;        // https://twemoji.maxcdn.com/36x36/2764.png
+img.src;        // https://twemoji.maxcdn.com/2/72x72/2764.png
 img.alt;        // \u2764\uFE0F
 img.className;  // emoji
 img.draggable;  // false
@@ -76,7 +76,7 @@ Here's the list of properties accepted by the optional object that can be passed
     base: string,         // default MaxCDN
     ext: string,          // default ".png"
     className: string,    // default "emoji"
-    size: string|number,  // default "36x36"
+    size: string|number,  // default "72x72"
     folder: string        // in case it's specified
                           // it replaces .size info, if any
   }
@@ -92,7 +92,7 @@ By default it is a function like the following one:
 function imageSourceGenerator(icon, options) {
   return ''.concat(
     options.base, // by default Twitter Inc. CDN
-    options.size, // by default "36x36" string
+    options.size, // by default "72x72" string
     '/',
     icon,         // the found emoji as code point
     options.ext   // by default ".png"
