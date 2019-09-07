@@ -55,7 +55,7 @@ const twemoji: {
          *  twemoji.convert.toCodePoint('\ud83c\udde8\ud83c\uddf3', '~');
          *  // "1f1e8~1f1f3"
          */
-        toCodePoint: (unicodeSurrogates: string, sep: string) => string
+        toCodePoint: (unicodeSurrogates: string, sep?: string) => string
     }
 
     /**
