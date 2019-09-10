@@ -28,7 +28,7 @@ function createTwemoji() {
       */
 
       // WARNING:   this file is generated automatically via
-      //            `node 2/scripts/generate`
+      //            `node scripts/generate`
       //            please update its `createTwemoji` function
       //            at the bottom of the same file instead.
 
