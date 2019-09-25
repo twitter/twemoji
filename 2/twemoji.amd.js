@@ -1,1 +1,1 @@
-/Users/ndowns/workspace/twemoji/v/latest/twemoji.amd.js
+../v/latest/twemoji.amd.js
