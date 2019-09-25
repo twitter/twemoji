@@ -7,6 +7,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const { getIntegrityHash } = require('./utils');
 
 function file(...which) {
   return path.join(__dirname, '..', ...which);
@@ -54,6 +55,16 @@ fs.unlinkSync(distFile('twemoji.tmp.js'));
 
 fs.writeFileSync(distFile('twemoji.min.js'), `${copyright}\n${minifiedContents}`);
 fs.writeFileSync(distFile('twemoji.esm.js'), `${copyright}\n${minifiedContents}\nexport default twemoji;`);
+
+const integrityHash = getIntegrityHash(distFile('twemoji.min.js'));
+const { version } = require('../package.json');
+
+function updateSriScriptReference(filename) {
+  const newScript = `<script src="https://twemoji.maxcdn.com/v/${version}/twemoji.min.js" integrity="${integrityHash}"`;
+  fs.writeFileSync(filename, fs.readFileSync(filename).toString('utf8').replace(/<script src="[^ ]*" integrity="[^ ]*"/, newScript));
+}
+
+updateSriScriptReference(file('README.md'));
 
 // Copy the png assets and svgs to the dist folder
 fs.copySync(file('assets/svg'), distFile('svg'));

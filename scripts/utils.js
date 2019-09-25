@@ -1,3 +1,5 @@
+const { spawnSync } = require('child_process');
+
 function fromCodePoint(codepoint) {
   var code = typeof codepoint === 'string' ?
         parseInt(codepoint, 16) : codepoint;
@@ -26,3 +28,13 @@ function UTF162JSON(text) {
   return r.join('');
 }
 module.exports.UTF162JSON = UTF162JSON;
+
+function getIntegrityHash(filename) {
+  const algorithm = 'sha384';
+  const digest = spawnSync('openssl', ['dgst', `-${algorithm}`, '-binary', filename]);
+  if (digest.status || digest.signal){
+    throw new Error(digest.stderr.toString('utf8'));
+  }
+  return `${algorithm}-${digest.stdout.toString('base64')}`;
+}
+module.exports.getIntegrityHash = getIntegrityHash;

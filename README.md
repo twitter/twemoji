@@ -20,6 +20,11 @@ Use the following in the `<head>` tag of your HTML document(s):
 
 This guarantees that you will always use the latest version of the library.
 
+If, instead, you'd like to include the latest version explicitly, you can add the following tag:
+```html
+<script src="https://twemoji.maxcdn.com/v/12.1.3/twemoji.min.js" integrity="sha384-PEQg4NJbyXT+TJJVKYN9zmD5ehVaV3TiBdzovT7WkshNClGNg8+bk4hKQ+lGrgaw" crossorigin="anonymous"></script>
+```
+
 ### Download
 
 If instead you want to download a specific version, please look at the `gh-pages` branch, where you will find the built assets for both our latest and older versions.

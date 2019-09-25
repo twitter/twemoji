@@ -37,7 +37,8 @@ fs.readdir(file('assets/ai'), function (err, files) {
         }).join('');
       }).join('</li>\n      <li>')+ '</li>'
     )
-    .replace('{{version}}', version);
+    .replace('{{version}}', version)
+    .replace('{{integrityHash}}', Utils.getIntegrityHash(distFile('twemoji.min.js')));
   fs.writeFileSync(
     distFile('preview.html'),
     page.replace(
