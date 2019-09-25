@@ -65,7 +65,7 @@ project:
 
 1. Create a new topic branch to contain your feature, change, or fix:
 
-> If you'd like to test and/or propose some changes to the latest library version please change the `./scripts/generate` file at its end so that everything will be generated properly once launched.
+> If you'd like to test and/or propose some changes to the latest library version please change the `./scripts/build.js` file at its end so that everything will be generated properly once launched.
 
 1. Commit your changes in logical chunks. Provide clear and explanatory commit
    messages. Use git's [interactive rebase](https://help.github.com/en/articles/about-git-rebase)

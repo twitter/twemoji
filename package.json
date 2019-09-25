@@ -33,7 +33,7 @@
   "module": "./dist/twemoji.esm.js",
   "unpkg": "./dist/twemoji.min.js",
   "scripts": {
-    "build": "./scripts/generate",
+    "build": "./scripts/build.js",
     "deploy": "./scripts/deploy.sh gh-pages",
     "test": "phantomjs ./src/test/testrunner.js",
     "prepublishOnly": "run-s build test deploy"
