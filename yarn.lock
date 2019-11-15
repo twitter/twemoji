@@ -967,8 +967,8 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
 
 twemoji-parser@12.1.1:
   version "12.1.1"
-  resolved "https://artifactory.twitter.biz:443/api/npm/js-virtual/twemoji-parser/-/twemoji-parser-12.1.1.tgz#9532a869e3348dbb129d93ed1850f6e871bec2be"
-  integrity sha1-lTKoaeM0jbsSnZPtGFD26HG+wr4=
+  resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-12.1.1.tgz#9532a869e3348dbb129d93ed1850f6e871bec2be"
+  integrity sha512-XFUB4ReEvPbNPtiuyo/+crM4RldYbRRAhyE7Hw6EnfBdXECGydw7a49EGADayRvaeierP/m4DSv/OZQObh0LGA==
 
 typedarray@^0.0.6:
   version "0.0.6"
