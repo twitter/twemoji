@@ -22,7 +22,7 @@ This guarantees that you will always use the latest version of the library.
 
 If, instead, you'd like to include the latest version explicitly, you can add the following tag:
 ```html
-<script src="https://twemoji.maxcdn.com/v/12.1.4/twemoji.min.js" integrity="sha384-l2vnBuWDpO+2hY1VGTHGt533QP0iuI0FPJyR/gz5G0S4oOoGns9tVLjhrn1ygPY/" crossorigin="anonymous"></script>
+<script src="https://twemoji.maxcdn.com/v/12.1.5/twemoji.min.js" integrity="sha384-E4PZh8MWwKQ2W7ANni7xwx6TTuPWtd3F8mDRnaMvJssp5j+gxvP2fTsk1GnFg2gG" crossorigin="anonymous"></script>
 ```
 
 ### Download
