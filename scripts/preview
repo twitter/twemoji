@@ -19,13 +19,13 @@ function distFile(...which) {
   return path.join(__dirname, '..', 'dist', ...which);
 }
 
-fs.readdir(file('assets/ai'), function (err, files) {
+fs.readdir(file('assets/svg'), function (err, files) {
   var page = fs.readFileSync(file('src/templates/preview.html'))
     .toString()
     .replace(
       '{{emoji-list}}',
       '<li>' + files.map(function (filename) {
-        var codepoints = filename.replace('.ai', '').split('-');
+        var codepoints = filename.replace('.svg', '').split('-');
         var emoji = codepoints.map(function(codepoint) {
           return Utils.fromCodePoint(codepoint);
         }).join('');
