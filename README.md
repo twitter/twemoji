@@ -232,6 +232,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Emojica](https://github.com/xoudini/emojica) by [@xoudini](https://twitter.com/xoudini): An iOS framework allowing you to replace all standard emoji in strings with Twemoji.
 * [gwt-twemoji](https://github.com/phpmonkeys-de/gwt-twemoji) by [@nbartels](https://github.com/nbartels): Use Twemoji in GWT
 * [Unmaintained] [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/)).
+* [Vue Twemoji Picker](https://github.com/kevinfaguiar/vue-twemoji-picker) by [@kevinfaguiar](https://github.com/kevinfaguiar): A fast plug-n-play Twemoji Picker (+textarea for Twemoji rendering) for Vue.
 
 ## Committers and Contributors
 
