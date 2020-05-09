@@ -2,9 +2,9 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-**Twemoji v12.0** adheres to the [Unicode 12.0 spec](https://unicode.org/versions/Unicode12.0.0/) and supports the [Emoji 12.0 spec](https://www.unicode.org/reports/tr51/tr51-16.html)
+**Twemoji v13.0** adheres to the [Unicode 13.0 spec](https://unicode.org/versions/Unicode13.0.0/) and supports the [Emoji 13.0 spec](https://www.unicode.org/reports/tr51/tr51-18.html)
 
-The Twemoji library offers support for **3,075** emojis.
+The Twemoji library offers support for **3,304** emojis.
 
 ## Usage
 
@@ -22,7 +22,7 @@ This guarantees that you will always use the latest version of the library.
 
 If, instead, you'd like to include the latest version explicitly, you can add the following tag:
 ```html
-<script src="https://twemoji.maxcdn.com/v/12.1.6/twemoji.min.js" integrity="sha384-XfulzVp257jTD4j8TtghtZ75YaRE+O+F2brm/dAHuawJEvzeoco+4c0Q1bm5ha3M" crossorigin="anonymous"></script>
+<script src="https://twemoji.maxcdn.com/v/13.0.0/twemoji.min.js" integrity="sha384-avLpk7eChiSgpDvwa4N7hvg9vj6V9sfFmGHurVkPOlWUalASzcO3d2x3qcbQqhsH" crossorigin="anonymous"></script>
 ```
 
 ### Download
@@ -235,6 +235,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 ## Committers and Contributors
 
 * Bryan Haggerty (Twitter)
+* Justine De Caires (Twitter)
 * Nathan Downs (Twitter)
 * Tom Wuttke (ex-Twitter)
 * Andrea Giammarchi (ex-Twitter)
