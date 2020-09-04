@@ -211,7 +211,7 @@ function createTwemoji() {
            * @param   string    generic string to parse
            * @param   Function  a generic callback that will be
            *                    invoked to replace the content.
-           *                    This calback wil receive standard
+           *                    This calback will receive standard
            *                    String.prototype.replace(str, callback)
            *                    arguments such:
            *  callback(
