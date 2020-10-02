@@ -43,6 +43,103 @@ Each of them accepts a callback to generate an image source or an options object
 
 Here is a walkthrough of all parsing possibilities:
 
+#### string parsing
+
+Given a generic string, replaces all emoji with an `<img>` tag.
+
+While this can be used to inject emoji via image tags in `innerHTML`, please note that this method does not sanitize the string or prevent malicious code from being executed. As an example, if the text contains a `<script>` tag, it **will not** be converted into `&lt;script&gt;` since it's out of this method's scope to prevent these kind of attacks.
+
+However, for already sanitized strings, this method can be considered safe enough. Please see DOM parsing if security is one of your major concerns.
+
+```js
+twemoji.parse('I \u2764\uFE0F emoji!');
+
+// will produce
+/*
+I <img
+  class="emoji"
+  draggable="false"
+  alt="❤️"
+  src="https://twemoji.maxcdn.com/36x36/2764.png"/> emoji!
+*/
+```
+
+##### string parsing + callback
+
+If a callback is passed, the value of the `src` attribute will be the value returned by the callback.
+
+```js
+twemoji.parse(
+  'I \u2764\uFE0F emoji!',
+  function(icon, options, variant) {
+    return '/assets/' + options.size + '/' + icon + '.gif';
+  }
+);
+
+// will produce
+/*
+I <img
+  class="emoji"
+  draggable="false"
+  alt="❤️"
+  src="/assets/36x36/2764.gif"/> emoji!
+*/
+```
+
+By default, the `options.size` parameter will be the string `"36x36"` and the `variant` will be an optional `\uFE0F` char that is usually ignored by default. If your assets include or distinguish between `\u2764\uFE0F` and `\u2764`, you might want to use such a variable.
+
+##### string parsing + callback returning `falsy`
+
+If the callback returns "falsy values" such as `null`, `undefined`, `0`, `false`, or an empty string, nothing will change for that specific emoji.
+
+```js
+var i = 0;
+twemoji.parse(
+  'emoji, m\u2764\uFE0Fn am\u2764\uFE0Fur',
+  function(icon, options, variant) {
+    if (i++ === 0) {
+      return; // no changes made first call
+    }
+    return '/assets/' + icon + options.ext;
+  }
+);
+
+// will produce
+/*
+emoji, m❤️n am<img
+  class="emoji"
+  draggable="false"
+  alt="❤️"
+  src="/assets/2764.png"/>ur
+*/
+```
+
+##### string parsing + object
+
+In case an object is passed as second parameter, the passed `options` object will reflect its properties.
+
+```js
+twemoji.parse(
+  'I \u2764\uFE0F emoji!',
+  {
+    callback: function(icon, options) {
+      return '/assets/' + options.size + '/' + icon + '.gif';
+    },
+    size: 128
+  }
+);
+
+// will produce
+/*
+I <img
+  class="emoji"
+  draggable="false"
+  alt="❤️"
+  src="/assets/128x128/2764.gif"/> emoji!
+*/
+```
+
+
 #### DOM parsing
 
 In contrast to `string` parsing, if the first argument is an `HTMLElement`, generated image tags will replace emoji that are **inside `#text` nodes only** without compromising surrounding nodes or listeners, and completely avoiding the usage of `innerHTML`.
