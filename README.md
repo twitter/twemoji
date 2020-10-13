@@ -37,15 +37,13 @@ Following are all the methods exposed in the `twemoji` namespace.
 
 This is the main parsing utility and has 3 overloads per parsing type.
 
-There are mainly two kinds of parsing: [string parsing](https://github.com/twitter/twemoji#string-parsing) and [DOM parsing](https://github.com/twitter/twemoji#dom-parsing).
+Although there are two kinds of parsing supported by this utility, we recommend you use [DOM parsing](https://github.com/twitter/twemoji#dom-parsing), explained below. Each type of parsing accepts a callback to generate an image source or an options object with parsing info.
 
-Each of them accepts a callback to generate an image source or an options object with parsing info.
-
-Here is a walkthrough of all parsing possibilities:
+The second kind of parsing is string parsing, explained in the legacy documentation [here](https://github.com/twitter/twemoji/blob/master/LEGACY.md#string-parsing). This is unrecommended because this method does not sanitize the string or otherwise prevent malicious code from being executed; such sanitization is out of scope.
 
 #### DOM parsing
 
-In contrast to `string` parsing, if the first argument is an `HTMLElement`, generated image tags will replace emoji that are **inside `#text` nodes only** without compromising surrounding nodes or listeners, and completely avoiding the usage of `innerHTML`.
+If the first argument to `twemoji.parse` is an `HTMLElement`, generated image tags will replace emoji that are **inside `#text` nodes only** without compromising surrounding nodes or listeners, and completely avoiding the usage of `innerHTML`.
 
 If security is a major concern, this parsing can be considered the safest option but with a slight performance penalty due to DOM operations that are inevitably *costly*.
 
@@ -239,7 +237,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 
 * Bryan Haggerty (Twitter)
 * Justine De Caires (Twitter)
-* Nathan Downs (Twitter)
+* Nathan Downs (ex-Twitter)
 * Tom Wuttke (ex-Twitter)
 * Andrea Giammarchi (ex-Twitter)
 * Joen Asmussen (WordPress)
