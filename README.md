@@ -232,6 +232,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [JavaFXEmojiTextFlow](https://github.com/pavlobu/emoji-text-flow-javafx) by [@pavlobu](https://github.com/pavlobu): A JavaFX library allowing you to replace all standard emoji in extended EmojiTextFlow with Twemoji.
 * [Vue Twemoji Picker](https://github.com/kevinfaguiar/vue-twemoji-picker) by [@kevinfaguiar](https://github.com/kevinfaguiar): A fast plug-n-play Twemoji Picker (+textarea for Twemoji rendering) for Vue.
 * [Unmaintained] [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/)).
+* [EmojiOnRoku](https://github.com/KasperGam/EmojiOnRoku) by [@KasperGam](https://github.com/KasperGam): Use Twemoji on Roku!
 
 ## Committers and Contributors
 
