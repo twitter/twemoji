@@ -233,6 +233,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Vue Twemoji Picker](https://github.com/kevinfaguiar/vue-twemoji-picker) by [@kevinfaguiar](https://github.com/kevinfaguiar): A fast plug-n-play Twemoji Picker (+textarea for Twemoji rendering) for Vue.
 * [Unmaintained] [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/)).
 * [EmojiOnRoku](https://github.com/KasperGam/EmojiOnRoku) by [@KasperGam](https://github.com/KasperGam): Use Twemoji on Roku!
+* [LaTeX Twemoji](https://gitlab.com/rossel.jost/latex-twemojis) by [@rossel.jost](https://gitlab.com/rossel.jost): Use Twemojis in LaTeX.
 
 ## Committers and Contributors
 
