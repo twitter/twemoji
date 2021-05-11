@@ -234,6 +234,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Unmaintained] [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/)).
 * [EmojiOnRoku](https://github.com/KasperGam/EmojiOnRoku) by [@KasperGam](https://github.com/KasperGam): Use Twemoji on Roku!
 * [LaTeX Twemoji](https://gitlab.com/rossel.jost/latex-twemojis) by [@rossel.jost](https://gitlab.com/rossel.jost): Use Twemoji in LaTeX.
+* [PHP Twemoji](https://github.com/Astrotomic/php-twemoji) by [@Astrotomic](https://github.com/Astrotomic): Use twemoji within your PHP website project's by replacing standard Emoji with twemoji urls.
 
 ## Committers and Contributors
 
