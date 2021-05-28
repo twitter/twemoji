@@ -2,9 +2,9 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-**Twemoji v13.0** adheres to the [Unicode 13.0 spec](https://unicode.org/versions/Unicode13.0.0/) and supports the [Emoji 13.0 spec](https://www.unicode.org/reports/tr51/tr51-18.html)
+**Twemoji v13.1** adheres to the [Unicode 13.0 spec](https://unicode.org/versions/Unicode13.0.0/) and supports the [Emoji 13.1 spec](https://www.unicode.org/reports/tr51/tr51-19.html)
 
-The Twemoji library offers support for **3,304** emojis.
+The Twemoji library offers support for **3,521** emojis.
 
 ## Usage
 
@@ -22,7 +22,7 @@ This guarantees that you will always use the latest version of the library.
 
 If, instead, you'd like to include the latest version explicitly, you can add the following tag:
 ```html
-<script src="https://twemoji.maxcdn.com/v/13.0.2/twemoji.min.js" integrity="sha384-wyB/MspSJ/r2bT2kCj44qtsYRYlpzO2oAPhRj5myrWD63dt6qWv4x8AZe7Fl3K3b" crossorigin="anonymous"></script>
+<script src="https://twemoji.maxcdn.com/v/13.1.0/twemoji.min.js" integrity="sha384-gPMUf7aEYa6qc3MgqTrigJqf4gzeO6v11iPCKv+AP2S4iWRWCoWyiR+Z7rWHM/hU" crossorigin="anonymous"></script>
 ```
 
 ### Download
