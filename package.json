@@ -45,6 +45,7 @@
     "universalify": "^0.1.2"
   },
   "files": [
-    "dist/twemoji*.js"
+    "dist/twemoji*.js",
+    "index.d.ts"
   ]
 }
