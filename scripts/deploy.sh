@@ -30,7 +30,7 @@ if [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   git add latest
 fi
 
-git commit -q -m "Publish v$VERSION"
+git diff-index --quiet HEAD || git commit -q -m "Publish v$VERSION"
 git push origin $PUBLISH_BRANCH
 popd
 
