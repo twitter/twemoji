@@ -27,7 +27,7 @@ If, instead, you'd like to include the latest version explicitly, you can add th
 
 ### Download
 
-If instead you want to download a specific version, please look at the `gh-pages` branch, where you will find the built assets for both our latest and older versions.
+If instead, you want to download a specific version, please look at the `gh-pages` branch, where you will find the built assets for both our latest and older versions.
 
 ## API
 
@@ -105,7 +105,7 @@ function imageSourceGenerator(icon, options) {
 
 #### base
 
-The default url is the same as `twemoji.base`, so if you modify the former, it will reflect as default for all parsed strings or nodes.
+The default URL is the same as `twemoji.base`, so if you modify the former, it will reflect as default for all parsed strings or nodes.
 
 #### ext
 
@@ -134,11 +134,11 @@ twemoji.parse(genericNode, {
 });
 ```
 
-This will generate urls such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size based image.
+This will generate URLs such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size-based image.
 
 ## Utilities
 
-Basic utilities / helpers to convert code points to JavaScript surrogates and vice versa.
+Basic utilities/helpers to convert code points to JavaScript surrogates and vice versa.
 
 ### twemoji.convert.fromCodePoint()
 
@@ -176,11 +176,11 @@ img.emoji {
 }
 ```
 
-This will make sure emoji derive their width and height from the `font-size` of the text they're shown with. It also adds just a little bit of space before and after each emoji, and pulls them upwards a little bit for better optical alignment.
+This will make sure emoji derive their width and height from the `font-size` of the text they're shown with. It also adds just a little bit of space before and after each emoji and pulls them upwards a little bit for better optical alignment.
 
 ### UTF-8 Character Set
 
-To properly support emoji, the document character set must be set to UTF-8. This can done by including the following meta tag in the document `<head>`
+To properly support emoji, the document character set must be set to UTF-8. This can be done by including the following meta tag in the document `<head>`
 
 ```html
 <meta charset="utf-8">
@@ -214,9 +214,9 @@ The contributing documentation can be found [here](https://github.com/twitter/tw
 
 ## Attribution Requirements
 
-As an open source project, attribution is critical from a legal, practical and motivational perspective in our opinion. The graphics are licensed under the CC-BY 4.0 which has a pretty good guide on [best practices for attribution](https://wiki.creativecommons.org/Best_practices_for_attribution).
+As an open-source project, attribution is critical from a legal, practical, and motivational perspective in our opinion. The graphics are licensed under the CC-BY 4.0 which has a pretty good guide on [best practices for attribution](https://wiki.creativecommons.org/Best_practices_for_attribution).
 
-However, we consider the guide a bit onerous and as a project, will accept a mention in a project README or an 'About' section or footer on a website. In mobile applications, a common place would be in the Settings/About section (for example, see the mobile Twitter application Settings->About->Legal section). We would consider a mention in the HTML/JS source sufficient also.
+However, we consider the guide a bit onerous and as a project, will accept a mention in a project README or an 'About' section or footer on a website. In mobile applications, a commonplace would be in the Settings/About section (for example, see the mobile Twitter application Settings->About->Legal section). We would consider a mention in the HTML/JS source sufficient also.
 
 ## Community Projects
 
@@ -234,7 +234,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * [Unmaintained] [Twemoji Awesome](http://ellekasai.github.io/twemoji-awesome/) by [@ellekasai](https://twitter.com/ellekasai/): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/)).
 * [EmojiOnRoku](https://github.com/KasperGam/EmojiOnRoku) by [@KasperGam](https://github.com/KasperGam): Use Twemoji on Roku!
 * [LaTeX Twemoji](https://gitlab.com/rossel.jost/latex-twemojis) by [@rossel.jost](https://gitlab.com/rossel.jost): Use Twemoji in LaTeX.
-* [PHP Twemoji](https://github.com/Astrotomic/php-twemoji) by [@Astrotomic](https://github.com/Astrotomic): Use twemoji within your PHP website project's by replacing standard Emoji with twemoji urls.
+* [PHP Twemoji](https://github.com/Astrotomic/php-twemoji) by [@Astrotomic](https://github.com/Astrotomic): Use twemoji within your PHP website project's by replacing standard Emoji with twemoji URLs.
 
 ## Committers and Contributors
 
@@ -246,7 +246,7 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 * Joen Asmussen (WordPress)
 * Marcus Kazmierczak (WordPress)
 
-The goal of this project is to simply provide emoji for everyone. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community due to the simple nature of the project.
+The goal of this project is to simply provide emojis for everyone. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community due to the simple nature of the project.
 
 The rules for contributing are available in the `CONTRIBUTING.md` file.
 
