@@ -180,7 +180,7 @@ This will make sure emoji derive their width and height from the `font-size` of 
 
 ### UTF-8 Character Set
 
-To properly support emoji, the document character set must be set to UTF-8. This can done by including the following meta tag in the document `<head>`
+To properly support emoji, the document character set must be set to UTF-8. This can be done by including the following meta tag in the document `<head>`
 
 ```html
 <meta charset="utf-8">
@@ -238,8 +238,9 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 
 ## Committers and Contributors
 
-* Bryan Haggerty (Twitter)
 * Justine De Caires (Twitter)
+* Jason Sofonia (Twitter)
+* Bryan Haggerty (ex-Twitter)
 * Nathan Downs (ex-Twitter)
 * Tom Wuttke (ex-Twitter)
 * Andrea Giammarchi (ex-Twitter)
