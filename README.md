@@ -218,6 +218,19 @@ As an open source project, attribution is critical from a legal, practical and m
 
 However, we consider the guide a bit onerous and as a project, will accept a mention in a project README or an 'About' section or footer on a website. In mobile applications, a common place would be in the Settings/About section (for example, see the mobile Twitter application Settings->About->Legal section). We would consider a mention in the HTML/JS source sufficient also.
 
+<details>
+<summary> Javascript Source - Attribution Example</summary>
+If you're using a bundling tool, perhaps make sure that readers can view source.
+<br>
+```js
+<!-- 
+Title: Twemoji library - https://github.com/twitter/twemoji
+Author: Copyright 2021 Twitter, Inc and other contributors
+License: Code licensed under the MIT License: http://opensource.org/licenses/MIT
+Graphics License: Graphics licensed under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/  -->
+```
+</details>
+
 ## Community Projects
 
 * [Twemoji Amazing](https://github.com/SebastianAigner/twemoji-amazing) by [@SebastianAigner](https://github.com/SebastianAigner): Use Twemoji using CSS classes (like [Font Awesome](http://fortawesome.github.io/Font-Awesome/)).
