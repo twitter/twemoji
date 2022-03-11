@@ -2,9 +2,9 @@
 
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 
-**Twemoji v13.1** adheres to the [Unicode 13.0 spec](https://unicode.org/versions/Unicode13.0.0/) and supports the [Emoji 13.1 spec](https://www.unicode.org/reports/tr51/tr51-19.html). _We do not support custom emoji._
+**Twemoji v14.0** adheres to the [Unicode 14.0 spec](https://unicode.org/versions/Unicode14.0.0/) and supports the [Emoji 14.0 spec](https://www.unicode.org/reports/tr51/tr51-21.html). _We do not support custom emoji._
 
-The Twemoji library offers support for **3,521** Unicode-defined emojis.
+The Twemoji library offers support for **3,633** Unicode-defined emojis.
 
 ## Usage
 
