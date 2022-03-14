@@ -29,7 +29,7 @@ declare interface TwemojiOptions {
   attributes?(): void;
 }
 
-export const twemoji: {
+declare const twemoji: {
   convert: {
     fromCodePoint(hexCodePoint: string): string;
     toCodePoint(utf16surrogatePairs: string): string;
