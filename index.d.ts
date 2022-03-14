@@ -29,12 +29,15 @@ declare interface TwemojiOptions {
   attributes?(): void;
 }
 
-declare const twemoji: {
+declare type twemoji = {
   convert: {
     fromCodePoint(hexCodePoint: string): string;
     toCodePoint(utf16surrogatePairs: string): string;
   };
-  parse(node: HTMLElement | string, options?: TwemojiOptions): string;
+  parse(node: HTMLElement | string, options?: TwemojiOptions): void;
 };
 
-export default twemoji;
+declare module "twemoji" {
+  const twemoji: twemoji;
+  export default twemoji;
+}
