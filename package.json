@@ -1,10 +1,7 @@
 {
   "version": "14.0.1",
   "name": "twemoji",
-  "license": [
-    "MIT",
-    "CC-BY-4.0"
-  ],
+  "license": "(MIT AND CC-BY-4.0)",
   "description": "A Unicode 13.0 standard based way to implement emoji across all platforms.",
   "homepage": "https://github.com/twitter/twemoji",
   "keywords": [
