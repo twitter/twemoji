@@ -5,7 +5,7 @@
     "MIT",
     "CC-BY-4.0"
   ],
-  "description": "A Unicode 13.0 standard based way to implement emoji across all platforms.",
+  "description": "A Unicode standard based way to implement emoji across all platforms.",
   "homepage": "https://github.com/twitter/twemoji",
   "keywords": [
     "emoji",
