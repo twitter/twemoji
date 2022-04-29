@@ -50,7 +50,7 @@ declare type Twemoji = {
   base: string;
   ext: string;
   className: string;
-  size: string | number;
+  size: string;
   convert: {
     /**
      * Given an HEX codepoint, returns UTF16 surrogate pairs.
