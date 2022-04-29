@@ -86,7 +86,7 @@ declare type Twemoji = {
   };
   parse<T extends string | HTMLElement>(node: T, options?: TwemojiOptions | ParseCallback): T;
   replace(text: string, replacer: string | Replacer): string;
-  test(test: string): boolean;
+  test(text: string): boolean;
   onerror(): void;
 };
 
