@@ -7,11 +7,11 @@
  * @param options all info for this parsing operation
  * @param variant the optional \uFE0F ("as image") variant, in case this info is anyhow meaningful. By default this is ignored.
  */
-declare type ParseCallback = (icon: string, options: object, variant: string) => string | false;
+type ParseCallback = (icon: string, options: object, variant: string) => string | false;
 
-declare type Replacer = (substring: string, ...args: any[]) => string;
+type Replacer = (substring: string, ...args: any[]) => string;
 
-declare interface TwemojiOptions {
+interface TwemojiOptions {
   /**
    * Default: MaxCDN
    */
@@ -46,7 +46,7 @@ declare interface TwemojiOptions {
   attributes?(icon: string, variant: string): object;
 }
 
-declare type Twemoji = {
+type Twemoji = {
   base: string;
   ext: string;
   className: string;
