@@ -9,7 +9,9 @@
  */
 type ParseCallback = (icon: string, options: object, variant: string) => string | false;
 
-type Replacer = (substring: string, ...args: any[]) => string;
+type ReplacerFunction = (substring: string, ...args: any[]) => string;
+
+type Replacer = string | ReplacerFunction;
 
 interface TwemojiOptions {
   /**
@@ -85,7 +87,7 @@ type Twemoji = {
     toCodePoint(utf16surrogatePairs: string, sep?: string): string;
   };
   parse<T extends string | HTMLElement>(node: T, options?: TwemojiOptions | ParseCallback): T;
-  replace(text: string, replacer: string | Replacer): string;
+  replace(text: string, replacer: Replacer): string;
   test(text: string): boolean;
   onerror(): void;
 };
