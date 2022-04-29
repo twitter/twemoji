@@ -9,6 +9,8 @@
  */
 declare type ParseCallback = (icon: string, options: object, variant: string) => string | false;
 
+declare type Replacer = (substring: string, ...args: any[]) => string;
+
 declare interface TwemojiOptions {
   /**
    * Default: MaxCDN
@@ -45,6 +47,10 @@ declare interface TwemojiOptions {
 }
 
 declare type Twemoji = {
+  base: string;
+  ext: string;
+  className: string;
+  size: string | number;
   convert: {
     /**
      * Given an HEX codepoint, returns UTF16 surrogate pairs.
@@ -79,6 +85,9 @@ declare type Twemoji = {
     toCodePoint(utf16surrogatePairs: string, sep?: string): string;
   };
   parse<T extends string | HTMLElement>(node: T, options?: TwemojiOptions | ParseCallback): T;
+  replace(text: string, replacer: string | Replacer): string;
+  test(test: string): boolean;
+  onerror(): void;
 };
 
 declare module 'twemoji' {
