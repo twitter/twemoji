@@ -7,9 +7,11 @@
  * @param options all info for this parsing operation
  * @param variant the optional \uFE0F ("as image") variant, in case this info is anyhow meaningful. By default this is ignored.
  */
-declare type ParseCallback = (icon: string, options: object, variant: string) => string | false;
+type ParseCallback = (icon: string, options: object, variant: string) => string | false;
 
-declare interface TwemojiOptions {
+type Replacer = (substring: string, ...args: any[]) => string;
+
+interface TwemojiOptions {
   /**
    * Default: MaxCDN
    */
@@ -44,7 +46,11 @@ declare interface TwemojiOptions {
   attributes?(icon: string, variant: string): object;
 }
 
-declare type Twemoji = {
+type Twemoji = {
+  base: string;
+  ext: string;
+  className: string;
+  size: string;
   convert: {
     /**
      * Given an HEX codepoint, returns UTF16 surrogate pairs.
@@ -79,6 +85,9 @@ declare type Twemoji = {
     toCodePoint(utf16surrogatePairs: string, sep?: string): string;
   };
   parse<T extends string | HTMLElement>(node: T, options?: TwemojiOptions | ParseCallback): T;
+  replace(text: string, replacer: string | Replacer): string;
+  test(text: string): boolean;
+  onerror(): void;
 };
 
 declare module 'twemoji' {
