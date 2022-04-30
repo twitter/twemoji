@@ -11,8 +11,6 @@ type ParseCallback = (icon: string, options: object, variant: string) => string 
 
 type ReplacerFunction = (substring: string, ...args: any[]) => string;
 
-type Replacer = string | ReplacerFunction;
-
 interface TwemojiOptions {
   /**
    * Default: MaxCDN
@@ -87,7 +85,7 @@ type Twemoji = {
     toCodePoint(utf16surrogatePairs: string, sep?: string): string;
   };
   parse<T extends string | HTMLElement>(node: T, options?: TwemojiOptions | ParseCallback): T;
-  replace(text: string, replacer: Replacer): string;
+  replace(text: string, replacer: string | ReplacerFunction): string;
   test(text: string): boolean;
   onerror(): void;
 };
