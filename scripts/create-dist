@@ -39,7 +39,7 @@ fs.writeFileSync(
 );
 
 spawnSync(
-  'yarnpkg',
+  'yarn',
   [
     'uglifyjs',
     '--verbose',
