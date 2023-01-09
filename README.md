@@ -10,12 +10,14 @@ The Twemoji library offers support for all Unicode-defined emoji which are recom
 
 ### CDN Support
 
-The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN support.
+<del>The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN support.</del>
+
+MaxCDN is shut down right now, so in the meanwhile use a different CDN or download the assets. (See [Maxcdn has shut down, cdn not working anymore. · Issue #580 · twitter/twemoji](https://github.com/twitter/twemoji/issues/580)).
 
 Use the following in the `<head>` tag of your HTML document(s):
 
 ```html
-<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
 ```
 
 This guarantees that you will always use the latest version of the library.
