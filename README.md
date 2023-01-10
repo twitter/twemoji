@@ -240,8 +240,8 @@ However, we consider the guide a bit onerous and as a project, will accept a men
 
 ## Committers and Contributors
 
-* Justine De Caires (Twitter)
-* Jason Sofonia (Twitter)
+* Justine De Caires (ex-Twitter)
+* Jason Sofonia (ex-Twitter)
 * Bryan Haggerty (ex-Twitter)
 * Nathan Downs (ex-Twitter)
 * Tom Wuttke (ex-Twitter)
