@@ -13,7 +13,7 @@ export type ReplacerFunction = (substring: string, ...args: any[]) => string;
 
 export type TwemojiOptions = {
   /**
-   * Default: Cloudflare
+   * Default: jsDelivr
    */
   base?: string;
   /**

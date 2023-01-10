@@ -10,21 +10,19 @@ The Twemoji library offers support for all Unicode-defined emoji which are recom
 
 ### CDN Support
 
-<del>The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN support.</del>
-
-MaxCDN is shut down right now, so in the meanwhile use a different CDN or download the assets. (See [Maxcdn has shut down, cdn not working anymore. · Issue #580 · twitter/twemoji](https://github.com/twitter/twemoji/issues/580)).
+Default CDN support is provided via [jsDelivr](https://www.jsdelivr.com/).
 
 Use the following in the `<head>` tag of your HTML document(s):
 
 ```html
-<script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
 ```
 
 This guarantees that you will always use the latest version of the library.
 
 If, instead, you'd like to include the latest version explicitly, you can add the following tag:
 ```html
-<script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" integrity="sha384-ICOlZarapRIX6UjKPcWKEpubjg7lGADN7Y9fYP4DU9zm0aPFhgnP5ef+XFaPyKv+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@14.1.0/dist/twemoji.min.js" integrity="sha384-A0m5nIzznesp6GyoeuDVkJ6nUu+of5PywoXYoq3x+KVE2jxUSoHvftqkR5bA9W7Y" crossorigin="anonymous"></script>
 ```
 
 ### Download
@@ -61,7 +59,7 @@ var img = div.querySelector('img');
 // note the div is preserved
 img.parentNode === div; // true
 
-img.src;        // https://twemoji.maxcdn.com/v/latest/72x72/2764.png
+img.src;        // https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/2764.png
 img.alt;        // \u2764\uFE0F
 img.className;  // emoji
 img.draggable;  // false
@@ -78,7 +76,7 @@ Here's the list of properties accepted by the optional object that can be passed
   {
     callback: Function,   // default the common replacer
     attributes: Function, // default returns {}
-    base: string,         // default MaxCDN
+    base: string,         // default jsDelivr
     ext: string,          // default ".png"
     className: string,    // default "emoji"
     size: string|number,  // default "72x72"
@@ -136,7 +134,7 @@ twemoji.parse(genericNode, {
 });
 ```
 
-This will generate urls such `https://twemoji.maxcdn.com/svg/2764.svg` instead of using a specific size based image.
+This will generate urls such `https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2764.svg` instead of using a specific size based image.
 
 ## Utilities
 

@@ -46,8 +46,8 @@ function createTwemoji() {
         //      properties     //
         /////////////////////////
 
-          // default assets url, by default will be Twitter Inc. CDN
-          base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/$VERSION/',
+          // default assets url, by default will be jsDelivr CDN
+          base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@$VERSION/assets/',
 
           // default assets file extensions, by default '.png'
           ext: '.png',

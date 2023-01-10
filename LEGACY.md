@@ -4,15 +4,11 @@
 
 ### CDN Support
 
-The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN support.
+Previously, MaxCDN provided support for V1 of the Twemoji API. MaxCDN shut down on December 31, 2022.
 
-Use the following in the `<head>` tag of your HTML document(s):
+Support for V1 of the Twemoji API is no longer available and is not planned. Please migrate to V2.
 
-```html
-<script src="https://twemoji.maxcdn.com/1/twemoji.min.js" crossorigin="anonymous"></script>
-```
-
-This guarantees that you are using the V1 version of the library.
+The rest of this README is kept around for historical purposes and may not work as described.
 
 ### Download
 
