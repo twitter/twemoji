@@ -1,12 +1,9 @@
 {
   "version": "14.0.2",
-  "name": "twemoji",
-  "license": [
-    "MIT",
-    "CC-BY-4.0"
-  ],
+  "name": "@twemoji/api",
+  "license": "MIT AND CC-BY-4.0",
   "description": "A Unicode standard based way to implement emoji across all platforms.",
-  "homepage": "https://github.com/twitter/twemoji",
+  "homepage": "https://github.com/jdecked/twemoji",
   "keywords": [
     "emoji",
     "DOM",
@@ -21,13 +18,9 @@
     "phantomjs-prebuilt": "^2.1.16",
     "uglify-js": "2.6.2"
   },
-  "author": {
-    "name": "Twitter, Inc.",
-    "web": "https://github.com/twitter/"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/twitter/twemoji.git"
+    "url": "git://github.com/jdecked/twemoji.git"
   },
   "main": "./dist/twemoji.npm.js",
   "module": "./dist/twemoji.esm.js",
