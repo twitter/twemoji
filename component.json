@@ -3,7 +3,7 @@
   "name": "twemoji",
   "license": ["MIT", "CC-BY-4.0"],
   "description": "A Unicode standard based way to implement emoji across all platforms.",
-  "homepage": "https://github.com/twitter/twemoji",
+  "homepage": "https://github.com/jdecked/twemoji",
   "keywords": [
     "emoji",
     "DOM",

@@ -37,7 +37,7 @@ have good reasons for rejecting.
 
 If you'd like to test and/or contribute please follow these instructions.
 
-[Fork this repo on GitHub](https://github.com/twitter/twemoji.git/fork)
+[Fork this repo on GitHub](https://github.com/jdecked/twemoji.git/fork)
 
 ### Setup
 

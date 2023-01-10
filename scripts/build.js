@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
  /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
-     https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+     https://github.com/jdecked/twemoji/blob/gh-pages/LICENSE
  */
 
 // dependencies
@@ -24,7 +24,7 @@ function createTwemoji() {
     'var twemoji = (' +
     function (
       /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
-        https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+        https://github.com/jdecked/twemoji/blob/gh-pages/LICENSE
       */
 
       // WARNING:   this file is generated automatically via
@@ -47,7 +47,7 @@ function createTwemoji() {
         /////////////////////////
 
           // default assets url, by default will be jsDelivr CDN
-          base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@$VERSION/assets/',
+          base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@$VERSION/assets/',
 
           // default assets file extensions, by default '.png'
           ext: '.png',

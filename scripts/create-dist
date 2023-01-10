@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
-    https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+    https://github.com/jdecked/twemoji/blob/gh-pages/LICENSE
 */
 
 const fs = require('fs-extra');

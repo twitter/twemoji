@@ -12,8 +12,8 @@
     "!LICENSE",
     "!README.md"
   ],
-  "twemoji": "git://github.com/twitter/twemoji.git#gh-pages",
-  "homepage": "https://github.com/twitter/twemoji",
+  "twemoji": "git://github.com/jdecked/twemoji.git#gh-pages",
+  "homepage": "https://github.com/jdecked/twemoji",
   "authors": [
     "Twitter, Inc."
   ],

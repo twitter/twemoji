@@ -1,6 +1,6 @@
 
 /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
-    https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+    https://github.com/jdecked/twemoji/blob/gh-pages/LICENSE
 */
 var base = twemoji.base;
 wru.test([{
