@@ -36,4 +36,6 @@ popd
 
 git checkout -
 
-git stash apply
+if git stash show; then
+  git stash apply
+fi
