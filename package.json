@@ -18,6 +18,9 @@
     "phantomjs-prebuilt": "^2.1.16",
     "uglify-js": "2.6.2"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/jdecked/twemoji.git"
