@@ -1,0 +1,37 @@
+name: optimize-svgs
+run-name: Optimize SVG size with SVGO
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.svg'
+  pull_request:
+    paths:
+      - '**.svg'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-svgo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ericcornelissen/svgo-action@v3
+        id: svgo
+        with:
+          repo-token: ${{secrets.GITHUB_TOKEN}}
+          svgo-version: 3
+      - name: Commit optimizations
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: ${{steps.svgo.outputs.DID_OPTIMIZE}}
+        with:
+          commit_message: Optimize ${{steps.svgo.outputs.OPTIMIZED_COUNT}} SVG(s)
+      - name: Comment on Pull Request
+        uses: thollander/actions-comment-pull-request@v1
+        if: ${{steps.svgo.outputs.DID_OPTIMIZE && github.event_name == 'pull_request'}}
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          message: Optimized ${{steps.svgo.outputs.OPTIMIZED_COUNT}} SVG(s)
