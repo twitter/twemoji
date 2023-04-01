@@ -1,5 +1,5 @@
-cd /usr/bin/env bash 
-echo "twemoji.js                $(cat twemoji.js | wc -c)"
-echo "twemoji.js gzipped        $(gzip -c twemoji.js | wc -c)"
-echo "twemoji.min.js            $(cat twemoji.min.js | wc -c)"
-echo "twemoji.min.js gzipped    $(gzip -c twemoji.min.js | wc -c)"
+#! /usr/bin/env bash 
+echo "twemoji.js                $(cat 2/twemoji.js | wc -c)"
+echo "twemoji.js gzipped        $(gzip -c 2/twemoji.js | wc -c)"
+echo "twemoji.min.js            $(cat 2/twemoji.min.js | wc -c)"
+echo "twemoji.min.js gzipped    $(gzip -c 2/twemoji.min.js | wc -c)"
