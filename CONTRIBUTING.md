@@ -77,7 +77,7 @@ project:
    2. Build the project and put the built assets in `dist/`
    3. Run the tests
    4. Move the contents of the `dist/` directory to the `gh-pages` branch
-   5. Place the contents of the `dist/` directory in its correspoding versioned folder.
+   5. Place the contents of the `dist/` directory in its corresponding versioned folder.
    6. Commit the changes and push them to the `gh-pages` branch of your fork.
 
 ## Pull requests
