@@ -18,8 +18,8 @@ jobs:
   run-svgo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ericcornelissen/svgo-action@v3
+      - uses: actions/checkout@v4
+      - uses: ericcornelissen/svgo-action@v4
         id: svgo
         with:
           repo-token: ${{secrets.GITHUB_TOKEN}}
