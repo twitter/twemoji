@@ -39,7 +39,7 @@ fs.writeFileSync(
 );
 
 spawnSync(
-  'yarnpkg',
+  'yarn',
   [
     'uglifyjs',
     '--verbose',
@@ -60,7 +60,7 @@ const integrityHash = getIntegrityHash(distFile('twemoji.min.js'));
 const { version } = require('../package.json');
 
 function updateSriScriptReference(filename) {
-  const newScript = `<script src="https://twemoji.maxcdn.com/v/${version}/twemoji.min.js" integrity="${integrityHash}"`;
+  const newScript = `<script src="https://unpkg.com/twemoji@${version}/dist/twemoji.min.js" integrity="${integrityHash}"`;
   fs.writeFileSync(filename, fs.readFileSync(filename).toString('utf8').replace(/<script src="[^ ]*" integrity="[^ ]*"/, newScript));
 }
 
