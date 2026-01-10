@@ -10,9 +10,9 @@ The Twemoji library offers support for all Unicode-defined emoji which are recom
 
 ### CDN Support
 
-<del>The folks over at [MaxCDN](https://www.maxcdn.com) have graciously provided CDN support.</del>
+<del>MaxCDN is shut down right now, so in the meanwhile use a different CDN or download the assets. (See [Maxcdn has shut down, cdn not working anymore. · Issue #580 · twitter/twemoji](https://github.com/twitter/twemoji/issues/580)).</del>
 
-MaxCDN is shut down right now, so in the meanwhile use a different CDN or download the assets. (See [Maxcdn has shut down, cdn not working anymore. · Issue #580 · twitter/twemoji](https://github.com/twitter/twemoji/issues/580)).
+MaxCDN is now [STACKPATH](https://www.stackpath.com/maxcdn/) everything on MaxCDN is now available at StackPath CDN 
 
 Use the following in the `<head>` tag of your HTML document(s):
 
