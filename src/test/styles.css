@@ -1,0 +1,30 @@
+#wru {
+    font-family: sans-serif;
+    font-size: 11pt;
+    border: 1px solid #333;
+}
+#wru div {
+    cursor: default;
+    padding: 0;
+    color: #000;
+}
+#wru div span,
+#wru div strong {
+    display: block;
+    padding: 4px;
+    margin: 0;
+}
+#wru div ul {
+    margin: 0;
+    padding-bottom: 4px;
+}
+#wru div.pass {
+    background: #90EE90;
+}
+#wru div.fail {
+    background: #FF6347;
+}
+#wru div.error {
+    background: #000;
+    color: #FFF;
+}
